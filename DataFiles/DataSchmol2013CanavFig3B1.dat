@@ -1,0 +1,8 @@
+# Graph from Schmollinger et al. 2013, page 6, Fig 3.B subplot 1.
+# The columns are: time (min), mRNA_F Control=Arginine + HS (% of max), mRNA_F Control=Arginine (% of max), mRNA_F with Canavanine  + HS (% of max), mRNA_F with Canavanine (% of max)
+0.000 4.123 0.300 3.148 2.616
+15.00 29.56 1.718 32.67 5.709
+30.00 30.08 5.077 45.87 15.89
+45.00 19.96 5.687 57.48 24.22
+60.00 16.58 4.345 68.91 28.91
+120.0 6.962 2.882 99.99 32.59

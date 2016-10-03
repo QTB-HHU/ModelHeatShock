@@ -1,0 +1,9 @@
+# Graph from Schmollinger et al. 2013, Fig 4.B subplot 1.
+# The columns are: time (min), mRNA_F control (% of max), mRNA_F with Radicicol 10 microM (% of max), mRNA_F with Radicicol 100 microM (% of max)
+0.0 3.343 5.741 4.353
+15.0 47.25 69.21 89.52
+30.0 33.50 49.27 100.1
+45.0 14.95 25.93 66.30
+60.30 16.21 16.21 41.95
+120.0 2.839 7.129 12.55
+180.0 3.596 5.236 4.858

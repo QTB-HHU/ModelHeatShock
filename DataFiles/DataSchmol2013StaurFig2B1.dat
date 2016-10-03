@@ -1,0 +1,7 @@
+# Graph from Schmollinger et al. 2013, Fig 2.B subplot 1.
+# The columns are: time (min), mRNA_F control (% of max), mRNA_F with Chloramphenicol (% of max), mRNA_F with Chloramphenicol (% of max)
+0.0 3.187 3.074 3.187
+15.0 27.78 27.55 22.25
+30.0 30.26 30.26 31.17
+45.0 12.89 14.01 58.36
+60.0 6.121 8.265 99.32

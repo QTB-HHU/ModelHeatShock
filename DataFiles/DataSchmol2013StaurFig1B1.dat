@@ -1,0 +1,7 @@
+# Graph from Schmollinger et al. 2013, page 3, Fig 1.B subplot 1.
+# The columns are: time (min), mRNA_F control (% of max), mRNA_F with Staurosporine 20 nM (% of max), mRNA_F with Staurosporine 1 muM (% of max)
+0.00 5.856 3.756 4.309
+15.00 99.88 87.51 21.32
+30.00 60.88 68.17 30.71
+45.00 20.33 34.80 35.69
+60.00 14.47 12.37 42.87

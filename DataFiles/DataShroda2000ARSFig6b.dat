@@ -1,0 +1,11 @@
+# Graph from Schroda et al. 2000, page 7, fig. 6b
+# The columns are: time (min), mRNA ARS (arb), ARS enzyme activity (nmol alpha-naphthol/mg protein h)
+0.00 4.027 57.70
+30.0 681.8 107.63
+60.0 1041 711.0
+90.0 63.36 1745
+120.0 5.695 1828
+180.0 0.3931 1840
+240.0 0.0 1608
+300.0 0.0 1439.67
+360.0 0.0 1135.33
