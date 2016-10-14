@@ -1,0 +1,11 @@
+algopy==0.5.3
+cycler==0.9.0
+matplotlib==1.5.1
+numdifftools==0.9.14
+numpy==1.10.4
+pyparsing==2.0.7
+python-dateutil==2.4.2
+pytz==2015.7
+scipy==0.16.1
+six==1.10.0
+wheel==0.29.0
