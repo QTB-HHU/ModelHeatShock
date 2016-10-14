@@ -134,7 +134,22 @@ def T(t, TparamsSet):
         if t < vorl:
             TT = Tin  # Tin+DT/2.+DT/2.*sin( (-Phase)/Period*2*3.14152 - 3.14152/2.)
         elif t >= vorl:
-            TT = Tin + DT / 2. + DT / 2. * sin((t - vorl) / Period * 2 * 3.14152 - 3.14152 / 2.)
+            TT = Tin + DT / 2. + DT / 2. * sin((t - vorl) / Period * 2 * math.pi - math.pi / 2.)
+        else:
+            print("Error in Temperature function!")
+
+    elif Ttype == 8:
+        Tup = TparamsSet.CurrentParams["Tup"]
+        DT = Tup - Tin
+        ta = TparamsSet.CurrentParams["ta"]
+        tau = TparamsSet.CurrentParams["tau"]
+        #print("!!!   "+str(t)+"   "+str(tau)+"\n")
+        if t <= ta:
+            TT = Tin
+        elif t > ta and t <= (ta + tau):
+            TT = Tin + 0.5*DT + 0.5*DT*math.cos((t-ta)/tau*math.pi-math.pi)
+        elif t > (ta + tau):
+            TT = Tup
         else:
             print("Error in Temperature function!")
 
@@ -183,7 +198,7 @@ def MakeGrayBackgroundTemperature(ax, timeset, TparamsSet):
         ax.axvspan(ta, tb, facecolor=ColorOfFace, edgecolor=ColorOfEdge, linewidth=0.8, alpha=1)
         ax.axvspan(tc, td, facecolor=ColorOfFace, edgecolor=ColorOfEdge, linewidth=0.8, alpha=1)
 
-    elif Ttype == 0 or Ttype == 5 or Ttype == 6 or Ttype == 7:
+    elif Ttype == 0 or Ttype == 5 or Ttype == 6 or Ttype == 7 or Ttype == 8:
         pass
 
     else:

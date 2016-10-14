@@ -16,6 +16,7 @@ from HSM_SimulateClass import *
 from HSM_StudyEquilibrium import *
 from HSM_StudyHPproduction import *
 from HSM_VaryParamsRMSvsData import *
+from HSM_StudyMaxPdFuncOfTau import *
 from HSM_calibrationRMSmainFunctions import *
 
 
@@ -56,6 +57,7 @@ if __name__ == '__main__':
     HPproductionForVariousTempDurationsHS = "Yes"
     SteadyStateSystematicStudy = "Yes"
     Study_Stability_Short = "Yes"
+    UnfoldedPfuncOfTau = "Yes"
 
     DefaultParamSetInitCond = {  # Set initial conditions of ODEs system
         "Pin": 100000.,          # (microM) protein P
@@ -553,11 +555,19 @@ if __name__ == '__main__':
                                                               DefaultParamSetForREACTIONS, FixedTemp, ["No",0.],
                                                               12, 0, 0, 0)
 
+    #####################################################################################################
+    ###############  Simulate Unfolded Proteins as func Of time taken by Temp to go up  #################
+    #####################################################################################################
 
+    if UnfoldedPfuncOfTau == "Yes":
+        print("\nSTARTING TO SIMULATE How Unfolded Proteins change as func Of time taken by Temp to go up...\n")
 
+        TauMin = 10. # (s)
+        TauMax = 24. * 60. * 60. # (s) = 24h
+        NumberOfSteps = 16
+        SimulationName = "SimulationUnfoldedPfuncOfTau" + FigureExtension
+        FigureName = "UnfoldedPfuncOfTau" + FigureExtension
 
-
-
-
+        ComputeMaxUnfoldedProteinsAsFunctionOfTimeToIncreaseTemperature(MyHSM, TauMin, TauMax, NumberOfSteps, SimulationName, FigureName)
 
 
