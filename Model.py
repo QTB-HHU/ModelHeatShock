@@ -470,7 +470,7 @@ if __name__ == '__main__':
 
         MyTEMPERATUREstart = 20.   # (°C)
         MyTEMPERATUREstop = 45.    # (°C)
-        MyNstepsTEMPERATURE = 4 # put at least 30!!!  # (adimensional)
+        MyNstepsTEMPERATURE = 3 # put at least 30!!!  # (adimensional)
         MyDURATIONstart = 10*60.      # (seconds)
         MyDURATIONstop = 1000.*60. # (seconds)
         MyNstepsDURATION = 4 # put at least 30!!!     # (adimensional)

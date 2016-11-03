@@ -212,10 +212,12 @@ def FuncPlotTemperature(self, tminMANUAL=("No",0.)):
     if self.TparamSet.CurrentParams["Ttype"] == 7:
         plt.xticks([0., 3. * 60., 6. * 60., 9. * 60., 12. * 60., 15. * 60., 18. * 60., 21 * 60., 24 * 60.],
                    ["3:00", "6:00", "9:00", "12:00", "15:00", "18:00", "21:00", "24:00", "3:00"])
+        plt.xlabel('Time (h)', fontsize="small")
     if self.TparamSet.CurrentParams["Ttype"] == 7 and tminMANUAL[0] == "Yes":
         plt.xticks([0.+tminMANUAL[1]/60., 3. * 60.+tminMANUAL[1]/60., 6. * 60.+tminMANUAL[1]/60., 9. * 60.+tminMANUAL[1]/60., 12. * 60.+tminMANUAL[1]/60., 15. * 60.+tminMANUAL[1]/60., 18. * 60.+tminMANUAL[1]/60., 21 * 60.+tminMANUAL[1]/60., 24 * 60.+tminMANUAL[1]/60.],
                    ["3:00", "6:00", "9:00", "12:00", "15:00", "18:00", "21:00", "24:00", "3:00"])
         plt.xlim(tminMANUAL[1]/60., (self.timeset.CurrentParams["t_stop"] - vorl) / 60.)
+        plt.xlabel('Time (h)', fontsize="small")
     #plt.xlim(0., (self.timeset.CurrentParams["t_stop"] - vorl) / 60.)
     plt.ylim(16., 44.)
     plt.ylabel(r'Temperature ($^\circ$C)', fontsize="small")
