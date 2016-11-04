@@ -2,7 +2,7 @@
 
 ## Credits
 
-The python code present in this directory has been written by Stefano Magni and it is based on scientific work performed by Stefano Magni, Antonella Succurro, Alexander Skupin and Oliver Ebenhoeh, which can be found in the following paper: XXX. This code can be used according to what specifyed in the license file that you can find in this folder.
+The python code present in this directory has been written by Stefano Magni and it is based on scientific work performed by Stefano Magni, Antonella Succurro, Alexander Skupin and Oliver Ebenhoeh, which can be found in the following paper: http://biorxiv.org/content/early/2016/11/03/085555. This code can be used according to what specifyed in the license file that you can find in this folder.
 
 
 ## What is it?
