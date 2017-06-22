@@ -8,7 +8,7 @@ from HSM_VaryParamsRMSvsData import *
 from HSM_StudyMaxPdFuncOfTau import *
 from HSM_calibrationRMSmainFunctions import *
 
-def ComputeMaxUnfoldedProteinsAsFunctionOfTimeToIncreaseTemperature(MyHSM, TauMin, TauMax, NumberOfSteps, SimulationName, FigureName):
+def ComputeMaxUnfoldedProteinsAsFunctionOfTimeToIncreaseTemperature(MyHSM, TauMin, TauMax, NumberOfSteps, SimulationName, FigureName, Tup, Tdown):
 
     Dtau = (math.log10(TauMax)-math.log10(TauMin)) / (NumberOfSteps)
     ListPd = []
@@ -19,7 +19,7 @@ def ComputeMaxUnfoldedProteinsAsFunctionOfTimeToIncreaseTemperature(MyHSM, TauMi
         ListTau.append(tau)
         #ListTau.append(TauMin+i*(TauMax-TauMin)/NumberOfSteps)
 
-        TsetPdTau = ParametersSet({"Ttype": 8, "Tin": 25., "Tup": 42., "tau": ListTau[i], "ta": 2. * 60. + vorl})
+        TsetPdTau = ParametersSet({"Ttype": 8, "Tin": Tdown, "Tup": Tup, "tau": ListTau[i], "ta": 2. * 60. + vorl})
         timesetPdTau = ParametersSet({"t_start": 0., "t_stop": (vorl + ListTau[i] + 62. * 60.), "delta_t": 5.0})
         SimulationPdTau = Simulate(MyHSM, timesetPdTau, TsetPdTau, SimulationName)
         SimulationPdTau.TimeRun(AvoidPlots="Yes")
@@ -61,6 +61,55 @@ def ComputeMaxUnfoldedProteinsAsFunctionOfTimeToIncreaseTemperature(MyHSM, TauMi
     PlotAndSave(fig, FigureName, "PS", 0, 0)
 
 
+def PlotTemperatureManyTau(Tup, Tdown, FigureExtension):
 
+    """ Plot the temperature T(t) """
+
+    TsetTau1 = ParametersSet({"Ttype": 8, "Tin": Tdown, "Tup": Tup, "tau": 1*60, "ta": 2. * 60.})
+    TsetTau10 = ParametersSet({"Ttype": 8, "Tin": Tdown, "Tup": Tup, "tau": 10*60, "ta": 2. * 60.})       
+    TsetTau50 = ParametersSet({"Ttype": 8, "Tin": Tdown, "Tup": Tup, "tau": 50*60, "ta": 2. * 60.})         
+    TsetTau100 = ParametersSet({"Ttype": 8, "Tin": Tdown, "Tup": Tup, "tau": 100*60, "ta": 2. * 60.})
+
+    tlist = []
+    Tlist1 = []
+    Tlist10 = []  
+    Tlist50 = []      
+    Tlist100 = []
+
+    tstart = -50
+    tstop = 150
+    tcurrent = tstart
+    for i in range(100*(tstop-tstart)):
+        
+        tcurrent = tcurrent + 0.01
+        #print(" ")
+        #print(tcurrent)
+        T1 = T(tcurrent*60., TsetTau1)
+        T10 = T(tcurrent*60., TsetTau10)    
+        T50 = T(tcurrent*60., TsetTau50)    
+        T100 = T(tcurrent*60., TsetTau100)
+
+        tlist.append(tcurrent)
+        Tlist1.append(T1)
+        Tlist10.append(T10)
+        Tlist50.append(T50)
+        Tlist100.append(T100)
+
+    fig0 = figure()
+
+    plt.xlabel('Time (min)', fontsize=18)
+    plt.ylabel(r'Temperature ($^\circ$C)', fontsize=18)
+    #plt.xlim(0., (self.timeset.CurrentParams["t_stop"] - vorl) / 60.)
+    plt.ylim(24., 45.)
+    plt.xlim(-50., 150.)
+
+    plt.plot(tlist, Tlist1, color='b', linestyle=":", linewidth=3., label=r"Temperature, $\tau=1$ min")
+    plt.plot(tlist, Tlist10, color='orange', linestyle="-.", linewidth=2.5, label=r"Temperature, $\tau=10$ min")
+    plt.plot(tlist, Tlist50, color='g', linestyle="--", linewidth=2., label=r"Temperature, $\tau=50$ min")
+    plt.plot(tlist, Tlist100, color='r', linestyle="-", linewidth=1.5, label=r"Temperature, $\tau=100$ min")
+
+    plt.legend(loc="lower right", fontsize="medium", fancybox=True)
+
+    PlotAndSave(fig0, "TemperatureManyTaus"+FigureExtension, "PS", 0, 1)
 
 

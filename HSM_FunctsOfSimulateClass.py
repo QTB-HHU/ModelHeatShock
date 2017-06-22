@@ -586,6 +586,88 @@ def FuncFeedingExperimentPlotsVsData(self, ParamName, ListOfValues,
     self.model.ParamsSetRATES.RestoreDefaultParams()
 
 
+def FuncFeedingExperimentPlotsVsDataALLinONE(self, ParamName, ListOfValues,
+                                     ModelLegend, YVariabToPlot, DataFileName, DataLegend, Ylabel, NameOfFigure,
+                                     LegendPosition, ColumnNumber, MultipleT="No", TParamsToUpdate={}):
+    """ Simulate feeding experiment by variating a k between two values, and compare with literature data """
+
+    Yval, YvalNORM, ListForPlotting = [], [], []
+    i = 0
+    for val in ListOfValues:
+        if MultipleT == "No":
+            self.model.ParamsSetRATES.UpdatePar({ParamName: ListOfValues[i]})
+            SolveODEsystem(self, ("No",0.))
+            Yval.append(np.copy(YVariabToPlot))
+        if MultipleT == "Yes":
+            SolveODEsystem(self, ("No",0.), ModifyKset="Yes", ParamsToBeModif={ParamName: ListOfValues[i]}, TimeOfMod=vorl)
+            Yval.append(np.copy(YVariabToPlot))
+            self.TparamSet.UpdatePar(TParamsToUpdate)  # Update T settings for HS
+            SolveODEsystem(self, ("No",0.), ModifyKset="Yes", ParamsToBeModif={ParamName: ListOfValues[i]}, TimeOfMod=vorl)
+            Yval.append(np.copy(YVariabToPlot))
+            self.TparamSet.RestoreDefaultParams()  # T settings for HS back to default
+        i = i + 1
+
+    self.PlotTemperature()
+
+    Max = max(np.max(Yval[i]) for i in range(len(Yval)))
+
+    for j in range(len(Yval)):
+        YvalNORM.append(np.asarray(Yval[j]) * 100. / Max)
+        ListForPlotting.append([ModelLegend[j], YvalNORM[j]])  ### ListForPlotting.append([ModelLegend[j],YvalNORM[j]])
+
+    ListOfOutputArrays = []
+    FromDataFileToArrays(DataFileName, ColumnNumber, ListOfOutputArrays)  # Read data file, put in list of arrays
+    DataTimeArMOD = ListOfOutputArrays[0] + ((self.TparamSet.CurrentParams["ta"] - vorl) / 60.)  # Translate time values
+
+    fig6 = figure()
+
+    print()
+    print(DataTimeArMOD)
+    print()
+    print(ListOfOutputArrays)
+    print()
+    
+    ax = plt.subplot(111)
+
+    time = self.t
+    ArraysToPlot = ListForPlotting
+    xLabel = 'Time (min)'
+    xMin = 0.
+    xMax = (self.timeset.CurrentParams["t_stop"] - vorl) / 60.
+    yLabel = Ylabel 
+    yMin = 0 
+    yMax = 0 
+    LegendPosition = LegendPosition
+    SubPlotLabel = "A"
+    Legendfontsize = "medium"
+    Legendfancybox = True
+    #def SubPlot(ax, time, ArraysToPlot, xLabel, xMin, xMax, yLabel, yMin, yMax, LegendPosition, SubPlotLabel,
+    Legendfancybox=True
+    UsePointMarker="No"
+    LineStyleListInverted ="No"
+
+    ColorsList = ['red', 'blue', 'green', 'black', 'orange', 'gray', 'violet', 'yellow', 'cyan', 'chartreuse']
+    LinestylesList = ['-', '-.', '--', ':', '-', '--', '-.', ':']
+    MarkersList = ["o", "s", "^", "v", ">", "<", ",",]
+
+    for i in range(len(ArraysToPlot)):
+        ax.plot(time, ArraysToPlot[i][1], color=ColorsList[i], linewidth=2, linestyle=LinestylesList[i], label=ArraysToPlot[i][0])
+    for k in [1,2,3]:
+        ax.plot(DataTimeArMOD, ListOfOutputArrays[k], marker=MarkersList[k], color=ColorsList[k-1], label=DataLegend[k-1],linestyle='None', markersize = 10)
+
+    ax.set_xlim(xMin, xMax)
+    if (yMin - yMax) != 0:
+        ax.set_ylim(yMin, yMax)
+    ax.set_xlabel(xLabel, fontsize="medium")
+    ax.set_ylabel(yLabel, fontsize="medium")
+    #AddLetterToSubplot(ax, SubPlotLabel, -0.2, 1.065)
+    ax.legend(loc=LegendPosition, numpoints=1, fontsize=Legendfontsize, fancybox=Legendfancybox)
+
+    self.model.ParamsSetRATES.RestoreDefaultParams()
+    PlotAndSave(fig6, "FeedingExperimentVsDataALLinONE_" + NameOfFigure + '_' + self.name, "PS", 1, 0)
+
+
+
 def FuncTimeCourseVsDataPlot(self):
     """ Compare time course with literature data """
 
@@ -784,6 +866,72 @@ def FuncTimeRunPlusARSdoubleHS(self, EmptyListToBeFilled, AvoidPlots):
     #print("HERE\n" + str(OutputList) + "\n")
     EmptyListToBeFilled.append(deepcopy(OutputList))
 
+
+
+
+def FuncTimeRunPlusARSdoubleHSMOD(self, EmptyListToBeFilled, AvoidPlots, MyLinestyle):
+    """ Compare with data for double HS experiments (using ARS enzyme) """
+
+    Yval, ListForPlotting = [], []
+
+    Legend = ["single HS", "2nd HS 2 h after 1st", "2nd HS 3 h after 1st", "2nd HS 4 h after 1st",
+              "2nd HS 5 h after 1st"]
+
+    # Solve ODEs system with no 2nd HS
+    SolveODEsystem(self, ("No",0.), Add3rdmRNA_ARS="Yes")
+    Yval.append(np.copy(self.HP_ARS))
+
+    # Solve ODEs system multiple times with 2nd HS after, 2h, 3h, 4h, 5h.
+    HSduration = self.TparamSet.CurrentParams["tb"] - self.TparamSet.CurrentParams["ta"]
+    for val in [2., 3., 4., 5.]:
+        self.TparamSet.UpdatePar({"Ttype": 4, "tc": val * 3600. + HSduration + vorl,
+                                  "td": (val * 3600. + HSduration) + HSduration + vorl})  # Update T
+        SolveODEsystem(self, ("No",0.), Add3rdmRNA_ARS="Yes")
+        Yval.append(deepcopy(self.HP_ARS))
+
+    YvalMAX = max(max(Yval[0]),max(Yval[1]),max(Yval[2]),max(Yval[3]),max(Yval[4]))
+    for j in range(len(Yval)):
+        ListForPlotting.append(deepcopy([Legend[j], Yval[j]/YvalMAX]))
+
+    if AvoidPlots == "Yes":
+        pass
+    elif AvoidPlots == "No":
+        # Commands to plot from data file
+        ListOfOutputArrays = []
+        FromDataFileToArrays("DataFiles/DataShroda2000ARSFig7b.dat", 6,
+                             ListOfOutputArrays)  # Read data file, put in list of arrays
+        DataTimeArMOD = ListOfOutputArrays[0] + ((self.TparamSet.CurrentParams["ta"] - vorl) / 60.)  # Translate time values
+
+        fig9 = figure()
+
+        ax = plt.subplot(111)
+        SubPlot(ax, self.t, ListForPlotting,
+                'Time (min)', 0., (self.timeset.CurrentParams["t_stop"] - vorl) / 60., 'Normalized ARS enzyme activity', 0.,
+                1., "lower right", "A")
+                #'Time (min)', 0., (self.timeset.CurrentParams["t_stop"] - vorl) / 60., 'ARS enzyme concentration ($\mu$M)', 0.,
+                #0., "lower right", "A")
+
+        MAX = max(max(ListOfOutputArrays[1]),max(ListOfOutputArrays[2]),max(ListOfOutputArrays[3]),max(ListOfOutputArrays[4]),max(ListOfOutputArrays[5]))
+        #ax2 = plt.subplot(122)
+        DataSubPlot(ax, DataTimeArMOD, ListOfOutputArrays/MAX, 'Time (min)', 0.,
+                    (self.timeset.CurrentParams["t_stop"] - vorl)/60.,r"Normalized ARS enzyme activity", 0., 1., "lower right",
+                    Legend, "B", Legendfontsize="small", MyLinestyle='None')
+        # r"ARS enzyme activity (nmol $\alpha$-naphtol/mg protein $\cdot$ h)"
+
+        PlotAndSave(fig9, "HeatShockARSExpDoubleHS_" + self.name, "PS", 1, 1)
+
+        self.PlotTemperature()
+        PlotTrajectories(self)
+    else:
+        print("Error in AvoidPlots ARS time run!")
+
+    # In case in addition to the plots you also would like the numbers, take them out as imput of the function
+    OutputList = []
+    OutputList.append(deepcopy(self.t))
+    OutputList.append(deepcopy(ListForPlotting))
+
+    #print("HERE\n" + str(OutputList) + "\n")
+    EmptyListToBeFilled.append(deepcopy(OutputList))
 
 
 

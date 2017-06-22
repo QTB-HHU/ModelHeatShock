@@ -78,6 +78,14 @@ class Simulate:
                                          ModelLegend, YVariabToPlot, DataFileName, DataLegend, Ylabel, NameOfFigure,
                                          LegendPosition, ColumnNumber, MultipleT, TParamsToUpdate)
 
+    def FeedingExperimentPlotsVsDataALLinONE(self, ParamName, ListOfValues,
+                                     ModelLegend, YVariabToPlot, DataFileName, DataLegend, Ylabel, NameOfFigure,
+                                     LegendPosition, ColumnNumber, MultipleT="No", TParamsToUpdate={}):
+        """ Simulate feeding experiment by variating a k between values, and compare with literature data """
+        FuncFeedingExperimentPlotsVsDataALLinONE(self, ParamName, ListOfValues,
+                                         ModelLegend, YVariabToPlot, DataFileName, DataLegend, Ylabel, NameOfFigure,
+                                         LegendPosition, ColumnNumber, MultipleT, TParamsToUpdate)
+
     def TimeCourseVsDataPlot(self):
         """ Compare time course with literature data """
         FuncTimeCourseVsDataPlot(self)
@@ -90,7 +98,9 @@ class Simulate:
         """ ...WORK IN PROGRESS... """
         FuncTimeRunPlusARSdoubleHS(self, EmptyListToBeFilled, AvoidPlots)
 
-
+    def TimeRunPlusARSdoubleHSMOD(self, EmptyListToBeFilled, AvoidPlots="No", MyLinestyle = "-"):
+        """ ...WORK IN PROGRESS... """
+        FuncTimeRunPlusARSdoubleHSMOD(self, EmptyListToBeFilled, AvoidPlots, MyLinestyle)
 
 
 

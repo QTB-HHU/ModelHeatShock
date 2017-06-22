@@ -24,40 +24,48 @@ if __name__ == '__main__':
 
     FigureExtension = ".pdf"  # Choose among .eps, .pdf, .png,... the extension to save all figures
 
+    # Select which simulations you want to launch
+    # PART I: Calibration and RMS stuff
+    ComputeRMSfiducialParamSet = "No"
+    MyNumberOfRandomSets = 2
+    MCrandomScanParamSpaceRMS = "No"
+    GradientSearchRMS = "No"
+    ComputeRMSfinalParamSet = "No"
+    # PART II: Simulations of HSR and Data comparison (main figures paper)
+    HS_Response = "Yes"
+    Time_Course_Data = "No"
+    Schmollingen_Data = "No"
+    Plots3Dfeeding = "No"
+    Double_Heat = "No"
+    Double_Heat_ARS = "No"
+    Early_Late_24h_HS = "No"
+    Hot_Day_Behaviour = "No"
+    HPproductionForVariousTempDurationsHS = "No"
+    SteadyStateSystematicStudy = "No"
+    Study_Stability_Short = "No"
+    UnfoldedPfuncOfTau = "No"
+
     # Here specify the names of the folders to be used after, mainly for the calibration
     FolderContainingCsvFiles = "CsvFilesWithRMSandParamSets/"
     FolderForAllCalibrationPlots = "PlotsCalibrationRMS/"
-
-    if not os.path.exists(FolderContainingCsvFiles):
-        os.makedirs(FolderContainingCsvFiles)
-    if not os.path.exists(FolderForAllCalibrationPlots):
-        os.makedirs(FolderForAllCalibrationPlots)
-
     FolderContainingDataVsSimuCalibration = FolderForAllCalibrationPlots + "PlotsDataVsSimuCalibration/"
     FolderContaining1ParametrsRMSplots = FolderForAllCalibrationPlots + "PlotsRMS1Parameter/"
     FolderContaining2ParametrsRMSplots = FolderForAllCalibrationPlots + "PlotsRMS2Parameters/"
     FolderContainingGradientSearchPlots = FolderForAllCalibrationPlots + "PlotsGradientSearch/"
     FolderRMS1vs2 = FolderForAllCalibrationPlots + "PlotRMS1vs2/"
 
-    # Select which simulations you want to launch
-    # PART I: Calibration and RMS stuff
-    ComputeRMSfiducialParamSet = "No"
-    MCrandomScanParamSpaceRMS = "No"
-    GradientSearchRMS = "No"
-    ComputeRMSfinalParamSet = "No"
-    # PART II: Simulations of HSR and Data comparison (main figures paper)
-    HS_Response = "Yes"
-    Time_Course_Data = "Yes"
-    Schmollingen_Data = "Yes"
-    Plots3Dfeeding = "No"
-    Double_Heat = "Yes"
-    Double_Heat_ARS = "Yes"
-    Early_Late_24h_HS = "Yes"
-    Hot_Day_Behaviour = "Yes"
-    HPproductionForVariousTempDurationsHS = "Yes"
-    SteadyStateSystematicStudy = "Yes"
-    Study_Stability_Short = "Yes"
-    UnfoldedPfuncOfTau = "Yes"
+    if not os.path.exists(FolderContainingCsvFiles):
+        os.makedirs(FolderContainingCsvFiles)
+    if not os.path.exists(FolderContainingDataVsSimuCalibration):
+        os.makedirs(FolderContainingDataVsSimuCalibration)
+    if not os.path.exists(FolderContaining1ParametrsRMSplots):
+        os.makedirs(FolderContaining1ParametrsRMSplots)
+    if not os.path.exists(FolderContaining2ParametrsRMSplots):
+        os.makedirs(FolderContaining2ParametrsRMSplots)
+    if not os.path.exists(FolderContainingGradientSearchPlots):
+        os.makedirs(FolderContainingGradientSearchPlots)
+    if not os.path.exists(FolderRMS1vs2):
+        os.makedirs(FolderRMS1vs2)
 
     DefaultParamSetInitCond = {  # Set initial conditions of ODEs system
         "Pin": 100000.,          # (microM) protein P
@@ -99,7 +107,7 @@ if __name__ == '__main__':
 
     DefaultParamSetForREACTIONS = {
         "n1": 10,                     # (adimensional)
-        "T0const": 36.,               # (°C) Threshold Temperature
+        "T0const": 36.,               # (deg C) Threshold Temperature
         "n2": 10./2.,                 # (adimensional) n2 = 10 in Alex's code, 1 in his draft... Nonlinear protein degradation
         "P0const": 600.,              # (microM)
         "I": 1.,                      # (microM) iso...kinease # IS I NOT VARYING?
@@ -131,7 +139,7 @@ if __name__ == '__main__':
 
     ############ 2) ############ COMPUTE RMS w.r.t. double HS for the FIDUCIAL PARMETER SET
     if ComputeRMSfiducialParamSet == "Yes":
-
+        
         RMSFeeding = ComputeRMSfeedingForGivenParameterSet(DefaultParamSetRATES, DefaultParamSetForREACTIONS, DefaultParamSetInitCond, "Yes", AllDataControlsFeeding)
         RMSdoubleHS = ComputeRMSdoubleHSforGivenParameterSet(DefaultParamSetRATES, DefaultParamSetForREACTIONS, DefaultParamSetInitCond, "Yes", AllDataControlsDoubleHS)
         print("\nFor the FIDUCIAL PARAMETER SET, RMS w.r.t. Feeding is " + str(RMSFeeding) + " and RMS w.r.t. Double HS is " + str(RMSdoubleHS) + "\n")
@@ -143,12 +151,12 @@ if __name__ == '__main__':
         ################ BIG 1: Generate random (MC) params sets or change params 1by1, and compute RMS Feeding #########################
         #################################################################################################################################
         print("\nSTARTING MC RANDOM SCAN METER SPACE...\n")
-
+        
         # A switch to switch between "random" and "1by1" for changing the values of the parameters !!!
         SwitchRandomSetsOrParametersK1by1Sets = "RandomSets" # "ParametersK1by1" "RandomSets" DO BOTH!!!!!!!
-
+        
         # If "RandomSets" then the following parameters will be used:
-        NumberOfRandomSets = 3 # we used up to 100000
+        NumberOfRandomSets = MyNumberOfRandomSets # we used up to 100000
         FactorOfRandom = 0.5 # 0.5 means 50% variation of the parameter
         # If "ParametersK1by1" then the following parameters will be used:
         NumberOfValuesForEachParameterk = 3 # we used 100 
@@ -159,13 +167,14 @@ if __name__ == '__main__':
     
         GenerateMCRandomOrNotParSetsAndComputeRMSFeeding(SwitchRandomSetsOrParametersK1by1Sets, NumberOfRandomSets, NumberOfValuesForEachParameterk, FactorOfRandom, FactorOfK1by1, FolderContainingCsvFiles, FolderContainingDataVsSimuCalibration, NameOfOutputFileRMSmanyParamsSets, NameOfOutputFileKeys, StartingParamSetRATES, TestParamSetForREACTIONS, DefaultParamSetInitCond, AllDataControlsFeeding, FigureExtension)
 
-
+        
         ##############################################################################################################
         #####################    BIG 2: Plot RMS values as function of parameters, from file     #####################
         ##############################################################################################################
         print("\nSTARTING TO PLOT RMS VALUES...\n")
 
-        FileNameManyParamsSetsRMS = FolderContainingCsvFiles + 'OutputFileRMSmanyParamsSets.csv'
+        #FileNameManyParamsSetsRMS = FolderContainingCsvFiles + 'OutputFileRMSmanyParamsSets.csv'
+        FileNameManyParamsSetsRMS = FolderContainingCsvFiles + 'aaa.csv'
         # FolderContainingCsvFiles + 'OutputFileRMSmanyParamsSets.csv'                           
         # 'InterestingListsOfParamsSets/OutputFile100000.csv'                                    
         # 'InterestingListsOfParamsSets/OutputFileKparams1by1.csv'                               
@@ -175,7 +184,7 @@ if __name__ == '__main__':
         # 'InterestingListsOfParamsSets/OutputFileKeys100000.csv'                               
         # 'InterestingListsOfParamsSets/OutputFileKeys1by1.csv'    
 
-        NumberOfBestRMSparamsSetsPlotted = 2 
+        NumberOfBestRMSparamsSetsPlotted = 300#MyNumberOfRandomSets 
                              
         PlotRMSvaluesAsFunctionOfParametersFromFile(FolderContainingCsvFiles, FolderContaining1ParametrsRMSplots, FolderContaining2ParametrsRMSplots, FileNameManyParamsSetsRMS, FileNameKeysNamesParamsSets, NumberOfBestRMSparamsSetsPlotted, StartingParamSetRATES, SwitchRandomSetsOrParametersK1by1Sets, FigureExtension)
 
@@ -242,7 +251,7 @@ if __name__ == '__main__':
     print("The parameter set charged from the txt file and used for all the simulations from now on is:")
     print(BestParameterSetFromGradientSearchFromFile)
 
-
+    
     ################################################################################################################
     ################################################################################################################
     ####################################### PART II: Now do the real stuff!!! ######################################
@@ -264,11 +273,14 @@ if __name__ == '__main__':
     #(ORIGINALFinalParamSetMinimizingRMS)
     ThisParametrSet = deepcopy(BestParameterSetFromGradientSearchFromFile)
 
+
+
     if ComputeRMSfinalParamSet == "Yes":
         RMSFeedingList = ComputeRMSfeedingForGivenParameterSet(ThisParametrSet, DefaultParamSetForREACTIONS, DefaultParamSetInitCond, "Yes", AllDataControlsFeeding)
         RMSFeeding = RMSFeedingList[0]
         RMSdoubleHS = ComputeRMSdoubleHSforGivenParameterSet(ThisParametrSet, DefaultParamSetForREACTIONS, DefaultParamSetInitCond, "Yes", AllDataControlsDoubleHS)
         print("\nFor the CURRENT PARAMETER SET, RMS w.r.t. Feeding is " + str(round(RMSFeeding,5)) + " and RMS w.r.t. Double HS is " + str(round(RMSdoubleHS,5)) + "\n")
+        PlotResultOfBestFitToData(FolderContainingDataVsSimuCalibration, ThisParametrSet, TestParamSetForREACTIONS, DefaultParamSetInitCond, AllDataControlsFeeding, FigureExtension)
 
     MyParamSetRATES = ParametersSet(ThisParametrSet)
     MyParamSetIC = ParametersSet(DefaultParamSetInitCond)
@@ -332,10 +344,13 @@ if __name__ == '__main__':
                        % ListOfKvaluesSTAURMOD[1] + "% of k$_F$'$_{nominal}$",
                        r"k$_F$' = %r" % ListOfKvaluesSTAURMOD[2] + "% of k$_F$'$_{nominal}$"]
         DataLegend = [r"Control", r"+ Staur $20$ nM", r"+ Staur $1$ $\mu$M"]
-        LegendPosition = "center left"
+        LegendPosition = "upper right"
 
         # Simulate
         SimulationSTAURdata.FeedingExperimentPlotsVsData("kFp0", ListOfKvaluesSTAUR,
+                                                         ModelLegend, SimulationSTAURdata.RF, DataFileName, DataLegend,
+                                                         Ylegend, NameOfFigure, LegendPosition, 4)
+        SimulationSTAURdata.FeedingExperimentPlotsVsDataALLinONE("kFp0", ListOfKvaluesSTAUR,
                                                          ModelLegend, SimulationSTAURdata.RF, DataFileName, DataLegend,
                                                          Ylegend, NameOfFigure, LegendPosition, 4)
         if Plots3Dfeeding == "Yes":
@@ -362,6 +377,9 @@ if __name__ == '__main__':
 
         # Simulate
         SimulationRADdata.FeedingExperimentPlotsVsData("kP0", ListOfKvaluesRAD,
+                                                       ModelLegend, SimulationRADdata.RF, DataFileName, DataLegend,
+                                                       Ylegend, NameOfFigure, LegendPosition, 4)
+        SimulationRADdata.FeedingExperimentPlotsVsDataALLinONE("kP0", ListOfKvaluesRAD,
                                                        ModelLegend, SimulationRADdata.RF, DataFileName, DataLegend,
                                                        Ylegend, NameOfFigure, LegendPosition, 4)
         if Plots3Dfeeding == "Yes":
@@ -433,7 +451,7 @@ if __name__ == '__main__':
         SimulationARSdoubleHS = Simulate(MyHSM, timesetARSdoubleHS, TsetARSdoubleHS,
                                          "SimulationARSdoubleHSshort" + FigureExtension)
         EmptyListToBeFilled = []
-        SimulationARSdoubleHS.TimeRunPlusARSdoubleHS(EmptyListToBeFilled)
+        SimulationARSdoubleHS.TimeRunPlusARSdoubleHSMOD(EmptyListToBeFilled)
 
 
     #################################################################
@@ -468,8 +486,8 @@ if __name__ == '__main__':
     if HPproductionForVariousTempDurationsHS == "Yes":
         print("\nSTARTING TO Simulate Sistematic Study of HP production for different Temperatures/Durations of HS...\n")
 
-        MyTEMPERATUREstart = 20.   # (°C)
-        MyTEMPERATUREstop = 45.    # (°C)
+        MyTEMPERATUREstart = 20.   # (deg C)
+        MyTEMPERATUREstop = 45.    # (deg C)
         MyNstepsTEMPERATURE = 3 # put at least 30!!!  # (adimensional)
         MyDURATIONstart = 10*60.      # (seconds)
         MyDURATIONstop = 1000.*60. # (seconds)
@@ -491,10 +509,10 @@ if __name__ == '__main__':
     if SteadyStateSystematicStudy == "Yes":
         print("\nSTARTING TO Simulate evolution of steady state...\n")
 
-        InitialTemperature = 0  # (°C)
-        FinalTemperature = 100  # (°C)
+        InitialTemperature = 0  # (deg C)
+        FinalTemperature = 100  # (deg C)
         #StudyUnfoldingRateFuncOfT(ThisParametrSet["kP0p"], InitialTemperature, FinalTemperature, "lower right", "UnfoldingRate" + FigureExtension) 
-        # Units of measure are: (s^-1, °C, °C, none, none) 
+        # Units of measure are: (s^-1, deg C, deg C, none, none) 
 
         #MaximalNuPpOverPTested = 150.  # (s^-1)
         NumberOfPointsInNuPpRange = 51 # 21 # Use 51
@@ -535,7 +553,7 @@ if __name__ == '__main__':
     if Study_Stability_Short == "Yes":
         print("\nSTARTING TO run for a very long time without HS...\n")
 
-        FixedTemp = 20.  # (°C)
+        FixedTemp = 20.  # (deg C)
         ShortTime = vorl
 
         ### 0) See which are the values at which the system settle on a short timescale ###
@@ -562,12 +580,16 @@ if __name__ == '__main__':
     if UnfoldedPfuncOfTau == "Yes":
         print("\nSTARTING TO SIMULATE How Unfolded Proteins change as func Of time taken by Temp to go up...\n")
 
+        Tup = 42.
+        Tdown = 25.
+        PlotTemperatureManyTau(Tup, Tdown, FigureExtension)
+
         TauMin = 10. # (s)
         TauMax = 24. * 60. * 60. # (s) = 24h
         NumberOfSteps = 16
         SimulationName = "SimulationUnfoldedPfuncOfTau" + FigureExtension
         FigureName = "UnfoldedPfuncOfTau" + FigureExtension
 
-        ComputeMaxUnfoldedProteinsAsFunctionOfTimeToIncreaseTemperature(MyHSM, TauMin, TauMax, NumberOfSteps, SimulationName, FigureName)
+        ComputeMaxUnfoldedProteinsAsFunctionOfTimeToIncreaseTemperature(MyHSM, TauMin, TauMax, NumberOfSteps, SimulationName, FigureName, Tup, Tdown)
 
 

@@ -166,6 +166,68 @@ def PlotSimulationVsDataFeeding(SimulationFeedingControlsDataRMStimes, ListForPl
     PlotAndSave(fig, FolderContainingDataVsSimuCalibration + "FittingToData" + str(FigureName) + FigureExtension, "PS", 1, 0)
 
 
+##################################################### LOOK HERE!!!!!!!!!!!!!!!!!!!!! ##########################################################
+def PlotSimulationVsDataFeedingModelVSFittedData(SimulationFeedingControlsDataRMStimes, ListForPlottingHSF, ListForPlottingHSP, timesetDataRMS, ListOfDataHSF, ListOfDataHSP90a, ListOfDataTimes, FigureName, FigureExtension, FolderContainingDataVsSimuCalibration):
+    """Plot mRNAs for HSF and HSP90a feeding experiments data VS simulation best fit for paper"""
+
+    ##### for key in AllDataControlsFeeding[5]:#ListOfFeedingKeys:
+
+    fig = figure()
+
+    ############ Simulations  
+
+    ax1 = plt.subplot(121)
+
+    SubPlot(ax1, SimulationFeedingControlsDataRMStimes, ListForPlottingHSF, 'Time (min)', 0.,
+            (timesetDataRMS.CurrentParams["t_stop"] - vorl) / 60., " ", 0, 0, "upper right", "A",
+            Legendfontsize="small", Legendfancybox=True, Black = "Yes")
+
+    ax2 = plt.subplot(122)
+
+    SubPlot(ax2, SimulationFeedingControlsDataRMStimes, ListForPlottingHSP, 'Time (min)', 0.,
+            (timesetDataRMS.CurrentParams["t_stop"] - vorl) / 60., " ", 0, 0, "upper right", "B",
+            Legendfontsize="small", Legendfancybox=True, Black = "Yes")
+    
+    ############ and Data Points   
+
+    ListOfFeedingKeys= ["stau", "radi", "ChloCyc", "canav", "Gelda", "CaChel"]
+    DictionaryForLegend = {"stau": "Staurosporine", 
+                           "radi": "Radicicol", 
+                           "ChloCyc": "Chlor. / Cyclo.", 
+                           "canav": "Canavanine", 
+                           "Gelda": "Geldanamicil", 
+                           "CaChel": "Calcium Chelator"}
+
+    i = 0
+    for key in ListOfFeedingKeys:
+
+        ListOfDataHSFNORM = []
+        k = 0
+        for val in ListOfDataHSF[key]:
+             ListOfDataHSFNORM.append(ListOfDataHSF[key][k]/max(ListOfDataHSF[key]))
+             k = k + 1 
+
+        ListOfDataHSP90aNORM = []
+        k = 0
+        for val in ListOfDataHSP90a[key]:
+            ListOfDataHSP90aNORM.append(ListOfDataHSP90a[key][k]/max(ListOfDataHSP90a[key]))
+            k = k + 1 
+
+        DataLegend = [r"Data Control " + DictionaryForLegend[key] + " Exp."]
+        DataSubPlotMOD(ax1, ListOfDataTimes[key], [ListOfDataTimes[key], np.asarray(ListOfDataHSFNORM)], 'Time (min)', 0.,
+                    (timesetDataRMS.CurrentParams["t_stop"] - vorl) / 60., r"mRNA$_{HSF}$ (Normalizet to Max)", 0., 1.,  "upper right", DataLegend, "",
+                    Legendfontsize="small", Legendfancybox=True, ColorNumber = i)
+
+        DataLegend = [r"Data Control " + DictionaryForLegend[key] + " Exp."]
+        DataSubPlotMOD(ax2, ListOfDataTimes[key], [ListOfDataTimes[key], np.asarray(ListOfDataHSP90aNORM)], 'Time (min)', 0.,
+                    (timesetDataRMS.CurrentParams["t_stop"] - vorl) / 60., r"mRNA$_{HSP}$ (Normalizet to Max)", 0., 1.,  "upper right", DataLegend, "",
+                    Legendfontsize="small", Legendfancybox=True, ColorNumber = i)
+    
+        i = i+1
+
+    PlotAndSave(fig, FolderContainingDataVsSimuCalibration + "FittingToDataPAPERversion" + str(FigureName) + FigureExtension, "PS", 1, 0)
+
+
 
 def ExtractDataControlsFeedingExperimentsFromFilesIntoListOfDictionaries():
     """ EXTRACT EXPERIMENTAL DATA (FEEDING EXPERIMENTS) FROM FILES ALEXANDER SKUPIN """

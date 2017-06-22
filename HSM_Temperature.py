@@ -9,6 +9,8 @@ from matplotlib.pylab import *
 
 
 def T(t, TparamsSet):
+    #print(t/60.)
+
     Ttype = TparamsSet.CurrentParams["Ttype"]  # 1 --> Tin, Tup   2 --> Tin, Tup, Tin   3 --> Tin, Tup, Tin, Tup
     Tin = TparamsSet.CurrentParams["Tin"]
 

@@ -1,5 +1,6 @@
 
 
+
 from HSM_SimulateClass import *
 from HSM_StudyEquilibrium import *
 from HSM_StudyHPproduction import *
@@ -90,7 +91,7 @@ def GenerateMCRandomOrNotParSetsAndComputeRMSFeeding(SwitchRandomSetsOrParameter
     print()
 
     ############ 5) ############ plot mRNAs(t) to see if it makes sense!
-
+    """
     ### But before, add the curves corresponding to the fiducail parameters set
     CurveNameInLegend = "Fiducial Params Set" + ", RMS = " + str(round(RMS_simulation_Fiducial, 4))
     NormalizeRnaCurvesFromSimulationsToMaxForPlot(RMS_simulation_Fiducial, mRNA_HSF_simulation_Fiducial, mRNA_HSP_simulation_Fiducial,
@@ -101,6 +102,20 @@ def GenerateMCRandomOrNotParSetsAndComputeRMSFeeding(SwitchRandomSetsOrParameter
         for key in AllDataControlsFeeding[5]:#ListOfFeedingKeys:
             #PlotSimulationVsDataFeeding(SimulationFeedingControlsDataRMStimes, ListForPlottingHSF, ListForPlottingHSP, AllDataControlsFeeding[4], DictionaryOfListsOfDataHSF[key], DictionaryOfListsOfDataHSP90a[key], DictionaryOfListsOfDataTimes[key], str(key)+"Conrol", FigureExtension, FolderContainingDataVsSimuCalibration)
             PlotSimulationVsDataFeeding(SimulationFeedingControlsDataRMStimes, ListForPlottingHSF, ListForPlottingHSP, AllDataControlsFeeding[4], AllDataControlsFeeding[1][key], AllDataControlsFeeding[2][key], AllDataControlsFeeding[0][key], str(key)+"Conrol", FigureExtension, FolderContainingDataVsSimuCalibration)
+    """
+    ############ 5bis) ############ plot mRNAs(t) HSP and HSF data vs Model Fit, for paper (compact version)
+    ### But before, add the curves corresponding to the fiducail parameters set
+    """
+    CurveNameInLegend = "Fiducial Params Set" + ", RMS = " + str(round(RMS_simulation_Fiducial, 4))
+    NormalizeRnaCurvesFromSimulationsToMaxForPlot(RMS_simulation_Fiducial, mRNA_HSF_simulation_Fiducial, mRNA_HSP_simulation_Fiducial,
+                                                  ListForPlottingHSF, ListForPlottingHSP, CurveNameInLegend, AllDataControlsFeeding[4])#timeset240minsDataRMS)
+
+    ### And then plot everything
+    #if len(ListForPlottingHSF) <= 10:
+    #for key in AllDataControlsFeeding[5]:#ListOfFeedingKeys:
+            #PlotSimulationVsDataFeeding(SimulationFeedingControlsDataRMStimes, ListForPlottingHSF, ListForPlottingHSP, AllDataControlsFeeding[4], DictionaryOfListsOfDataHSF[key], DictionaryOfListsOfDataHSP90a[key], DictionaryOfListsOfDataTimes[key], str(key)+"Conrol", FigureExtension, FolderContainingDataVsSimuCalibration)
+    PlotSimulationVsDataFeedingModelVSFittedData(SimulationFeedingControlsDataRMStimes, ListForPlottingHSF, ListForPlottingHSP, AllDataControlsFeeding[4], AllDataControlsFeeding[1], AllDataControlsFeeding[2], AllDataControlsFeeding[0], " Conrol", FigureExtension, FolderContainingDataVsSimuCalibration)
+    """
 
     ############ 6) ############ NOW PUT RMS VALUES AND PARAMETER VALUES IN A FILE, FOR SUBSEQUENT USE.
 
@@ -128,6 +143,69 @@ def GenerateMCRandomOrNotParSetsAndComputeRMSFeeding(SwitchRandomSetsOrParameter
     for key in ListOfManyDictionariesOfParameters[Index]:
         OutputFile2.write(str(key) + " ")
     OutputFile2.close()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def PlotResultOfBestFitToData(FolderContainingDataVsSimuCalibration, FINALParamSetRATES, TestParamSetForREACTIONS, DefaultParamSetInitCond, AllDataControlsFeeding, FigureExtension):
+
+    ############ 4) ############ Verify which is the RMS of the fiducial parameter set, and add corresponding curves to the plots
+
+    FINALParameterSetRates = deepcopy(FINALParamSetRATES)
+
+    ResultOfComputingRMSfromFeeding_FINAL = ComputeRMSfeedingForGivenParameterSet(FINALParameterSetRates, TestParamSetForREACTIONS, DefaultParamSetInitCond, "Yes", AllDataControlsFeeding)
+
+    RMS_simulation_FINAL = ResultOfComputingRMSfromFeeding_FINAL[0]
+    mRNA_HSF_simulation_FINAL = ResultOfComputingRMSfromFeeding_FINAL[1]
+    mRNA_HSP_simulation_FINAL = ResultOfComputingRMSfromFeeding_FINAL[2]
+    SimulationFeedingControlsDataRMStimes_FINAL = ResultOfComputingRMSfromFeeding_FINAL[3]
+
+    print()
+    print("The FIDUCIAL parameter set, i.e. the one we start with, is:\n")
+    print(FINALParameterSetRates)
+    print("\nand corresponds to a RMS of\n" + str(RMS_simulation_FINAL))
+    print()
+
+    ListForPlottingHSF = []
+    ListForPlottingHSP = []
+    ############ 5bis) ############ plot mRNAs(t) HSP and HSF data vs Model Fit, for paper (compact version)
+    ### But before, add the curves corresponding to the fiducail parameters set
+    CurveNameInLegend = "Final Params Set" + ", RMS = " + str(round(RMS_simulation_FINAL, 4))
+    NormalizeRnaCurvesFromSimulationsToMaxForPlot(RMS_simulation_FINAL, mRNA_HSF_simulation_FINAL, mRNA_HSP_simulation_FINAL,
+                                                  ListForPlottingHSF, ListForPlottingHSP, CurveNameInLegend, AllDataControlsFeeding[4])#timeset240minsDataRMS)
+
+    ### And then plot everything
+    #if len(ListForPlottingHSF) <= 10:
+    #for key in AllDataControlsFeeding[5]:#ListOfFeedingKeys:
+            #PlotSimulationVsDataFeeding(SimulationFeedingControlsDataRMStimes, ListForPlottingHSF, ListForPlottingHSP, AllDataControlsFeeding[4], DictionaryOfListsOfDataHSF[key], DictionaryOfListsOfDataHSP90a[key], DictionaryOfListsOfDataTimes[key], str(key)+"Conrol", FigureExtension, FolderContainingDataVsSimuCalibration)
+    PlotSimulationVsDataFeedingModelVSFittedData(SimulationFeedingControlsDataRMStimes_FINAL, ListForPlottingHSF, ListForPlottingHSP, AllDataControlsFeeding[4], AllDataControlsFeeding[1], AllDataControlsFeeding[2], AllDataControlsFeeding[0], "Conrol", FigureExtension, FolderContainingDataVsSimuCalibration)
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -173,7 +251,7 @@ def PlotRMSvaluesAsFunctionOfParametersFromFile(FolderContainingCsvFiles, Folder
         ListOfParametersNamesForLegend.append(Label)
 
     ArraysToPlot = [["RMS", ListOfOutputArrays[0]]]
-
+    """
     for i in range(NumberOfParameters):
         SingleScatterPlot(figure(), ListOfOutputArrays[2+i], ArraysToPlot, ListOfParametersNamesForLegend[i], 0, 0, "Root Mean Square (adim.)", 0, 0, 'upper right', FolderContaining1ParametrsRMSplots + "RMSparam"+str(i)+FigureExtension)
 
@@ -190,8 +268,165 @@ def PlotRMSvaluesAsFunctionOfParametersFromFile(FolderContainingCsvFiles, Folder
                 plt.ylabel(ListOfParametersNamesForLegend[j], fontsize = 18)
                 PlotAndSave(fig, FolderContaining2ParametrsRMSplots + "TwoParamsRMS_" + str(i) + "_" + str(j), "S", 0, 1)
                 plt.close()
+    """
+    ############ 3) ############ do 1 big cumulative plot with all the single parameter plots
 
-    ############ 3) ############ Identify the parameters set in OutputFile wich minimizes the RMS
+    if SwitchRandomSetsOrParametersK1by1Sets == "RandomSets":
+
+        Nlines = 2
+        Ncols = 10
+        fig, axes = plt.subplots(nrows=Nlines, ncols=Ncols)
+        fig.subplots_adjust(hspace=0.10, wspace=0.10)
+
+        for ax in axes.flat:
+            # Hide all ticks and labels
+            ax.xaxis.set_visible(False)
+            ax.yaxis.set_visible(False)
+
+            # Set up ticks only on one side for the "edge" subplots...
+            if ax.is_first_col():
+                ax.yaxis.set_ticks_position('left')
+            if ax.is_last_col():
+                ax.yaxis.set_ticks_position('right')
+                ax.yaxis.set_label_position('right')
+            if ax.is_first_row():
+                ax.xaxis.set_ticks_position('top')
+                ax.xaxis.set_label_position('top')
+            if ax.is_last_row():
+                ax.xaxis.set_ticks_position('bottom')
+
+        for i in range(Nlines):
+            for j in range(Ncols):
+                print(" ")
+                print(i)
+                print(" ")
+                if i == 0:
+                    k = j
+                elif i == 1:
+                    k = j + 10
+                axes[i,j].scatter(ListOfOutputArrays[2+k], ListOfOutputArrays[0], s=25, edgecolor = '',)               
+                axes[i,j].set_xlim(min(ListOfOutputArrays[2+k]),max(ListOfOutputArrays[2+k]))
+                axes[i,j].set_ylim(min(ListOfOutputArrays[0]),max(ListOfOutputArrays[0]))
+                #plt.setp(axes[i,j].get_xticklabels(), rotation=45, horizontalalignment='left')
+
+                axes[0,j].xaxis.set_visible(True)
+                axes[0,j].locator_params(axis='x',nbins=5)
+                plt.setp(axes[0,j].get_xticklabels(), rotation=90, horizontalalignment='left')
+                if i == 0:
+                    axes[0,j].set_xlabel(ListOfParametersNamesForLegend[k])
+                axes[0,j].get_xaxis().set_tick_params(direction='out')
+
+                axes[Nlines-1,j].xaxis.set_visible(True)
+                axes[Nlines-1,j].locator_params(axis='x',nbins=5)
+                plt.setp(axes[Nlines-1,j].get_xticklabels(), rotation=90, horizontalalignment='right')
+                if i == 1:
+                    axes[Nlines-1,j].set_xlabel(ListOfParametersNamesForLegend[k])
+                axes[Nlines-1,j].get_xaxis().set_tick_params(direction='out')
+
+                axes[i,0].yaxis.set_visible(True)
+                axes[i,0].locator_params(axis='y',nbins=8)
+                axes[i,0].set_ylabel("Root Mean Square (adim.)")
+                axes[i,0].get_yaxis().set_tick_params(direction='out')
+
+                axes[i,Ncols-1].yaxis.set_visible(True)
+                axes[i,Ncols-1].locator_params(axis='y',nbins=8)
+                axes[i,Ncols-1].set_ylabel("Root Mean Square (adim.)")
+                axes[i,Ncols-1].get_yaxis().set_tick_params(direction='out')
+                print("k is ")
+                print(k)
+        print(ListOfParametersNamesForLegend)
+
+        plt.show()
+
+
+
+
+    ############ 4) ############ do 1 big cumulative plot with all the plots above
+
+    if SwitchRandomSetsOrParametersK1by1Sets == "RandomSets":
+
+        fig, axes = plt.subplots(nrows=NumberOfParameters, ncols=NumberOfParameters)
+        fig.subplots_adjust(hspace=0.00, wspace=0.00)
+
+        for ax in axes.flat:
+            # Hide all ticks and labels
+            ax.xaxis.set_visible(False)
+            ax.yaxis.set_visible(False)
+
+            # Set up ticks only on one side for the "edge" subplots...
+            if ax.is_first_col():
+                ax.yaxis.set_ticks_position('left')
+            if ax.is_last_col():
+                ax.yaxis.set_ticks_position('right')
+                ax.yaxis.set_label_position('right')
+            if ax.is_first_row():
+                ax.xaxis.set_ticks_position('top')
+                ax.xaxis.set_label_position('top')
+            if ax.is_last_row():
+                ax.xaxis.set_ticks_position('bottom')
+
+        for i in range(NumberOfParameters):
+            for j in range(NumberOfParameters):
+
+                if i>j:
+                    if (i % 2) != 0:
+                        if (j % 2) != 0:
+                            im = axes[i,j].scatter(ListOfOutputArrays[2+j], ListOfOutputArrays[2+i], s=14, c=ListOfOutputArrays[0],
+         edgecolor = '', cmap=plt.cm.rainbow_r)
+                    elif (i % 2) == 0:
+                        if  (j % 2) == 0:
+                            im = axes[i,j].scatter(ListOfOutputArrays[2+j], ListOfOutputArrays[2+i], s=14, c=ListOfOutputArrays[0],  edgecolor = '', cmap=plt.cm.rainbow_r)
+                elif i<j:
+                    if (i % 2) != 0:
+                        if (j % 2) == 0:
+                            im = axes[i,j].scatter(ListOfOutputArrays[2+j], ListOfOutputArrays[2+i], s=14, c=ListOfOutputArrays[0], edgecolor = '', cmap=plt.cm.rainbow_r)
+                    elif (i % 2) == 0:
+                        if (j % 2) != 0:
+                            im = axes[i,j].scatter(ListOfOutputArrays[2+j], ListOfOutputArrays[2+i], s=14, c=ListOfOutputArrays[0], edgecolor = '', cmap=plt.cm.rainbow_r)
+                elif i==j:
+                    # Label the diagonal subplots...
+                    axes[i,j].annotate(ListOfParametersNamesForLegend[i].split(" ", 1)[0], (0.5, 0.5), xycoords='axes fraction', ha='center', va='center',)
+                    #axes[i,j].scatter(ListOfOutputArrays[2+i], ListOfOutputArrays[0], s=8)               
+
+                axes[i,j].set_xlim(min(ListOfOutputArrays[2+j]),max(ListOfOutputArrays[2+j]))
+                axes[i,j].set_ylim(min(ListOfOutputArrays[2+i]),max(ListOfOutputArrays[2+i]))
+                plt.setp(axes[i,j].get_xticklabels(), rotation=45, horizontalalignment='left')
+
+        cbar = fig.colorbar(im, ax=axes.ravel().tolist())
+        cbar.set_label('Root Mean Square (adim.)')
+
+        for k in range(round(NumberOfParameters/2)):
+
+            axes[0,2*k+1].xaxis.set_visible(True)
+            axes[0,2*k+1].locator_params(axis='x',nbins=3)
+            plt.setp(axes[0,2*k+1].get_xticklabels(), rotation=45, horizontalalignment='left')
+            axes[0,2*k+1].set_xlabel(ListOfParametersNamesForLegend[2*k+1])
+            axes[0,2*k+1].get_xaxis().set_tick_params(direction='out')
+
+            axes[NumberOfParameters-1,2*k].xaxis.set_visible(True)
+            axes[NumberOfParameters-1,2*k].locator_params(axis='x',nbins=3)
+            plt.setp(axes[NumberOfParameters-1,2*k].get_xticklabels(), rotation=45, horizontalalignment='right')
+            axes[NumberOfParameters-1,2*k].set_xlabel(ListOfParametersNamesForLegend[2*k])
+            axes[NumberOfParameters-1,2*k].get_xaxis().set_tick_params(direction='out')
+
+            axes[2*k,0].yaxis.set_visible(True)
+            axes[2*k,0].locator_params(axis='y',nbins=3)
+            axes[2*k,0].set_ylabel(ListOfParametersNamesForLegend[2*k])
+            axes[2*k,0].get_yaxis().set_tick_params(direction='out')
+
+            axes[2*k+1,NumberOfParameters-1].yaxis.set_visible(True)
+            axes[2*k+1,NumberOfParameters-1].locator_params(axis='y',nbins=3)
+            axes[2*k+1,NumberOfParameters-1].set_ylabel(ListOfParametersNamesForLegend[2*k+1])
+            axes[2*k+1,NumberOfParameters-1].get_yaxis().set_tick_params(direction='out')
+        
+        plt.show()
+        #PlotAndSave(fig, "MCexplorationALLinONE" + FigureExtension, "PS", 0, 0)
+
+
+
+
+
+    ############ 5) ############ Identify the parameters set in OutputFile wich minimizes the RMS
     if SwitchRandomSetsOrParametersK1by1Sets == "RandomSets":
         Datafile = open(FolderContainingCsvFiles + "CutORDEREDOutputFileRMSmanyParamsSets.csv", 'r')
         DataLines = Datafile.readlines()
