@@ -32,7 +32,7 @@ if __name__ == '__main__':
     GradientSearchRMS = "No"
     ComputeRMSfinalParamSet = "No"
     # PART II: Simulations of HSR and Data comparison (main figures paper)
-    HS_Response = "Yes"
+    HS_Response = "No"
     Time_Course_Data = "Yes"
     Schmollingen_Data = "Yes"
     Plots3Dfeeding = "No"
@@ -314,8 +314,10 @@ if __name__ == '__main__':
         TsetHSRdata = ParametersSet({"Ttype": 1, "Tin": 25., "Tup": 42., "tau": 5., "ta": 0. * 60. + vorl})
         timesetHSRdata = ParametersSet({"t_start": 0., "t_stop": 185. * 60. + vorl, "delta_t": 5.0})
         SimulationHSRdata = Simulate(MyHSM, timesetHSRdata, TsetHSRdata, "SimulationHSResponseVsData" + FigureExtension)
-        SimulationHSRdata.TimeCourseVsDataPlot()
 
+        #SimulationHSRdata.TimeCourseVsDataPlot()
+
+        SimulationHSRdata.TimeCourseVsDataPlotAllInOne()
 
     ##############################################################################################
     ############   Simulate experiments Schmollingen 2013 and compare with DATA    ###############

@@ -90,6 +90,10 @@ class Simulate:
         """ Compare time course with literature data """
         FuncTimeCourseVsDataPlot(self)
 
+    def TimeCourseVsDataPlotAllInOne(self):
+        """ Compare time course with literature data """
+        FuncTimeCourseVsDataPlotAllInOne(self)
+
     def TimeRunPlusARS(self):
         """ ...WORK IN PROGRESS... """
         FuncTimeRunPlusARS(self)

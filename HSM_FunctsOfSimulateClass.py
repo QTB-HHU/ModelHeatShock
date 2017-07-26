@@ -743,6 +743,72 @@ def FuncTimeCourseVsDataPlot(self):
     self.model.ParamsSetRATES.RestoreDefaultParams()
 
 
+def FuncTimeCourseVsDataPlotAllInOne(self):
+    """ Compare time course with literature data """
+
+    SolveODEsystem(self, ("No",0.))
+    #Y = np.copy(self.HP)
+    # RESCALING FOR PLOTTING
+    Y = np.copy(self.HP)
+    Yrescaled = []
+    i = 0
+    for element in self.t:
+        Yrescaled.append(self.HP[i]/SetOfReferenceValuesForPlotting["HSP"])
+        i=i+1
+
+    self.PlotTemperature()
+
+    ListOfDataArrays = []
+    FromDataFileToArrays("DataFiles/DataMuehlhaus2011Fig3ABC.dat", 19, ListOfDataArrays)  # Charge data file
+    DataTimeMOD = ListOfDataArrays[0] + ((self.TparamSet.CurrentParams["ta"] - vorl) / 60.)  # Translate time values
+
+    fig7 = figure()
+
+    #print(Yrescaled)
+    #temp = self.t
+    #print(temp.where(temp==0))
+    print(np.average(Yrescaled))
+
+    ax1 = plt.subplot()#plt.subplot(121)
+    #ax1.plot(self.t, Y, 'blue', linewidth=1., label="HP")
+    ax1.plot(self.t, Yrescaled, 'black', linewidth=2., label="HP, simulation")
+    ax1.set_xlim(0. - 5., (self.timeset.CurrentParams["t_stop"] - vorl) / 60.)
+    ax1.set_xlabel('Time (min)', fontsize="small")
+    ax1.set_ylim(0., 7.0/SetOfReferenceValuesForPlotting["HSP"]) # 5.5
+    #ax1.set_ylabel(r'Heatshock protein (mM)', fontsize="small")
+    ax1.set_ylabel(r'Heatshock protein (a.u.)', fontsize="small")
+    ax1.legend(loc='upper left', fontsize="small", fancybox=True)
+    AddLetterToSubplot(ax1, "A", -0.25, 1.055)
+
+    ax2 = ax2 = ax1.twinx()#plt.subplot(122)
+
+    ax2.errorbar(DataTimeMOD, ListOfDataArrays[1], marker="v", yerr=[ListOfDataArrays[2], ListOfDataArrays[3]],
+                 color='green',  linestyle='',label="HSP70A, western blot")
+    ax2.errorbar(DataTimeMOD, ListOfDataArrays[4], marker="s", yerr=[ListOfDataArrays[5], ListOfDataArrays[6]],
+                 color='green', linestyle='', label="HSP70A, mass spectrometry")
+
+    ax2.errorbar(DataTimeMOD, ListOfDataArrays[7], marker="v", yerr=[ListOfDataArrays[8], ListOfDataArrays[9]],
+                 color='red',  linestyle='',label="HSP70B, western blot")
+    ax2.errorbar(DataTimeMOD, ListOfDataArrays[10], marker="s", yerr=[ListOfDataArrays[11], ListOfDataArrays[12]],
+                 color='red', linestyle='',  label="HSP70B, mass spectrometry")
+
+    ax2.errorbar(DataTimeMOD, ListOfDataArrays[13], marker="v", yerr=[ListOfDataArrays[14], ListOfDataArrays[15]],
+                 color='blue', linestyle='',  label="HSP90A, western blot")
+    ax2.errorbar(DataTimeMOD, ListOfDataArrays[16], marker="s", yerr=[ListOfDataArrays[17], ListOfDataArrays[18]],
+                 color='blue', linestyle='', label="HSP90A, mass spectrometry")
+
+    ax2.set_xlim(0. - 5., (self.timeset.CurrentParams["t_stop"] - vorl) / 60.)
+    ax2.set_ylim(-1.6, 1.6)
+    ax2.set_xlabel('Time (min)', fontsize="small")
+    ax2.set_ylabel('z-score', fontsize="small")
+    ax2.legend(loc='lower right', numpoints=1, fontsize="small", fancybox=True)
+    AddLetterToSubplot(ax2, "B", -0.25, 1.055)
+
+    PlotAndSave(fig7, "TimeCoruseData_" + self.name, "PS", 1, 0)
+
+    self.model.ParamsSetRATES.RestoreDefaultParams()
+
+
 def FuncTimeRunPlusARS(self):
     """ Compare with data for single HS experiment (using ARS enzyme) """
 
