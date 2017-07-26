@@ -315,7 +315,7 @@ if __name__ == '__main__':
         timesetHSRdata = ParametersSet({"t_start": 0., "t_stop": 185. * 60. + vorl, "delta_t": 5.0})
         SimulationHSRdata = Simulate(MyHSM, timesetHSRdata, TsetHSRdata, "SimulationHSResponseVsData" + FigureExtension)
 
-        SimulationHSRdata.TimeCourseVsDataPlot()
+        #SimulationHSRdata.TimeCourseVsDataPlot()
 
         SimulationHSRdata.TimeCourseVsDataPlotAllInOne()
 
