@@ -30,7 +30,7 @@
 \usepackage{authblk}
 \usepackage[columnwise, switch]{lineno}
 \usepackage{authblk}
-
+\usepackage[numbers]{natbib}
 \usepackage{mwe}    % loads »blindtext« and »graphicx«
 \usepackage{subfig}
 
@@ -104,7 +104,7 @@ The dynamical model is mostly based on mass-action kinetics with a few non-linea
 
 %AS %As a consequence of global warming, crop plants are going to encounter more often conditions of heat stress, and this can severely reduce their crop yield. Thus, understanding how plants react to such a stress is not only interesting on its own, but also of crucial importance to help developing metabolic engineering approaches or the application of treatments with the goal of improving crop plant resistance to heat.
 %{\color{red} 
-As a consequence of global warming, plants are more and more subject to heat stress, a condition that can severely reduce crop yield \cite{Lobell2011,Deryng2014}. 
+As a consequence of global warming, plants are more and more subject to heat stress, a condition that can severely reduce crop yield \cite{Lobell2011,Deryng2014}.
 Understanding how plants react to such a stress is of crucial importance in developing metabolic engineering approaches or treatments to improve crop plant resistance to heat. 
 In general, when exposed to increased temperature organisms react
 %AS
@@ -118,7 +118,7 @@ until now have been rather limited. In this work we address this gap by developi
 %In plants, the situation is more complex than in other organisms due to the additional presence of the plastide, whit its content of proteins and the number of reactions which take place into it, from which the importance of studying the HSR directly in plants.
 The green microalgae \emph{Chlamydomonas reinhardtii} %AS
 is a widely studied, easy to grow photosynthetic model organism with promising  industrial applications like biopharmaceuticals, biofuels and hydrogen. 
-Thus motivated, different aspects of the HSRs in \emph{C.~reinhardtii} have been experimentally investigated, as reviewed e.g.~in \cite{Schroda2015}.
+Thus motivated, different aspects of the HSRs in \emph{C.~reinhardtii} have been experimentally investigated, as reviewed e.g.~by Schroda et al. \cite{Schroda2015}.
 %Thus, a better characterization of the mechanisms trhough which this organism responds to stressing conditions has additional interest.
 %An heat shock protein (HSP), usually bound to an heat shock factor (HSF) in basal conditions, upon heat stress is attracted by these unfolded proteins and thus unbind from the HSF and binds to the unfolded proteins. The HSF is then free to enter the nucleus of the cell and bind to the heat shock element (HSE) of the promoter of genes coding for some heat shock proteins. This activates the production of such heat shock proteins. This scheme is conserved among different species.
 
@@ -170,21 +170,21 @@ are sufficient to reproduce and thus explain observed behaviors.
 %%{\color{red} MAYBE ADD HERE YOUR COMMENTED SENTENCE (POSSIBLY SHORTENED)?: An heat shock protein (HSP), usually bound to an heat shock factor (HSF) in basal conditions, upon heat stress is attracted by these unfolded proteins and thus unbind from the HSF and binds to the unfolded proteins. The HSF is then free to enter the nucleus of the cell and bind to the heat shock element (HSE) of the promoter of genes coding for some heat shock proteins. This activates the production of such heat shock proteins. This scheme is conserved among different species.}
 %This leads to the activation of a heat shock transcription factor (HSF), which induces the synthesis of heat shock proteins (HSP), molecular chaperons able to help the refolding of degenerated proteins. %This scheme is conserved among different species, 
 
-One of the earliest theoretical studies of the eukaryotic HSR considered mainly the influence of mis-folded proteins  and did not include a detailed transcriptional regulation \cite{Peper1998}. 
+One of the earliest theoretical studies of the eukaryotic HSR considered mainly the influence of mis-folded proteins and did not include a detailed transcriptional regulation \cite{Peper1998}. 
 Modeling of the transcriptional regulation was firstly used to study procaryotic
 systems, in particular \emph{E. coli}.
 %, where the transcription factor playing the role of HSF is called $\sigma^{32}$. 
-This was done in \cite{Srivastava2001} employing a stochastic approach, and in \cite{Kurata2001} with a deterministic model. 
+This was done by Srivasta et al. \cite{Srivastava2001} employing a stochastic approach, and by Kurata et al. \cite{Kurata2001} with a deterministic model. 
 %(FIXME:FIXED "Modelling of the nuclear regulation was firstly used to study procaryotic" this must be wrong: prokaryotes do not have a nucleus!). 
-More recently, \cite{Rieger2005} %AS
+More recently, Rieger et al. \cite{Rieger2005} %AS
 proposed a mathematical model to describe the HSR in HeLa cells with a detailed model for nuclear events. 
 %While that model is highly useful to gain a principle understanding of the interacting molecular mechanisms, 
 %it uses dimensionless variables, where the dynamics are normalised by the maximal response, which makes possible only relative predictions, and not absolute ones. 
 %(quantitative predictions impossible FIXME:FIXED please check).
 A %AS
 model of the thermal adaptation in \emph{Candida albicans}, a fungal pathogen of humans, focuses on the auto-regulatory mechanism involving HSF1 and HSP90 % (see next section), 
-but  does not include a detailed transcriptional regulation~\cite{Leach2012model, Leach2012description}. 
-The modelling of the multi-scale heat stress response in the budding yeast \emph{Saccharomyces cerevisiae} is discussed in \cite{Fonseca2012} and  \cite{Sivery2015} studied the role of HSF1 during the HSR in mammals. 
+but does not include a detailed transcriptional regulation~\cite{Leach2012model, Leach2012description}. 
+The modelling of the multi-scale heat stress response in the budding yeast \emph{Saccharomyces cerevisiae} is discussed by Fonseca et al. \cite{Fonseca2012}, and Sivery et al. \cite{Sivery2015} studied the role of HSF1 during the HSR in mammals. 
 
 %NOT NEEDED!!!
 %As argued in \cite{Matuszynska2015}, 
@@ -265,7 +265,7 @@ systems dynamics.
 %{\color{red} REMOVED FIRST PARAGRAPH}
 %The generality our model aims at relies on the balance between a very detailed description that one could develop by considering for instance only one particular family of heat shock proteins etc., and the need to include in the mathematical description only the main traits of the mechanism under investigation.
 
-The design of the model is based on  the underlying signalling network
+The design of the model is based on the underlying signalling network
 inferred from experimental findings~\cite{Schmollinger2013}.
 %THIS IS MORE FOR THE DISCUSSION - FIRST CONVINCE THAT IT IS DOING SOMETHING USEFUL
 %As every model, ours is a simplified representation of reality. For example, 
@@ -318,7 +318,7 @@ which represents any HSP present in \emph{C.~reinhardtii}.
 %Thus the HSF described in our model represents the HSF1 of \emph{C. reinhardtii}.
 
 %\subsubsection{Modelling the signalling network}
-From  experiments performed in \cite{Schmollinger2013} we derive with the above simplifications
+From  experiments performed by Schmollinger et al. \cite{Schmollinger2013} we derive with the above simplifications
 the signalling network schematically depicted in Fig.~\ref{Figure1label}~A. %All components are described in detail in Table~\ref{TabVars}. 
 In accordance with the experimental data, a temperature
 increase triggers the HSR by the accumulation of
@@ -357,7 +357,7 @@ The dynamics of these variables are governed by a set of ordinary differential e
   
 For the majority of these rate laws we assume mass action kinetics and describe regulatory process $\omega$ by  non-linear dependencies. The effect of the temperature on the denaturation (unfolding or misfolding) of proteins is described by means of the Arrhenius law, with an activation energy 
 %of $E_a=174.44$ KJ mol$^{-1}$, perfectly 
-in the range reported by \cite{Bischof2006,He2003}. The activation (phosphorylation) of the stress kinases (SK) given by $\omega_\textrm{PS}$ obeys a Hill kinetics. Furthermore, the action of the phosphorylated SK$^*$, the enzyme phosphorylating HSF, is described by a Michaelis-Menten behaviour as expected for typical enzymatic kinetics. A detailed description of the mathematical model can be found in Supplementary Material~\ref{Tables}.
+in the range reported in the literature \cite{Bischof2006,He2003}. The activation (phosphorylation) of the stress kinases (SK) given by $\omega_\textrm{PS}$ obeys a Hill kinetics. Furthermore, the action of the phosphorylated SK$^*$, the enzyme phosphorylating HSF, is described by a Michaelis-Menten behaviour as expected for typical enzymatic kinetics. A detailed description of the mathematical model can be found in Supplementary Material~\ref{Tables}.
 
 %The model is based on simple mass action kinetics and only a few non-linear terms are involved. 
 %The concentration change of each species is then described by the corresponding ordinary differential equation (ODE) in the system reported in table \ref{TabODEs} together with a list of the conserved quantities. 
@@ -389,8 +389,8 @@ is rapidly increased to induce a heat shock response.
 %It should be noted that this is of course an idealised scenario, which can only be approximated experimentally.
 The time evolution of the concentrations of the molecular species
 described by the model is depicted in Fig.~\ref{Figure1label}~(B-G) where a red background indicates the period during which a heat shock temperature is applied. 
-These concentrations are expressed in arbitrary units (a.u.) and normalized to a standard value for each panel, as summarized in Supplementary Table~\ref{TabRefVal}, allowing for direct comparisons with relative values from experiments.
-(FIXME some are relative units (P, SK, G) others are truly arbitrary.)
+These concentrations are normalized to a reference value for each panel, as summarized in Supplementary Table~\ref{TabRefVal}. The quantities of panels B, C and E are normalized to the three conserved quantities representing respectively the total amount of $\left[P\right] + \left[P^\#\right]$, $\left[SK\right]+\left[SK^*\right]$ and $\left[G\right] +\left[HSF^*G\right] +\left[HSFG\right]$, thus the vertical scale represents the fraction over the total, allowing for direct comparisons with relative values from experiments. Quantities in panels D, F and G are expressed in arbitrary units (a.u.). 
+% (FIXME  some are relative units (P, SK, G) others are truly arbitrary.)
 % For panels A (proteins), B (stress kinases) and D (genes) the normalization factors correspond to the sum of the amount of the species shown in that plot, which is a conserved quantity for each of these plots. 
 %This normalization is necessary because, since no data for the absolute values of the concentration of the species involved is available, the model could be fit only to relative data.
 
@@ -446,7 +446,7 @@ that the model is able to realistically describe the HSR.
 %the heat shock response may differ in details from organism to organism, but as long as
 %the basic principles are conserved, our model serves as a generic theoretical description that can %easily be adapted.
 A general challenge in modelling biological systems is the identification of system parameters because often these are not directly accessible experimentally. In particular,
-most of the twenty rate constants listed in Supplementary Table~\ref{TabKs}  are not explicitly known although for some of them a reasonable range can be estimated from data bases (FIXME: bionumbersref). %This again
+most of the twenty rate constants listed in Supplementary Table~\ref{TabKs}  are not explicitly known although for some of them a reasonable range can be estimated from data bases (\cite[BNID 103916, 106521, 105408]{Milo2010}). %This again
 %supports the development of a simplified model, attempting to reduce the number of unknown 
 %model parameters as much as possible to facilitate a reasonable model calibration procedure, 
 %while maintaining the essential structural system properties. 
@@ -466,7 +466,7 @@ These parameters are referred to as the "fiducial parameter set", reported in th
 We then used this fiducial parameter set as a starting point for a
 deeper investigation of the parameter space. For this we divided the experimental data available from the literature in two
 groups, one used to calibrate the model and the other to validate the model. The  data used for calibration comprises the controls of feeding
-experiments performed in~\cite{Schmollinger2013} compromising six time course curves
+experiments performed in Schmollinger et al.~\cite{Schmollinger2013} compromising six time course curves
 of HSF1 mRNA concentration, and six curves for the mRNA coding for HSP90A under HS and no inhibitor treatment. These data are shown in Fig.~\ref{Figure2label}~(A,B). 
 %These
 %data are those corresponding to the controls shown in the figures 1,
@@ -507,8 +507,8 @@ Thus, having shown via a global random scan of the parameter space that almost n
 %We thus decide to apply an optimization procedure to improve the fit of the model to the data, but we do so with a local optimization, which we consider sufficient for the purposes of our model.
 %We do so by implementing a gradient search, and in particular using 
 employing the steepest descent method. 
-As shown in Fig.~\ref{Figure2label}~D our algorithm stopped after several iterations and returned the set of parameters listed in the third column of Table~\ref{TabKs} of the Supplementary Material as final values. The corresponding value of the RMS w.r.t.~the controls of the feeding experiments is $0.137$. 
-(FIXME this is worse than the best random sets. Justify why we use this set?)
+As shown in Fig.~\ref{Figure2label}~D our algorithm stopped after several iterations and returned the set of parameters listed in the third column of Table~\ref{TabKs} of the Supplementary Material as final values. The corresponding value of the RMS w.r.t.~the controls of the feeding experiments is $0.137$. This value lies very close to the lower boundary of the range obtained with randomized sets ($0.131$ to $0.700$). We prefer it over randomized sets with a slightly lower RMS becuase it is closer to the manually tuned set of parameters which already performed well, and it should lie very close to a local minimum (thus RMS should only increase if we perturb the parameters).
+%(FIXME this is worse than the best random sets. Justify why we use this set? )
 This is the "final parameter set" which we use for all the simulations
 presented in this work. %, and which is reported in the third column of Table~\ref{TabKs} of the Supplementary Material. 
 A more detailed description of the calibration 
@@ -542,17 +542,17 @@ is provided in Supplementary Material \ref{SecCalibrationExtended}.
 
 After the model parameterization, we used the model with its inferred parameters to quantitatively simulate the dynamics of several independent key experiments to validate the model and investigate underlying dynamical properties. 
 %The experimental data used here for model validation were not used for model calibration. 
-We first  simulated the feeding experiments performed in \cite{Schmollinger2013} (Section~\ref{SecFeeding}),
+We first  simulated the feeding experiments performed in Schmollinger et al. \cite{Schmollinger2013} (Section~\ref{SecFeeding}),
 where specific inhibitors have been applied in different concentrations and the
 effect on the HSR was measured. Subsequently, we simulated the double heat shock experiments performed
-in~\cite{Schroda2000}, where an additional heat shock was applied 
+in Schroda et al.~\cite{Schroda2000}, where an additional heat shock was applied 
 to quantify the minimum relaxation time needed to observe a full second response (Section~\ref{Sec2HS}). Finally, we tested the model against measured HP concentrations~\cite{Muehlhaus2011} (Section~\ref{SecTimeCurse}).
 
 %\subsection{Simulating the feeding experiments of \cite{Schmollinger2013}}
 \subsubsection{Inhibitor treatments}
 \label{SecFeeding}
 
-In the systematic experiments reported in~\cite{Schmollinger2013}, \textit{C.~reinhardtii} cells have been fed
+In the systematic experiments reported in Schmollinger et al.~\cite{Schmollinger2013}, \textit{C.~reinhardtii} cells have been fed
 with different concentrations of specific inhibitors, and the effect on the HSR
 has been observed by monitoring the temporal evolution of mRNA concentrations
 of mainly the HSF1 and HSP90 genes.
@@ -591,7 +591,7 @@ Staurosporine is a protein kinase inhibitor.
 We therefore simulate the effect of applying Staurosporine by lowering the rate constant $k_F'$, 
 which determines the reaction rate $\nu_F'$, by which the stress kinase SK activates the HSF. 
 The simulation results are shown in Fig.~\ref{Figure3label}~A, together with redrawn 
-experimental data from Fig.~1~B of~\cite{Schmollinger2013}.
+experimental data from Fig.~1~B of Schmollinger et al.~\cite{Schmollinger2013}.
 
 The simulations exhibit clearly a reduced maximal HSF mRNA concentration and a delayed response in a dose dependent manner which is in accordance with the experimental data (Fig.~\ref{Figure3label}~A). 
 Because the experimental data is normalised 
@@ -629,11 +629,11 @@ is quantitatively reproduced.
 Radicicol is a specific inhibitor of HSP90 activity.
 Therefore, we simulate the effect of Radicicol by lowering the rate constant $k_P$,
 which determines the reaction rate $\nu_P$, by which the HSP refold the unfolded proteins P$^\#$ back to their functional form. 
-The simulation results and the corresponding data (reproduced from Fig.~4~B of~\cite{Schmollinger2013}) are
+The simulation results and the corresponding data (reproduced from Fig.~4~B of Schmollinger et al.~\cite{Schmollinger2013}) are
 displayed in Fig.~\ref{Figure3label}~B for three values of the rate constant $k_P$ corresponding to the reference value of $9.938$ $\left(\mu M s\right)^{-1}$,
 and for a reduction to $60\%$ and $30\%$ of that value. 
 We see that decreasing the rate constant results to an increased amplitude and delayed attenuation of the HSR.
-The data from~\cite{Schmollinger2013} shown in the same panel for a control and Radicicol concentrations of $10$ $\mu M$ and $100$ $\mu M$
+The data from Schmollinger et al.~\cite{Schmollinger2013} shown in the same panel for a control and Radicicol concentrations of $10$ $\mu M$ and $100$ $\mu M$
 demonstrate that a similar behaviour is observed in the experiments.
 Interestingly, the magnitude of the responses are only qualitatively reproduced by our model, but
 appear much more pronounced in the experiment. 
@@ -707,7 +707,7 @@ appear much more pronounced in the experiment.
 
 %\subsubsection{Extending the model to simulate double heat shock experiments}
 
-In~\cite{Schroda2000} the ARS gene that encodes for the enzyme arylsulfatase 
+In Schroda et al.~\cite{Schroda2000} the ARS gene that encodes for the enzyme arylsulfatase 
 %(FIXME:FIXED What's the full name?) 
 was placed under control
 of the HSP70A promoter. The study demonstrated that whenever the HSP70A gene is activated also the ARS enzyme is produced.
@@ -720,7 +720,7 @@ It turned out that the heat shock system relaxes within approximately  5~h to it
 
 To compare the experimental results to our model simulations, we extended the model
 accordingly, also including transcription and translation of the ARS enzyme (for details see Supplementary Material \ref{SecARSSM}, where we provide as well the corresponding equations and parameters values). %FIXME: THIS HAS TO BE BETTER EXPLAINED IN THE SUPP!!! GIVE THE EQUATIONS AND PARAMETERS!!! 
-In Fig.~\ref{Figure3label}~C we display the simulation results and the corresponding experimental data redrawn from Fig.~7~b of~\cite{Schroda2000}, where two heat shocks of 30 minutes duration were 
+In Fig.~\ref{Figure3label}~C we display the simulation results and the corresponding experimental data redrawn from Fig.~7~b of Schroda et al.~\cite{Schroda2000}, where two heat shocks of 30 minutes duration were 
 applied with the intervals of 2, 3, 4, and 5 hours, respectively. 
 It can clearly be observed that both in simulation and experiment the second heat shock response
 increases in intensity with increasing time between the treatment, eventually reaching
@@ -744,7 +744,7 @@ stress situations similar to those encountered in the past. Thus, the slow turno
 implement a short-term molecular memory of experienced heat stress,
 similar to the observed short-term memory of previously experienced light
 stress recently discussed and described by a mathematical model 
-in~\cite{Matuszynska2016}.
+in Matuszynska~\cite{Matuszynska2016}.
 
 The model simulations allow to give a novel interpretation of
 the experimental  double heat shock results. While the
@@ -792,7 +792,7 @@ the second response appears as equally strong as the first.
 
 Unlike the study of the feeding experiments, where model predictions and experimental data 
 were compared at the level of mRNA production, we next compared our simulations 
-with time course data of the HP concentration from~\cite{Muehlhaus2011}. 
+with time course data of the HP concentration \cite{Muehlhaus2011}. 
 %which using quantitative shotgun proteomics monitors proteome dynamics in time course experiments on \emph{C. reinhardtii} and, among the thousands of proteins analysed, found 38 proteins significantly increased upon HS. 
 To simulate the experiment we apply at t=$0$ min a HS by increasing  the temperature from 25°C to 45°C. We compared the model simulated behaviour of HP with the experimental data on HSP70A, HSP70B and HSP90.  
 
@@ -966,9 +966,9 @@ The authors declare to have no competing interests.
 
 
 
-
+\bibliographystyle{unsrtnat}
 %\bibliographystyle{vancouver}
-\bibliographystyle{apalike}
+%\bibliographystyle{apalike}
 \bibliography{Bibliography}
 
 
@@ -1047,7 +1047,7 @@ The normalization factors used to represent the concentrations in arbitrary unit
 \centering
 \includegraphics[width=\textwidth]{Figure2_Paper.pdf}
 \caption{\small{\textbf{Model parameterization.} \textbf{(A,B)} Data from the controls of the feeding
-experiments of~\cite{Schmollinger2013}. These correspond to six curves
+experiments of Schmollinger et al.~\cite{Schmollinger2013}. These correspond to six curves
 representing the time evolution of the concentration of mRNA coding
 for HSF1 \textbf{(A)}, and six curves for the mRNA coding for HSP90A \textbf{(B)}, under heat
 shock and no inhibitor treatment. The superposed continuous black line shows the model prediction obtained with the final parameter set. \textbf{(C)} Projection w.r.t. each of the 20 parameters of the Monte Carlo scan of the parameter space, for the points corresponding to the 5000 random parameter sets with lowest RMS. \textbf{(D)} RMS decrease for subsequent iterations of the gradient search algorithm.}
@@ -1103,7 +1103,7 @@ shock and no inhibitor treatment. The superposed continuous black line shows the
 \begin{figure*}
 \centering
 \includegraphics[width=\textwidth]{Figure3_Paper.pdf}
-\caption{\small{\textbf{Comparisons between model predictions and data.} Feeding experiments of \cite{Schmollinger2013} using Staurosporine \textbf{(A)} and Radicicol \textbf{(B)}. \textbf{(C)} Simulating the double HS experiment and comparison with the corresponding data from \cite{Schroda2000}. We see that a full HSR is possible only about $5$ h after the first HS. \textbf{(D)} Comparison between the model predictions for the variation of the concentration of HP under HS and the corresponding data from \cite{Muehlhaus2011}. The scale on the left side refers to the simulation results, the scale on the right side to the data. An exact correspondence of one scale into the other is not possible since we lack the necessary information.}
+\caption{\small{\textbf{Comparisons between model predictions and data.} Feeding experiments of Schmollinger et al. \cite{Schmollinger2013} using Staurosporine \textbf{(A)} and Radicicol \textbf{(B)}. \textbf{(C)} Simulating the double HS experiment and comparison with the corresponding data from Schroda et al. \cite{Schroda2000}. We see that a full HSR is possible only about $5$ h after the first HS. \textbf{(D)} Comparison between the model predictions for the variation of the concentration of HP under HS and the corresponding data from Muehlhaus et al. \cite{Muehlhaus2011}. The scale on the left side refers to the simulation results, the scale on the right side to the data. An exact correspondence of one scale into the other is not possible since we lack the necessary information.}
 }
 \label{Figure3label}
 \end{figure*}
@@ -1197,7 +1197,7 @@ The term following a Hill kinetics is the one describing the regulatory process 
 The action of the phosphorylated SK$^*$, the enzyme phosphorylating HSF, is described by a Michaelis-Menten behaviour, typical of enzymatic kinetics. 
 The effect of the temperature, which denatures (unfolds or misfolds) proteins, is described by means of the Arrhenius law, with an activation energy 
 %of $E_a=174.44$ KJ mol$^{-1}$, perfectly 
-in the wide range reported in the literature for the activation energies of protein denaturation due to thermal stress (as discussed in \cite{Bischof2006,He2003}). 
+in the wide range reported in the literature for the activation energies of protein denaturation due to thermal stress (as discussed in the literature \cite{Bischof2006,He2003}). 
 %More details on these terms can be found in Table \ref{TabNUs} of the Supplementary Material.
 The values of the parameters (rate constants) employed in the model are provided in Table~\ref{TabKs} and the parameterization of the model is described in detail in Section~\ref{SecCalibrationExtended} of the Supplementary Material.
 
@@ -1350,7 +1350,7 @@ Let us remark that the values of the variables are initiated at the initial cond
 $\omega_{PS} = \frac{[P^\#]^{m}}{P_0^{m}+[P^\#]^{m}}$, 
 where $m=5$ and $P_0 = 600$ $\mu$M. 
 %The threshold value of $T_0 = 36^\circ\text{C}$ is motivated by \cite{Kobayashi2014}, which reports an HSR in \emph{C. reinhardtii} already at this temperature. 
-The term following the Arrhenius law is $\omega_{TP} = A \cdot \exp \left( -\frac{E_a}{R\cdot T} \right)$, with an activation energy of $E_a = 174.440$ KJ mol$^{-1}$, within the wide range reported in the literature for the activation energies of protein denaturation due to thermal stress (as discussed in \cite{Bischof2006,He2003}), and with $A = 9.4318 \times 10^{28}$, $R = 8.3144598$ J mol$^{-1}$ K$^{-1}$ the ideal gas constant and $T$ the temperature.  
+The term following the Arrhenius law is $\omega_{TP} = A \cdot \exp \left( -\frac{E_a}{R\cdot T} \right)$, with an activation energy of $E_a = 174.440$ KJ mol$^{-1}$, within the wide range reported in the literature for the activation energies of protein denaturation due to thermal stress (as discussed in the literature \cite{Bischof2006,He2003}), and with $A = 9.4318 \times 10^{28}$, $R = 8.3144598$ J mol$^{-1}$ K$^{-1}$ the ideal gas constant and $T$ the temperature.  
 Finally, the basal rates are computed as $p_{RFbasal} = d_{RF} \cdot d_{F} \cdot 0.02125 \text{ }\mu\text{M} / k_{\pi_F}$ and $p_{RPbasal} =  d_{RP} \cdot d_{HP} \cdot 17.5 \text{ }\mu\text{M} / k_{\pi_{HP}}$.}\label{TabNUs}
 \end{table*}
 \egroup
@@ -1417,9 +1417,9 @@ In this section we provide more details on the procedure that we have employed t
 
 \subsection{Definition of the objective function}
 
-To assess how well the model simulations reproduce the behaviour of the corresponding data points from \cite{Schmollinger2013}, we employ as objective function the root mean square deviation (RMS) of the simulation results w.r.t. the data on mRNA expression for HSF and HSP, for the six controls of the feeding experiments (Fig.~\ref{Figure2label} A,B). 
+To assess how well the model simulations reproduce the behaviour of the corresponding data points from Schmollinger et al. \cite{Schmollinger2013}, we employ as objective function the root mean square deviation (RMS) of the simulation results w.r.t. the data on mRNA expression for HSF and HSP, for the six controls of the feeding experiments (Fig.~\ref{Figure2label} A,B). 
 %This reads $RMS=\sqrt{N^{-1}\Sigma_{i=1}^{N}\left(\left[C\right]_i_{th}-\left[C\right]_i_{exp}\right)^2}$, where \left[C\right]_i represents a concentration corresponding to the $i$-th datapoint, N is the total number of datapoints, \emph{th} indicates the value computed from  {exp}
-It is important to point out the, as can be seen from the figures of \cite{Schmollinger2013}, the data, obtained with northern blot analysis, correspond to relative concentrations and not to absolute concentrations, i.e. the data points of each control curve are normalized to the maximum among all the time points and all the curves (controls and feedings) for that feeding experiment. Thus, to compute the RMS we normalize the values of the concentrations to the maximum of each curve, to be able to compare these with the experimental data. For this reason we can only say that the model can reproduce the quantitative relative behaviour of the system. The data employed do not contain absolute (dimension full) measures of the concentrations, but only relative measures (i.e. normalized to a maximum). Thus the concentrations appearing in each figure are normalized to a reference value (see Table~\ref{TabRefVal}).
+It is important to point out the, as can be seen from the figures of Schmollinger et al. \cite{Schmollinger2013}, the data, obtained with northern blot analysis, correspond to relative concentrations and not to absolute concentrations, i.e. the data points of each control curve are normalized to the maximum among all the time points and all the curves (controls and feedings) for that feeding experiment. Thus, to compute the RMS we normalize the values of the concentrations to the maximum of each curve, to be able to compare these with the experimental data. For this reason we can only say that the model can reproduce the quantitative relative behaviour of the system. The data employed do not contain absolute (dimension full) measures of the concentrations, but only relative measures (i.e. normalized to a maximum). Thus the concentrations appearing in each figure are normalized to a reference value (see Table~\ref{TabRefVal}).
 
 
 
@@ -1522,7 +1522,7 @@ The algorithm stopped after 31 iterations (Fig.~\ref{Figure2label}~D) and return
 
 \subsection{Exploring the possibility of an alternative RMS}
 
-As a final test we defined, similarly to what we have done above, a RMS distance between the model simulations and the experimental data from the double HS experiment of \cite{Schroda2000} (reported in Fig.~\ref{Figure6label}). 
+As a final test we defined, similarly to what we have done above, a RMS distance between the model simulations and the experimental data from the double HS experiment of Schroda et al. \cite{Schroda2000} (reported in Fig.~\ref{Figure6label}). 
 Defining such an RMS is much more arbitrary than defining the RMS w.r.t. the controls of the feeding experiments, because of the previously mentioned hypothesis on the proportionality between the enzyme concentration and its activity. %This is ways more arbitrary and approximate, given that we would have to compute this RMS combining data about the activity of the ARS enzyme with model predictions about the concentration of this enzyme. Moreover, it would then become necessary to combine the RMS w.r.t. the controls of the feeding experiments, and 
 We do not combine the two RMSs, as this would require to attribute to the two a weight which would be highly arbitrary. 
 
@@ -1574,7 +1574,7 @@ Finally, we verified that in the gradient search performed in the previous secti
 
 \section{Supplementary Material: further study of the double heat shock}
 
-In this section we present some additional simulations which illustrate extensively the features of the response to a double heat shock, and next we explain how we have extended our model to simulate the double HS experiments performed in \cite{Schroda2000}.
+In this section we present some additional simulations which illustrate extensively the features of the response to a double heat shock, and next we explain how we have extended our model to simulate the double HS experiments performed in Schroda et al. \cite{Schroda2000}.
 
 
 
@@ -1593,7 +1593,7 @@ When the second HS occurs $5$ h or more after the first we see that the concentr
 It is very interesting to remark that, while the concentrations of all the species go back to the values that they had before the first HS quite fast after the end of the first HS, the HSP does not (panel X), and this allows to avoid during the second HS having any but a tiny amount of unfolded protein $P^\#$ with respect to the amount during the first HS. This can be seen in panels A, G, M and S, where the concentration of degenerated proteins $P^\#$ increases by a considerable amount during the first HS, while considerably less during the second even when this is occurring many hours after the first. % has the role of preparing the system for a subsequent occurrence of the same stressing situation (HS) already encountered in the past, thus representing a sort of molecular "memory" of the Chlamydomonas cells. 
 
 The behaviour we observe in our simulations likely indicates that the production of HSF which follows a first HSR and the accumulation and slow degradation of HSP has the role of preparing the system for a subsequent occurrence of the same stressing situation (HS) already encountered in the past, thus representing a transient molecular memory. 
-This behaviour is consistent with the claim of \cite{Schroda2000} that \emph{C. reinhardtii} needs around $5$ h to recover and be able for another full HS response. %We have seen in the main text a direct comparison of simulations performed with our model and data from \cite{Schroda2000}, and in the next section we provide additional details on how we have extended our model to perform such simulations.
+This behaviour is consistent with the claim of Schroda et al. \cite{Schroda2000} that \emph{C. reinhardtii} needs around $5$ h to recover and be able for another full HS response. %We have seen in the main text a direct comparison of simulations performed with our model and data from \cite{Schroda2000}, and in the next section we provide additional details on how we have extended our model to perform such simulations.
 
 %\begin{figure*}
 %\minipage{0.50\textwidth}
@@ -1624,7 +1624,7 @@ This behaviour is consistent with the claim of \cite{Schroda2000} that \emph{C. 
 \subsection{Extending the model to simulate the experiments performed in \cite{Schroda2000}}
 \label{SecARSSM}
 
-To perform the simulation reproducing the data of \cite{Schroda2000}, shown in Fig.~\ref{Figure3label}~C of the main text, we have extended our model including few new variables and equations. 
+To perform the simulation reproducing the data of Schroda et al. \cite{Schroda2000}, shown in Fig.~\ref{Figure3label}~C of the main text, we have extended our model including few new variables and equations. 
 We included the production of ARS enzyme into our model by adding two new variables and four new reactions to it. 
 These are listed in Table~\ref{TabARS}, together with the corresponding ODEs and parameters values.
 The two variables represent the concentration of the mRNA coding for the ARS enzyme, due to fusion of the ARS gene on the HSP70A promoter, and the concentration of the ARS enzyme itself.
@@ -1685,7 +1685,7 @@ Despite these simplifications, the qualitative agreement between simulation and 
     d_{ARS}                                    & 0.0000125 \text{ s}^{-1}         \\
 \bottomrule
 \end{array}\]
-\caption{\textbf{Extension of the model to include ARS production.} Variables, ODEs, rate laws and rate constants used to extend the model in order to simulate the double HS experiments which measure the expression of the ARS enzyme put under the control of the HSP70A promoter, performed in \cite{Schroda2000}.}\label{TabARS}
+\caption{\textbf{Extension of the model to include ARS production.} Variables, ODEs, rate laws and rate constants used to extend the model in order to simulate the double HS experiments which measure the expression of the ARS enzyme put under the control of the HSP70A promoter, performed in Schroda et al. \cite{Schroda2000}.}\label{TabARS}
 \end{table*}
 \egroup
 
@@ -1716,7 +1716,7 @@ Finally we systematically investigate how the accumulation of HSPs depends on th
 
 We first investigate which response the model predicts upon exposure to a prolonged HS, and how
 the system adapts to persistently high temperatures.
-Experimentally, the systems-wide response to long-term HS was investigated in~\cite{Hemme2014},
+Experimentally, the systems-wide response to long-term HS was investigated in Hemme et al.~\cite{Hemme2014},
 where cells adapted to 25°C were exposed to 42°C for a period of $24$ h, followed by $8$ h at 25°C (recovery phase).
 
 %We use our model to investigate how the system reacts to a prolonged HS (long-term HS), and how it recovers from it, and we show that it exhibits perfect adaptation to long-term HS. The long term HS on a system-wide scale is experimentally studied in \cite{Hemme2014}. Employing the same set-up used therein, we simulate this situation by increasing the temperature at $t = 0$ h from 20°C to 42°C, keeping it to the higher value for $24$ h (long term HS), and then lowering it again to 20°C for the remaining $8$ h (recovery phase).
@@ -1735,7 +1735,7 @@ After reverting the conditions to normal temperatures (25°C), a recovery phase 
 the variables relax to the original stationary state over a period of several hours.
 %Thirdly, the recovery phase is characterized by the tendency of the system to go back to the state preceding the HS, but with no urgency so that after some hours still the concentration of HSP is not yet as low as before the HS. 
 %Finally, while the concentration of HP during the late HS period is about $90\%$ of that corresponding to the peek during early HS, the concentration of HSF during the late period is only around $25\%$.
-These results are consistent with the observations of \cite{Hemme2014} focusing on HSP production (see in particular Fig.~8 therein).
+These results are consistent with the observations of Hemme et al. \cite{Hemme2014} focusing on HSP production (see in particular Fig.~8 therein).
 
 
 
@@ -1846,7 +1846,7 @@ We have shown in Section~\ref{SecAcclimation} that the system can adapt to highe
  
 We have studied in Section~\ref{SecSteadyStateConcentrations} the variation of the steady state concentrations w.r.t. changes in the temperature. The concentrations of HP, as well as of the mRNAs, increase with increasing temperature, but for not too high temperatures the concentration of unfolded proteins $\left[P^\#\right]$ is kept very close to zero, in particular well below $1\%$ of the total amount of proteins $\left[P\right] + \left[P^\#\right]$. For temperatures too high the HSR cannot prevent the accumulation of degenerated proteins and the cell dies.
 
-We have finally used the model to systematically investigate how the accumulation of HSPs depends on the combination of temperature and duration of the heat shock, in Section~\ref{SecTradeOff}. Short (smaller than $10$ min) HSs do not provide enough time for a significant response at the level of $\left[HP\right]$, the maximum of $\left[HP\right]$ for any given temperature is obtained at around $80$ to $100$ min, after that a somewhat smaller $\left[HP\right]$ is reached and maintained, and for long enough HS a higher temperature provides higher $\left[HP\right]$.
+We finally used the model to systematically investigate how the accumulation of HSPs depends on the combination of temperature and duration of the heat shock, in Section~\ref{SecTradeOff}. Short (smaller than $10$ min) HSs do not provide enough time for a significant response at the level of $\left[HP\right]$, the maximum of $\left[HP\right]$ for any given temperature is obtained at around $80$ to $100$ min, after that a somewhat smaller $\left[HP\right]$ is reached and maintained, and for long enough HS \mbox{a higher temperature provides higher $\left[HP\right]$.}
 
 
 
