@@ -243,7 +243,7 @@ def PlotRMSvaluesAsFunctionOfParametersFromFile(FolderContainingCsvFiles, Folder
 
     ListOfParametersNames = deepcopy(MyList)
     ListOfParametersNamesForLegend = []
-    DictionaryParamNamesLabels = {"kP0":r"$k_P$ ($(\mu M$ $s)^{-1}$)", "kP0p":r"$k'_P$ ($s^{-1}$)", "kS":r"$k_S$ ($s^{-1}$)", "kSp0":r"$k'_S$ ($s^{-1}$)", "kFp0":r"$k'_F$ ($s^{-1}$)", "kF0":r"$k_F$ ($(\mu M$ $s)^{-1}$)", "kFpi0":r"$k_{\pi_{F}}$ ($s^{-1}$)", "kFGp":r"$k'_{FG}$ ($s^{-1}$)", "kFG":r"$k_{FG}$ ($(\mu M$ $s)^{-1}$)", "ketaF":r"$d_F$ ($s^{-1}$)", "kFsG":r"$k_{F^*G}$ ($(\mu M$ $s)^{-1}$)", "kFsGp":r"$k'_{F^*G}$ ($s^{-1}$)", "kFsp":r"$k'_{F^*}$ ($s^{-1}$)", "kFs":r"$k_{F^*}$ ($s^{-1}$)", "kpiRF":r"$k_{\pi_{RF}}$ ($s^{-1}$)", "kpiRH":r"$k_{\pi_{RH}}$", "kpiHP":r"$k_{\pi_{HP}}$", "ketaHP":r"$d_{HP}$ ($s^{-1}$)", "ketaRF":r"$d_{RF}$ ($s^{-1}$)", "ketaRHP":r"$d_{RP}$ ($s^{-1}$)"}
+    DictionaryParamNamesLabels = {"kP0":r"$k_P$ ($(\mu M$ $s)^{-1}$)", "kP0p":r"$k'_P$ ($s^{-1}$)", "kS":r"$k_S$ ($s^{-1}$)", "kSp0":r"$k'_S$ ($s^{-1}$)", "kFp0":r"$k'_F$ ($s^{-1}$)", "kF0":r"$k_F$ ($(\mu M$ $s)^{-1}$)", "kFpi0":r"$k_{\pi_{F}}$ ($s^{-1}$)", "kFGp":r"$k'_{FG}$ ($s^{-1}$)", "kFG":r"$k_{FG}$ ($(\mu M$ $s)^{-1}$)", "ketaF":r"$d_F$ ($s^{-1}$)", "kFsG":r"$k_{F^*G}$ ($(\mu M$ $s)^{-1}$)", "kFsGp":r"$k'_{F^*G}$ ($s^{-1}$)", "kFsp":r"$k'_{F^*}$ ($s^{-1}$)", "kFs":r"$k_{F^*}$ ($s^{-1}$)", "kpiRF":r"$k_{\pi_{RF}}$ ($s^{-1}$)", "kpiRH":r"$k_{\pi_{RH}}$ ($s^{-1}$)", "kpiHP":r"$k_{\pi_{HP}}$ ($s^{-1}$)", "ketaHP":r"$d_{HP}$ ($s^{-1}$)", "ketaRF":r"$d_{RF}$ ($s^{-1}$)", "ketaRHP":r"$d_{RP}$ ($s^{-1}$)"}
     for i in range(len(ListOfParametersNames)):
         for keyParamName in DictionaryParamNamesLabels.keys():
             if ListOfParametersNames[i] == keyParamName:
@@ -313,24 +313,24 @@ def PlotRMSvaluesAsFunctionOfParametersFromFile(FolderContainingCsvFiles, Folder
                 axes[0,j].locator_params(axis='x',nbins=5)
                 plt.setp(axes[0,j].get_xticklabels(), rotation=90, horizontalalignment='left')
                 if i == 0:
-                    axes[0,j].set_xlabel(ListOfParametersNamesForLegend[k])
+                    axes[0,j].set_xlabel(ListOfParametersNamesForLegend[k], fontsize='x-large')
                 axes[0,j].get_xaxis().set_tick_params(direction='out')
 
                 axes[Nlines-1,j].xaxis.set_visible(True)
                 axes[Nlines-1,j].locator_params(axis='x',nbins=5)
                 plt.setp(axes[Nlines-1,j].get_xticklabels(), rotation=90, horizontalalignment='right')
                 if i == 1:
-                    axes[Nlines-1,j].set_xlabel(ListOfParametersNamesForLegend[k])
+                    axes[Nlines-1,j].set_xlabel(ListOfParametersNamesForLegend[k], fontsize='x-large')
                 axes[Nlines-1,j].get_xaxis().set_tick_params(direction='out')
 
                 axes[i,0].yaxis.set_visible(True)
                 axes[i,0].locator_params(axis='y',nbins=8)
-                axes[i,0].set_ylabel("Root Mean Square (adim.)")
+                axes[i,0].set_ylabel("Root Mean Square (adim.)", fontsize='x-large')
                 axes[i,0].get_yaxis().set_tick_params(direction='out')
 
                 axes[i,Ncols-1].yaxis.set_visible(True)
                 axes[i,Ncols-1].locator_params(axis='y',nbins=8)
-                axes[i,Ncols-1].set_ylabel("Root Mean Square (adim.)")
+                axes[i,Ncols-1].set_ylabel("Root Mean Square (adim.)", fontsize='x-large')
                 axes[i,Ncols-1].get_yaxis().set_tick_params(direction='out')
                 print("k is ")
                 print(k)
@@ -668,7 +668,7 @@ def ExecuteGradientSearch(FolderContainingGradientSearchPlots, UseRMSForFeedingO
     ############ 3) ############ Plot RMS as a function of i ( iterations number)
     fig = figure()
     plt.plot( range(len(ListOfRootMeanSquares)), ListOfRootMeanSquares, marker="o", linewidth=1) 
-    plt.xlabel("index")
+    plt.xlabel("Number of iterations")
     plt.ylabel("RMS")
     ax = plt.gca()
     ax.get_yaxis().get_major_formatter().set_useOffset(False)
@@ -678,7 +678,7 @@ def ExecuteGradientSearch(FolderContainingGradientSearchPlots, UseRMSForFeedingO
     ############ 4) ############ Plot Gamma Value (from line search minimization of RMS) as a function of i (iterations number)
     fig = figure()
     plt.plot( range(len(ListOfIndexesOfGammaValuesChosenByLineSearch)), ListOfIndexesOfGammaValuesChosenByLineSearch, marker="o", linewidth=1) 
-    plt.xlabel("index")
+    plt.xlabel("Number of iterations")
     plt.ylabel("Gamma")
     ax = plt.gca()
     ax.get_yaxis().get_major_formatter().set_useOffset(False)
@@ -689,7 +689,7 @@ def ExecuteGradientSearch(FolderContainingGradientSearchPlots, UseRMSForFeedingO
     for key in StartingParameterSetKs:
         fig = figure()
         plt.plot( range(len(DictionaryOfListsOfParametersValuesForPlotting[key])), DictionaryOfListsOfParametersValuesForPlotting[key], marker="o", linewidth=1) 
-        plt.xlabel("index")
+        plt.xlabel("Number of iterations")
         plt.ylabel(str(key) + "/" + str(key) + "_FIDUCIAL")
         ax = plt.gca()
         ax.get_yaxis().get_major_formatter().set_useOffset(False)

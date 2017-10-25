@@ -42,15 +42,16 @@ def ComputeMaxUnfoldedProteinsAsFunctionOfTimeToIncreaseTemperature(MyHSM, TauMi
     fig = figure()
     plt.plot(ListTauLog, ListPd, color="blue", marker="o")
     plt.xlim(math.log10(TauMin/60.), math.log10(TauMax/60.))
-    plt.xlabel(r"$\tau$ (min)", fontsize="large")
-    plt.ylabel(r"$P^\#_{MAX}$ (a.u.)", fontsize="large")
-    plt.legend(loc="upper right")
+    plt.xlabel(r"$\tau$ (min)", fontsize="x-large")
+    plt.ylabel(r"$P^\#_{MAX}$ (fraction of total)", fontsize="x-large")
+    plt.legend(loc="upper right", fontsize="x-large")
 
     # Set axis' ticks at proper places (convert the axis from linear in the exponents to log)
-    plt.tick_params(axis='x', labelsize=14)
+    plt.tick_params(axis='x', labelsize="x-large")
+    plt.tick_params(axis='y', labelsize="x-large")
     ax=plt.gca()
     ax.set_xticks([0,1,2,3])
-    ax.set_xticklabels(["1","10","100","1000"])
+    ax.set_xticklabels(["1","10","100","1000"], fontsize="x-large")
     ax.xaxis.set_ticks([math.log10(0.2),math.log10(0.30),math.log10(0.40),math.log10(0.50),math.log10(0.60),math.log10(0.70),math.log10(0.80),
     math.log10(0.90),math.log10(2.0),math.log10(3.0),math.log10(4.0),math.log10(5.0),math.log10(6.0),math.log10(7.0),math.log10(8.0),math.log10(9.0),
     math.log10(20),math.log10(30),math.log10(40),math.log10(50),math.log10(60),math.log10(70),math.log10(80),math.log10(90),
@@ -97,8 +98,10 @@ def PlotTemperatureManyTau(Tup, Tdown, FigureExtension):
 
     fig0 = figure()
 
-    plt.xlabel('Time (min)', fontsize=18)
-    plt.ylabel(r'Temperature ($^\circ$C)', fontsize=18)
+    plt.tick_params(axis='x', labelsize="x-large")
+    plt.tick_params(axis='y', labelsize="x-large")
+    plt.xlabel('Time (min)', fontsize="x-large")
+    plt.ylabel(r'Temperature ($^\circ$C)', fontsize="x-large")
     #plt.xlim(0., (self.timeset.CurrentParams["t_stop"] - vorl) / 60.)
     plt.ylim(24., 45.)
     plt.xlim(-50., 150.)
@@ -108,7 +111,7 @@ def PlotTemperatureManyTau(Tup, Tdown, FigureExtension):
     plt.plot(tlist, Tlist50, color='g', linestyle="--", linewidth=2., label=r"Temperature, $\tau=50$ min")
     plt.plot(tlist, Tlist100, color='r', linestyle="-", linewidth=1.5, label=r"Temperature, $\tau=100$ min")
 
-    plt.legend(loc="lower right", fontsize="medium", fancybox=True)
+    plt.legend(loc="lower right", fontsize="large", fancybox=True)
 
     PlotAndSave(fig0, "TemperatureManyTaus"+FigureExtension, "PS", 0, 1)
 

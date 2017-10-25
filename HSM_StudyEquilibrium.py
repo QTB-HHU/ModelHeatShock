@@ -237,27 +237,27 @@ def PlotTrajectoriesOfEquilibriumPoint(nupPoverP, ListOfConcentrationsAtEquilibr
 
     ax1 = plt.subplot(321)
     SubPlot(ax1, nupPoverP, [["P", P_equilibrium], [r"P$^\#$", Ph_equilibrium]],
-            ylabel, nupPoverPmin, nupPoverPmax, r'Protein ($\mu$M)', 0., 0., "center right", "A", UsePointMarker="Yes")
+            ylabel, nupPoverPmin, nupPoverPmax, 'Concentration\nat steady state\n(fraction of total)', 0., 0., "center right", "A", UsePointMarker="Yes")
 
     ax2 = plt.subplot(322)
     SubPlot(ax2, nupPoverP, [[r"SK", S_equilibrium], [r"SK$^*$", Ss_equilibrium]],
-            ylabel, nupPoverPmin, nupPoverPmax, r'Stress kinases ($\mu$M)', 0., 0., "center right", "B", UsePointMarker="Yes")
+            ylabel, nupPoverPmin, nupPoverPmax, 'Concentration\nat steady state\n(fraction of total)', 0., 0., "center right", "B", UsePointMarker="Yes")
 
     ax3 = plt.subplot(323)
     SubPlot(ax3, nupPoverP, [[r"HSF", F_equilibrium], [r"HSF$^*$", Fs_equilibrium]],
-            ylabel, nupPoverPmin, nupPoverPmax, r'Heatshock factor ($\mu$M)', 0, 0, "center right", "C", UsePointMarker="Yes")
+            ylabel, nupPoverPmin, nupPoverPmax, 'Concentration\nat steady state\n(a.u.)', 0, 0, "center right", "C", UsePointMarker="Yes")
 
     ax4 = plt.subplot(324)
     SubPlot(ax4, nupPoverP, [[r"G", G_equilibrium], [r"HSF$^*$G", FsG_equilibrium], [r"HSFG", FG_equilibrium]],
-            ylabel, nupPoverPmin, nupPoverPmax, r'Gene ($\mu$M)', 0, 0, "center right", "D", UsePointMarker="Yes")
+            ylabel, nupPoverPmin, nupPoverPmax, 'Concentration\nat steady state\n(fraction of total)', 0, 0, "center right", "D", UsePointMarker="Yes")
 
     ax5 = plt.subplot(325)
     SubPlot(ax5, nupPoverP, [[r"mR$_{F}$", RF_equilibrium], [r"mR$_{HP}$", RHP_equilibrium]],
-            ylabel, nupPoverPmin, nupPoverPmax, r'mRNA ($\mu$M)', 0, 0, "center right", "E", UsePointMarker="Yes")
+            ylabel, nupPoverPmin, nupPoverPmax, 'Concentration\nat steady state\n(a.u.)', 0, 0, "center right", "E", UsePointMarker="Yes")
 
     ax6 = plt.subplot(326)
     SubPlot(ax6, nupPoverP, [[r"HP", HP_equilibrium]],
-            ylabel, nupPoverPmin, nupPoverPmax, r'Heatshock protein ($\mu$M)', 0, 0, "center right", "F", UsePointMarker="Yes")
+            ylabel, nupPoverPmin, nupPoverPmax, 'Concentration\nat steady state\n(a.u.)', 0, 0, "center right", "F", UsePointMarker="Yes")
 
     PlotAndSave(fig1, FigureNameEquilibrium, "PS", 1, 1)
 
@@ -488,27 +488,27 @@ def PlotTrajectoriesOfEquilibriumPointFuncOfTEMPERATURE(VectorOfTEMPERATURES, Li
     #SubPlot(ax1, VectorOfTEMPERATURES, [["P", P_equilibrium], [r"P$^\#$", Ph_equilibrium]],
     #        xlabel, TEMPERAUREmin, TEMPERAUREmax, r'Protein ($\mu$M)', 0., 0., "center left", "A", UsePointMarker="Yes")
     SubPlot(ax1, VectorOfTEMPERATURES, [["P", P_equilibrium_rescaled], [r"P$^\#$", Ph_equilibrium_rescaled]],
-            xlabel, TEMPERAUREmin, TEMPERAUREmax, r'Protein (a.u.)', 0., 0., "center left", "A", UsePointMarker="Yes")
+            xlabel, TEMPERAUREmin, TEMPERAUREmax, 'Concentration\nat steady state\n(fraction of total)', 0., 0., "center left", "A", UsePointMarker="Yes")
 
     ax2 = plt.subplot(322)
     SubPlot(ax2, VectorOfTEMPERATURES, [[r"SK", S_equilibrium_rescaled], [r"SK$^*$", Ss_equilibrium_rescaled]],
-            xlabel, TEMPERAUREmin, TEMPERAUREmax, r'Stress kinases (a.u.)', 0., 0., "center right", "B", UsePointMarker="Yes")
+            xlabel, TEMPERAUREmin, TEMPERAUREmax, 'Concentration\nat steady state\n(fraction of total)', 0., 0., "center right", "B", UsePointMarker="Yes")
 
     ax3 = plt.subplot(323)
     SubPlot(ax3, VectorOfTEMPERATURES, [[r"HSF", F_equilibrium_rescaled], [r"HSF$^*$", Fs_equilibrium_rescaled]],
-            xlabel, TEMPERAUREmin, TEMPERAUREmax, r'Heatshock factor (a.u.)', 0, 0, "center left", "C", UsePointMarker="Yes")
+            xlabel, TEMPERAUREmin, TEMPERAUREmax, 'Concentration\nat steady state\n(a.u.)', 0, 0, "center left", "C", UsePointMarker="Yes")
 
     ax4 = plt.subplot(324)
     SubPlot(ax4, VectorOfTEMPERATURES, [[r"G", G_equilibrium_rescaled], [r"HSF$^*$G", FsG_equilibrium_rescaled], [r"HSFG", FG_equilibrium_rescaled]],
-            xlabel, TEMPERAUREmin, TEMPERAUREmax, r'Gene (a.u.)', 0, 0, "center right", "D", UsePointMarker="Yes")
+            xlabel, TEMPERAUREmin, TEMPERAUREmax, 'Concentration\nat steady state\n(fraction of total)', 0, 0, "center right", "D", UsePointMarker="Yes")
 
     ax5 = plt.subplot(325)
     SubPlot(ax5, VectorOfTEMPERATURES, [[r"mR$_{F}$", RF_equilibrium_rescaled], [r"mR$_{HP}$", RHP_equilibrium_rescaled]],
-            xlabel, TEMPERAUREmin, TEMPERAUREmax, r'mRNA (a.u.)', 0, 0, "center left", "E", UsePointMarker="Yes")
+            xlabel, TEMPERAUREmin, TEMPERAUREmax, 'Concentration\nat steady state\n(a.u.)', 0, 0, "center left", "E", UsePointMarker="Yes")
 
     ax6 = plt.subplot(326)
     SubPlot(ax6, VectorOfTEMPERATURES, [[r"HP", HP_equilibrium_rescaled]],
-            xlabel, TEMPERAUREmin, TEMPERAUREmax, r'Heatshock protein (a.u.)', 0, 0, "center right", "F", UsePointMarker="Yes")
+            xlabel, TEMPERAUREmin, TEMPERAUREmax, 'Concentration\nat steady state\n(a.u.)', 0, 0, "center right", "F", UsePointMarker="Yes")
 
     PlotAndSave(fig1, FigureNameEquilibrium, "PS", 1, 1)
 

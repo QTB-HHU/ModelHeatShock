@@ -193,12 +193,12 @@ def FuncPlotTemperature(self, tminMANUAL=("No",0.)):
 
     fig0 = figure()
 
-    plt.xlabel('Time (min)', fontsize=18)
+    plt.xlabel('Time (min)', fontsize="x-large")
     if self.TparamSet.CurrentParams["Ttype"] == 6 or (
             self.TparamSet.CurrentParams["Ttype"] == 2 and self.TparamSet.CurrentParams["tb"] >= 12 * 60. * 60.):
         plt.xticks([0., 6. * 60., 12. * 60., 18. * 60., 24 * 60., (24. + 8.) * 60.],
                    ["0", "6", "12", "18", "24", "24+8"])
-        plt.xlabel('Time (h)', fontsize="small")
+        plt.xlabel('Time (h)', fontsize="x-large")
     #plt.xlim(0., (self.timeset.CurrentParams["t_stop"] - vorl) / 60.)
     #if tminMANUAL[0] == "Yes":
         #print("Sbleught")
@@ -206,21 +206,21 @@ def FuncPlotTemperature(self, tminMANUAL=("No",0.)):
     #print(str((self.timeset.CurrentParams["t_stop"] - vorl) / 60.))
     plt.xlim(0., (self.timeset.CurrentParams["t_stop"] - vorl) / 60.)
     plt.ylim(16., 44.)
-    plt.ylabel(r'Temperature ($^\circ$C)', fontsize=18)
+    plt.ylabel(r'Temperature ($^\circ$C)', fontsize="x-large")
     plt.plot(self.t, self.Tplot, 'g', linewidth=1.)
 
     if self.TparamSet.CurrentParams["Ttype"] == 7:
         plt.xticks([0., 3. * 60., 6. * 60., 9. * 60., 12. * 60., 15. * 60., 18. * 60., 21 * 60., 24 * 60.],
                    ["3:00", "6:00", "9:00", "12:00", "15:00", "18:00", "21:00", "24:00", "3:00"])
-        plt.xlabel('Time (h)', fontsize="small")
+        plt.xlabel('Time (h)', fontsize="x-large")
     if self.TparamSet.CurrentParams["Ttype"] == 7 and tminMANUAL[0] == "Yes":
         plt.xticks([0.+tminMANUAL[1]/60., 3. * 60.+tminMANUAL[1]/60., 6. * 60.+tminMANUAL[1]/60., 9. * 60.+tminMANUAL[1]/60., 12. * 60.+tminMANUAL[1]/60., 15. * 60.+tminMANUAL[1]/60., 18. * 60.+tminMANUAL[1]/60., 21 * 60.+tminMANUAL[1]/60., 24 * 60.+tminMANUAL[1]/60.],
                    ["3:00", "6:00", "9:00", "12:00", "15:00", "18:00", "21:00", "24:00", "3:00"])
         plt.xlim(tminMANUAL[1]/60., (self.timeset.CurrentParams["t_stop"] - vorl) / 60.)
-        plt.xlabel('Time (h)', fontsize="small")
+        plt.xlabel('Time (h)', fontsize="x-large")
     #plt.xlim(0., (self.timeset.CurrentParams["t_stop"] - vorl) / 60.)
     plt.ylim(16., 44.)
-    plt.ylabel(r'Temperature ($^\circ$C)', fontsize="small")
+    plt.ylabel(r'Temperature ($^\circ$C)', fontsize="x-large")
     plt.plot(self.t, self.Tplot, 'g', linewidth=1.)
 
     PlotAndSave(fig0, "Temperature_" + self.name, "PS", 0, 1)
@@ -273,7 +273,7 @@ def PlotTrajectories(self, ModifyKset="No", ParamsToBeModif={}, TimeOfMod=vorl, 
         #SubPlot(ax1, self.t, [["P", self.P], [r"P$^\#$", self.Ph]],
         #        'Time (min)', tmin, tmax, 'Concentration (mM)', 0., 100.5, "center right", "A", LineStyleListInverted = "Yes")
         SubPlot(ax1, self.t, [["P", Prescaled], [r"P$^\#$", Phrescaled]],
-                'Time (min)', tmin, tmax, 'Concentration (a.u.)', 0., 100.5/SetOfReferenceValuesForPlotting["Ptot"], "center right", "A", LineStyleListInverted = "Yes")
+                'Time (min)', tmin, tmax, 'Concentration\n(fraction of total)', 0., 100.5/SetOfReferenceValuesForPlotting["Ptot"], "center right", "A", LineStyleListInverted = "Yes")
 
     elif ZoomInPanelA=="Yes" or ZoomInPanelA=="Yes2" or ZoomInPanelA=="Yes3" :
 
@@ -289,7 +289,7 @@ def PlotTrajectories(self, ModifyKset="No", ParamsToBeModif={}, TimeOfMod=vorl, 
         #SubPlot(ax1, self.t, [[r"P$^\#$", self.Ph]],
         #        'Time (min)', tmin, tmax, 'Concentration (mM)', 0., MaxY, "center right", "A", LineStyleListInverted = "No")
         SubPlot(ax1, self.t, [[r"P$^\#$", Phrescaled]],
-                'Time (min)', tmin, tmax, 'Concentration (a.u.)', 0., MaxY, "center right", "A", LineStyleListInverted = "No")
+                'Time (min)', tmin, tmax, 'Concentration\n(fraction of total)', 0., MaxY, "center right", "A", LineStyleListInverted = "No")
 
     #elif ZoomInPanelA=="Yes":
     #    ax1 = plt.subplot(321)
@@ -310,27 +310,27 @@ def PlotTrajectories(self, ModifyKset="No", ParamsToBeModif={}, TimeOfMod=vorl, 
     #SubPlot(ax2, self.t, [[r"SK", self.S], [r"SK$^*$", self.Ss]],
     #        'Time (min)', tmin, tmax, 'Concentration (nM)', 0., 120., "center right", "B", LineStyleListInverted = "Yes")
     SubPlot(ax2, self.t, [[r"SK", Srescaled], [r"SK$^*$", Ssrescaled]],
-            'Time (min)', tmin, tmax, 'Concentration (a.u.)', 0., 120./SetOfReferenceValuesForPlotting["SK"], "center right", "B", LineStyleListInverted = "Yes")
+            'Time (min)', tmin, tmax, 'Concentration\n(fraction of total)', 0., 120./SetOfReferenceValuesForPlotting["SK"], "center right", "B", LineStyleListInverted = "Yes")
 
     ax3 = plt.subplot(323)
     ax3.set_title("Heat Shock Factor", fontsize = "small")
     SubPlot(ax3, self.t, [[r"HSF", Frescaled], [r"HSF$^*$", Fsrescaled]],
-            'Time (min)', tmin, tmax, r'Concentration (a.u.)', 0, 0, "center right", "C", LineStyleListInverted = "Yes")
+            'Time (min)', tmin, tmax, 'Concentration\n(a.u.)', 0, 0, "center right", "C", LineStyleListInverted = "Yes")
 
     ax4 = plt.subplot(324)
     ax4.set_title("Gene", fontsize = "small")
     SubPlot(ax4, self.t, [[r"G", Grescaled], [r"HSF$^*$G", FsGrescaled], [r"HSFG", FGrescaled]],
-            'Time (min)', tmin, tmax, 'Concentration (a.u.)', 0, 0, "center right", "D", LineStyleListInverted = "Yes")
+            'Time (min)', tmin, tmax, 'Concentration\n(fraction of total)', 0, 0, "center right", "D", LineStyleListInverted = "Yes")
 
     ax5 = plt.subplot(325)
     ax5.set_title("mRNA", fontsize = "small")
     SubPlot(ax5, self.t, [[r"mR$_{F}$", RFrescaled], [r"mR$_{HP}$", RHPrescaled]],
-            'Time (min)', tmin, tmax, r'Concentration (a.u.)', 0, 0, "center right", "E", LineStyleListInverted = "Yes")
+            'Time (min)', tmin, tmax, 'Concentration\n(a.u.)', 0, 0, "center right", "E", LineStyleListInverted = "Yes")
 
     ax6 = plt.subplot(326)
     ax6.set_title("Heat Shock Protein", fontsize = "small")
     SubPlot(ax6, self.t, [[r"HP", HPrescaled]],
-            'Time (min)', tmin, tmax, r'Concentration (a.u.)', 0, 0, "center right", "F", LineStyleListInverted = "No")
+            'Time (min)', tmin, tmax, 'Concentration\n(a.u.)', 0, 0, "center right", "F", LineStyleListInverted = "No")
 
     for ax in [ax1, ax2, ax3, ax4, ax5, ax6]:
         MakeGrayBackgroundTemperature(ax, self.timeset, self.TparamSet)
@@ -773,11 +773,11 @@ def FuncTimeCourseVsDataPlotAllInOne(self):
     #ax1.plot(self.t, Y, 'blue', linewidth=1., label="HP")
     ax1.plot(self.t, Yrescaled, 'black', linewidth=2., label="HP, simulation")
     ax1.set_xlim(0. - 5., (self.timeset.CurrentParams["t_stop"] - vorl) / 60.)
-    ax1.set_xlabel('Time (min)', fontsize="small")
+    ax1.set_xlabel('Time (min)', fontsize="medium")
     ax1.set_ylim(0., 7.0/SetOfReferenceValuesForPlotting["HSP"]) # 5.5
     #ax1.set_ylabel(r'Heatshock protein (mM)', fontsize="small")
-    ax1.set_ylabel(r'Heatshock protein (a.u.)', fontsize="small")
-    ax1.legend(loc='upper left', fontsize="small", fancybox=True)
+    ax1.set_ylabel(r'Concentration of Heatshock protein (a.u.)', fontsize="medium")
+    ax1.legend(loc='upper left', fontsize="medium", fancybox=True)
     AddLetterToSubplot(ax1, "A", -0.25, 1.055)
 
     ax2 = ax2 = ax1.twinx()#plt.subplot(122)
@@ -799,9 +799,9 @@ def FuncTimeCourseVsDataPlotAllInOne(self):
 
     ax2.set_xlim(0. - 5., (self.timeset.CurrentParams["t_stop"] - vorl) / 60.)
     ax2.set_ylim(-1.6, 1.6)
-    ax2.set_xlabel('Time (min)', fontsize="small")
-    ax2.set_ylabel('z-score', fontsize="small")
-    ax2.legend(loc='lower right', numpoints=1, fontsize="small", fancybox=True)
+    ax2.set_xlabel('Time (min)', fontsize="medium")
+    ax2.set_ylabel('z-score', fontsize="medium")
+    ax2.legend(loc='lower right', numpoints=1, fontsize="medium", fancybox=True)
     AddLetterToSubplot(ax2, "B", -0.25, 1.055)
 
     PlotAndSave(fig7, "TimeCoruseData_" + self.name, "PS", 1, 0)
@@ -839,7 +839,7 @@ def FuncTimeRunPlusARS(self):
 
     ax1 = plt.subplot(221)
     SubPlot(ax1, self.t, [["", RHP_ARS_rescaled]],
-            'Time (min)', 0., (self.timeset.CurrentParams["t_stop"] - vorl) / 60., 'mRNA for ARS enzyme ($\mu$M)', 0.,
+            'Time (min)', 0., (self.timeset.CurrentParams["t_stop"] - vorl) / 60., 'Concentration of mRNA for ARS enzyme ($\mu$M)', 0.,
             0., "center right", "A")
     #SubPlot(ax1, self.t, [["", self.RHP_ARS]],
     #        'Time (min)', 0., (self.timeset.CurrentParams["t_stop"] - vorl) / 60., 'mRNA for ARS enzyme ($\mu$M)', 0.,
@@ -981,7 +981,7 @@ def FuncTimeRunPlusARSdoubleHSMOD(self, EmptyListToBeFilled, AvoidPlots, MyLines
         #ax2 = plt.subplot(122)
         DataSubPlot(ax, DataTimeArMOD, ListOfOutputArrays/MAX, 'Time (min)', 0.,
                     (self.timeset.CurrentParams["t_stop"] - vorl)/60.,r"Normalized ARS enzyme activity", 0., 1., "lower right",
-                    Legend, "B", Legendfontsize="small", MyLinestyle='None')
+                    Legend, "B", Legendfontsize="medium", MyLinestyle='None', ncolumns=2)
         # r"ARS enzyme activity (nmol $\alpha$-naphtol/mg protein $\cdot$ h)"
 
         PlotAndSave(fig9, "HeatShockARSExpDoubleHS_" + self.name, "PS", 1, 1)

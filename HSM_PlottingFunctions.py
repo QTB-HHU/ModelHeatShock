@@ -13,7 +13,7 @@ def AddLetterToSubplot(ax, SubPlotLabel, Xmultiplyer, Ymultiplyer):
 
 
 def SubPlot(ax, time, ArraysToPlot, xLabel, xMin, xMax, yLabel, yMin, yMax, LegendPosition, SubPlotLabel,
-            Legendfontsize="x-small", Legendfancybox=True, UsePointMarker="No", LineStyleListInverted="No", Black="No"):
+            Legendfontsize="small", Legendfancybox=True, UsePointMarker="No", LineStyleListInverted="No", Black="No"):
     ColorsList = ['red', 'blue', 'green', 'black', 'orange', 'gray', 'violet', 'yellow', 'cyan', 'chartreuse']
 
     if LineStyleListInverted == "No":
@@ -39,14 +39,14 @@ def SubPlot(ax, time, ArraysToPlot, xLabel, xMin, xMax, yLabel, yMin, yMax, Lege
     ax.set_xlim(xMin, xMax)
     if (yMin - yMax) != 0:
         ax.set_ylim(yMin, yMax)
-    ax.set_xlabel(xLabel, fontsize="x-small")
-    ax.set_ylabel(yLabel, fontsize="x-small")
+    ax.set_xlabel(xLabel, fontsize="small")
+    ax.set_ylabel(yLabel, fontsize="small")
     AddLetterToSubplot(ax, SubPlotLabel, -0.2, 1.065)
     ax.legend(loc=LegendPosition, numpoints=1, fontsize=Legendfontsize, fancybox=Legendfancybox)
 
 
 def DataSubPlot(ax, time, ListOfOutputArrays, xLabel, xMin, xMax, yLabel, yMin, yMax, LegendPosition, DataLegendList,
-                SubPlotLabel, Legendfontsize="x-small", Legendfancybox=True, Black = "No", MyLinestyle='-'):
+                SubPlotLabel, Legendfontsize="small", Legendfancybox=True, Black = "No", MyLinestyle='-', ncolumns=1):
     MarkersList = [ ".", "o", "s", "^", "v", ">", "<", ",",]
     ColorsList = ['red', 'blue', 'green', 'black', 'orange', 'gray', 'violet', 'yellow', 'cyan']
     if Black == "Yes":
@@ -56,14 +56,14 @@ def DataSubPlot(ax, time, ListOfOutputArrays, xLabel, xMin, xMax, yLabel, yMin, 
                 label=DataLegendList[k - 1], markersize = 10, linestyle = MyLinestyle)
     ax.set_xlim(xMin, xMax)
     ax.set_ylim(yMin, yMax)
-    ax.set_xlabel(xLabel, fontsize="medium")
-    ax.set_ylabel(yLabel, fontsize="medium")
+    ax.set_xlabel(xLabel, fontsize="large")
+    ax.set_ylabel(yLabel, fontsize="large")
     AddLetterToSubplot(ax, SubPlotLabel, -0.25, 1.055)
-    ax.legend(loc=LegendPosition, numpoints=1, fontsize=Legendfontsize, fancybox=Legendfancybox)
+    ax.legend(loc=LegendPosition, numpoints=1, fontsize=Legendfontsize, fancybox=Legendfancybox, ncol=ncolumns)
 
 
 def DataSubPlotMOD(ax, time, ListOfOutputArrays, xLabel, xMin, xMax, yLabel, yMin, yMax, LegendPosition, DataLegendList,
-                SubPlotLabel, Legendfontsize="x-small", Legendfancybox=True, ColorNumber=0):
+                SubPlotLabel, Legendfontsize="small", Legendfancybox=True, ColorNumber=0):
     MarkersList = [ "o", "s", "^", "v", ">", "<", ",", "."]
     ColorsList = ['red', 'blue', 'green', 'orange', 'gray', 'violet', 'yellow', 'cyan']
     for k in range(1, len(ListOfOutputArrays)):
@@ -71,8 +71,8 @@ def DataSubPlotMOD(ax, time, ListOfOutputArrays, xLabel, xMin, xMax, yLabel, yMi
                 label=DataLegendList[k - 1], markersize = 12)
     ax.set_xlim(xMin, xMax)
     ax.set_ylim(yMin, yMax)
-    ax.set_xlabel(xLabel, fontsize="medium")
-    ax.set_ylabel(yLabel, fontsize="medium")
+    ax.set_xlabel(xLabel, fontsize="large")
+    ax.set_ylabel(yLabel, fontsize="large")
     AddLetterToSubplot(ax, SubPlotLabel, -0.25, 1.055)
     ax.legend(loc=LegendPosition, numpoints=1, fontsize=Legendfontsize, fancybox=Legendfancybox)
 

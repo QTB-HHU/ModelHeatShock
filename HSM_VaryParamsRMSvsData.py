@@ -215,12 +215,12 @@ def PlotSimulationVsDataFeedingModelVSFittedData(SimulationFeedingControlsDataRM
 
         DataLegend = [r"Data Control " + DictionaryForLegend[key] + " Exp."]
         DataSubPlotMOD(ax1, ListOfDataTimes[key], [ListOfDataTimes[key], np.asarray(ListOfDataHSFNORM)], 'Time (min)', 0.,
-                    (timesetDataRMS.CurrentParams["t_stop"] - vorl) / 60., r"mRNA$_{HSF}$ (Normalizet to Max)", 0., 1.,  "upper right", DataLegend, "",
+                    (timesetDataRMS.CurrentParams["t_stop"] - vorl) / 60., r"Concentration of mRNA$_{HSF}$ (normalized to max)", 0., 1.,  "upper right", DataLegend, "",
                     Legendfontsize="small", Legendfancybox=True, ColorNumber = i)
 
         DataLegend = [r"Data Control " + DictionaryForLegend[key] + " Exp."]
         DataSubPlotMOD(ax2, ListOfDataTimes[key], [ListOfDataTimes[key], np.asarray(ListOfDataHSP90aNORM)], 'Time (min)', 0.,
-                    (timesetDataRMS.CurrentParams["t_stop"] - vorl) / 60., r"mRNA$_{HSP}$ (Normalizet to Max)", 0., 1.,  "upper right", DataLegend, "",
+                    (timesetDataRMS.CurrentParams["t_stop"] - vorl) / 60., r"Concentration of mRNA$_{HSP}$ (normalized to max)", 0., 1.,  "upper right", DataLegend, "",
                     Legendfontsize="small", Legendfancybox=True, ColorNumber = i)
     
         i = i+1

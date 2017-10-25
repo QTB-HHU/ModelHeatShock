@@ -30,7 +30,7 @@ if __name__ == '__main__':
     MyNumberOfRandomSets = 2
     MCrandomScanParamSpaceRMS = "No"
     GradientSearchRMS = "No"
-    ComputeRMSfinalParamSet = "No"
+    ComputeRMSfinalParamSet = "Yes"
     # PART II: Simulations of HSR and Data comparison (main figures paper)
     HS_Response = "Yes"
     Time_Course_Data = "Yes"
@@ -174,12 +174,12 @@ if __name__ == '__main__':
         print("\nSTARTING TO PLOT RMS VALUES...\n")
 
         #FileNameManyParamsSetsRMS = FolderContainingCsvFiles + 'OutputFileRMSmanyParamsSets.csv'
-        FileNameManyParamsSetsRMS = FolderContainingCsvFiles + 'aaa.csv'
+        FileNameManyParamsSetsRMS = FolderContainingCsvFiles + 'InterestingListsOfParamsSets/OutputFile100000.csv'#'aaa.csv'
         # FolderContainingCsvFiles + 'OutputFileRMSmanyParamsSets.csv'                           
         # 'InterestingListsOfParamsSets/OutputFile100000.csv'                                    
         # 'InterestingListsOfParamsSets/OutputFileKparams1by1.csv'                               
 
-        FileNameKeysNamesParamsSets = FolderContainingCsvFiles + 'OutputFileKeys.csv'          
+        FileNameKeysNamesParamsSets = FolderContainingCsvFiles + 'InterestingListsOfParamsSets/OutputFileKeys100000.csv'#'OutputFileKeys.csv'          
         # FolderContainingCsvFiles + 'OutputFileKeys.csv'                                      
         # 'InterestingListsOfParamsSets/OutputFileKeys100000.csv'                               
         # 'InterestingListsOfParamsSets/OutputFileKeys1by1.csv'    
@@ -326,7 +326,7 @@ if __name__ == '__main__':
     if Schmollingen_Data == "Yes":
         print("\nSTARTING TO Simulate experiments Schmollingen 2013 and compare with DATA...\n")
         TsetSchmol2013data = ParametersSet({"Ttype": 1, "Tin": 25., "Tup": 40., "tau": 5., "ta": 0. * 60. + vorl})
-        Ylegend = r'mRNA$_{F}$ ($\%$ of maximum)'
+        Ylegend = r'Concentration of mRNA$_{F}$ ($\%$ of maximum)'
         NameOfFigure = "RF"
 
         ############ Simulate feeding with STAUROSPORINE experiment and compare with DATA  ###########
@@ -342,9 +342,9 @@ if __name__ == '__main__':
         DataFileName = "DataFiles/DataSchmol2013StaurFig1B1.dat"
 
         # Plot settings
-        ModelLegend = [r"k$_F$' = %r" % ListOfKvaluesSTAURMOD[0] + "% of k$_F$'$_{nominal}$", r"k$_F$' = %r"
-                       % ListOfKvaluesSTAURMOD[1] + "% of k$_F$'$_{nominal}$",
-                       r"k$_F$' = %r" % ListOfKvaluesSTAURMOD[2] + "% of k$_F$'$_{nominal}$"]
+        ModelLegend = [r"k$_F$' = %r" % ListOfKvaluesSTAURMOD[0] + "% of k$_F$' nominal", r"k$_F$' = %r"
+                       % ListOfKvaluesSTAURMOD[1] + "% of k$_F$' nominal",
+                       r"k$_F$' = %r" % ListOfKvaluesSTAURMOD[2] + "% of k$_F$' nominal"]
         DataLegend = [r"Control", r"+ Staur $20$ nM", r"+ Staur $1$ $\mu$M"]
         LegendPosition = "upper right"
 
@@ -371,9 +371,9 @@ if __name__ == '__main__':
 
         # Plot settings
         ModelLegend = [r"$k_{P}$ = %r"
-                       % ListOfKvaluesRADMOD[0] + "% of $k_{Pnominal}$", r"$k_{P}$ = %r"
-                       % ListOfKvaluesRADMOD[1] + "% of $k_{Pnominal}$",
-                       r"$k_{P}$ = %r" % ListOfKvaluesRADMOD[2] + "% of $k_{Pnominal}$"]
+                       % ListOfKvaluesRADMOD[0] + "% of $k_{P}$ nominal", r"$k_{P}$ = %r"
+                       % ListOfKvaluesRADMOD[1] + "% of $k_{P}$ nominal",
+                       r"$k_{P}$ = %r" % ListOfKvaluesRADMOD[2] + "% of $k_{P}$ nominal"]
         DataLegend = [r"Control", r"+ Radicicol $10$ $\mu M$", r"+ Radicicol $100$ $\mu M$"]
         LegendPosition = "upper right"
 
