@@ -68,13 +68,14 @@
     \maketitle
     \begin{abstract}
 Global warming is exposing plants to more sever heat stress, with consequent crop yield reduction. 
-Organisms exposed to large temperature increases protect themselves typically with a heat shock response (HSR), 
+Organisms exposed to large temperature increases protect themselves typically with a heat shock response (HSR)  
 where accumulation of unfolded proteins
-initiates the synthesis of heat shock proteins through the heat shock transcription factor HSF1. 
-While the molecular mechanisms are qualitatively well characterized, our quantitative understanding of the underlying dynamics is still very limited. 
+initiates the synthesis of heat shock proteins (HSPs) 
+through the heat shock transcription factor HSF1. 
+While the molecular mechanisms are qualitatively well characterized, our quantitative understanding of the underlying dynamics is still limited.  
 Here we study the HSR in the photosynthetic model organism \emph{Chlamydomonas reinhartii} by 
 a data driven mathematical model describing the dynamics of the HSR. 
-The dynamical model is mostly based on mass-action kinetics with a few non-linear terms, parameterized by several experimental data-sets and validated by independent data-sets. By comparing the HSRs in typical laboratory conditions with abrupt high temperature increases to more natural, smooth temperature variations we show that the HSR in \emph{Chlamydomonas reinhardtii} is adapted to natural conditions in which cells accumulate only negligible amounts of misfolded proteins. Thus, quantitatively the HSR differs substantially if an increase in temperature of the same magnitude occurs in natural or in laboratory conditions. The mathematical model we introduce allows simulations of the HSR under various conditions, thus complementing the current experimental approaches.
+The dynamical model is mostly based on mass-action kinetics with a few non-linear terms inferred from literature, parameterized by several experimental data-sets and validated by independent test data sets. Comparing HSRs in typical lab conditions with abrupt high temperature increases to more natural, smooth temperature variations shows that the HSR  in \emph{Chlamydomonas reinhardtii} is adapted to natural conditions in which cells accumulate only negligible amounts of misfolded proteins.
 %we show the ability of the system to adapt to temperatures higher than usual 
 %during heat shocks longer than three hours 
 %by shifting to a new steady state. We study how the steady state concentrations depend on the temperature %at which the steady state is reached. 
@@ -89,7 +90,7 @@ The dynamical model is mostly based on mass-action kinetics with a few non-linea
 %We further propose an extension of the model to describe how the HSR could be elicited also by light in \emph{C. reinhartii} through an independent regulatory pathway. 
     \end{abstract}
     \vspace{0.2cm}
-    \keywords{heat shock response, dynamical modelling, Chlamydomonas reinhardtii, heat shock proteins, natural temperature variation, mathematical model}
+    \keywords{heat shock response, dynamical modelling, Chlamydomonas reinhardtii, heat shock proteins}
     \vspace{1cm}
   \end{@twocolumnfalse}
   ]
@@ -108,7 +109,7 @@ with a heat shock response (HSR), which to a certain degree allows adaptation to
 %, usually an heat shock response takes place, which allows the organism to react to the new conditions, up to some extent. 
 However, while the HSR has been %investigated by means of a 
 considerably investigated experimentally, the complementary theoretical activities %involving mathematical modelling 
-until now have been rather limited. In this work we seek to remove this gap by developing a mathematical model of the HSR in the photosynthetic model organism \emph{Chlamydomonas reinhardtii} and investigate in particular the response dynamics under different experimental conditions. By this mathematical approach to the study of the HSR in \emph{Chlamydomonas reinhardtii} we show that at the quantitative level the HSR differs substantially if an increase in temperature of the same magnitude occurs in natural or in laboratory conditions.
+until now have been rather limited. In this work we address this gap by developing a mathematical model of the HSR in the photosynthetic model organism \emph{Chlamydomonas reinhardtii} and investigate in particular the response dynamics under different experimental conditions.
 
 %, FIXME:FIXED need REF). 
 %In plants, the situation is more complex than in other organisms due to the additional presence of the plastide, whit its content of proteins and the number of reactions which take place into it, from which the importance of studying the HSR directly in plants.
@@ -488,9 +489,9 @@ The fiducial parameter set has a RMS w.r.t. the controls of the feeding experime
 %}
 %\label{figure2}
 %\end{figure}
-We select only the best $5\%$ (out of 100000) of the parameters sets, those corresponding to the lowest values of the RMS, 
+We select only the best $5\%$ of the parameters sets, those corresponding to the lowest values of the RMS, 
 %(which then range between $0.130$ and $0.149$). 
-and we show the best 300 (out of these 5000) in Fig.~\ref{Figure2label}~C (for each of the 20 parameters separately) the values of the RMS versus the value of each parameter. 
+and we show in Fig.~\ref{Figure2label}~C (for each of the 20 parameters separately) the values of the RMS versus the value of each parameter. 
 
 We observe that for the vast majority of the parameters no preferred interval in which the lowest values of the RMS occur more often can be identified. % Very low values of the RMS can occur almost everywhere in the interval used for the random scan. 
 %We subsequently studied the correlation between each couple of parameters, by plotting the RMS of each of these 5000 parameters sets as function of each couple of parameters (Fig.~\ref{figure2} of the Supplementary Material). We found that only seldom there is clear correlation or anti-correlations between the preferred values for the two parameters of the couple. Nevertheless, for the majority of the couples of parameters no such correlation can be identified. 
@@ -843,10 +844,6 @@ To investigate how the maximum concentration of unfolded proteins accumulated du
 We screened for various values of   $\tau$ as shown  in Fig.~\ref{Figure4label}~I. We observed that for an instantaneous increase in temperature, up to increases which requires about 1 minute (similar to those provided to cells during experiments), the maximum value of the degenerated protein concentration  does not change, and exhibits a very large value. For $\tau$ between about 1 minute and 100 minutes there is a steep fall, and another plateau is reached for $\tau$ bigger than about 100 minutes. These are the time-scales which a $Chlamydomonas$ cell is more likely to experience for an increase of temperature in natural conditions. The accumulated concentration of HSP is much lower than for shorter times $\tau$ pointing to an adaptation of the  HSR dynamics to natural temperature variations %More general, we see that the system we modeled is able, for slow temperature increases, to prevent the accumulation of unfolded proteins in high concentrations. 
 (notice that the scale on the horizontal axis of Fig.~\ref{Figure4label}~I is logarithmic).
 
-One of the main advantages of a mathematical model, inferred and calibrated from experiments, is that it allows to simulate situations that are difficult to test with experiments and to compute quantities difficult to measure. To outline the potential of our model, we emploied it to simulate sistematically further situations. 
-We have been able, as described in Section~\ref{SecAcclimation}, to show the ability of the system to adapt to temperatures higher than usual during heat shocks longer than three hours by shifting to a new steady state. Two distinct phases are clearly visible in Fig.~\ref{Figure8label}~(A-F): an early HS lasting for about the first $3$ h, and a late HS in which the system shows adaptation (a new steady state is reached). 
-We have subsequently studied in Section~\ref{SecSteadyStateConcentrations} how the steady state concentrations depend on the temperature at which the steady state is reached. As shown in Fig.~\ref{Figure8label}~(G-L), for not too high temperatures the concentration of unfolded proteins $\left[P^\#\right]$ is kept very close to zero. On the other hand, for too high temperatures the HSR cannot prevent the accumulation of degenerated proteins and the cell dies. 
-We have finally been able to systematically investigate how the accumulation of HSPs depends on the combination of temperature and duration of the heat shock in Section~\ref{SecTradeOff}, and to illustrate which is the trade-off between the two (Fig.~\ref{Figure8label}~M). 
 
 
 
@@ -872,7 +869,6 @@ We have finally investigated the system response to a smooth and more natural va
 We have finally studied how the maximal concentration of unfolded proteins reached during HS depends on the time $\tau$ of temperature increase from the minimal to the maximal value (Fig.~\ref{Figure4label}~I). This systematic investigation has shown that  for any time $\tau$ shorter than about 1 minute (i.e. a sharp increase in temperature) the maximal concentration of unfolded proteins is about twenty times higher than for  times longer than about 100 minutes. This further confirms that the HSR of \emph{Chlamydomonas reinhartii} is able to keep the concentration of unfolded proteins at much lower levels  if the increase in temperature occurs on a time scale of the order of hundreds of minutes  rather than in the case of the sharp increases as  usually done in experiments. %These findings are of rather general validity for plants due to the conservation of the HSR among species. 
 %Finally, in Section~\ref{SectionLightActivation} we have motivated a possible extension of our model which aims at including the activation of the HSR by a shift from dark to light of the cells.
 This shows that the HSR of \emph{Chlamydomonas reinhartii} is indeed adapted to natural temperature variations due to a match of the intrinsic time scale of the HSR system, which could be easily tested in experiments.
-Moreover, as we have shown with several applications, our model provides a framework to explore further situations of interest and to generate new hypothesis to be tested by exeriments.
 
 %(FIXME: the following section arises from the merging of 2 sections, an outlook describing how the model can be extended to include light activation, and the conclusions, thus needs to be shortened and smoothened.) 
 %\section{Outlook: a possible extension of the model to include light activation of the HSR}
@@ -1341,7 +1337,7 @@ Finally, the basal rates are computed as $p_{RFbasal} = d_{RF} \cdot d_{F} \cdot
     \text{HSP}      & 10000 \text{ $\mu$M}  \\
 \bottomrule
 \end{array}\]
-\caption{ \textbf{Reference values employed for the normalization of model's variables.} For Proteins, SKs and Genes the variables are rescaled using the corresponding conserved quantity of Table~\ref{TabODEs}.}\label{TabRefVal}
+\caption{ \textbf{Reference values used to rescale model's variables to arbitrary units (a.u.).} For Proteins, SKs and Genes the variables are rescaled using the corresponding conserved quantity of Table~\ref{TabODEs}.}\label{TabRefVal}
 \end{table}
 
 
@@ -1422,10 +1418,10 @@ The fiducial parameter set has a RMS w.r.t. the controls of the feeding experime
 %\label{figure2}
 %\end{figure}
 
-We then select the $5\%$ (out of 100000) of the points corresponding to the best (i.e. lowest) values of the RMS (which then range between $0.130$ and $0.149$). 
+We then select the $5\%$ of the points corresponding to the best (i.e. lowest) values of the RMS (which then range between $0.130$ and $0.149$). 
 By plotting for these points the value of the RMS versus the value of each parameter (as shown in Fig.~\ref{Figure2label}~C for the 20 parameters), we observe that for the vast majority of the parameters no preferred interval in which the lowest values of the RMS occur more often can be identified. Very low values of the RMS can occur everywhere in the interval used for the random scan, depending on the values assumed by the other parameters. 
 
-We subsequently studied the correlation between each couple of parameters, by plotting the RMS of each of the best 300 of these 5000 parameters sets as function of each couple of parameters (Fig.~\ref{Figure5label} of the Supplementary Material). We found that only seldom there is clear correlation or anti-correlations between the preferred values for the two parameters of the couple. Nevertheless, for the majority of the couples of parameters no such correlation can be identified. 
+We subsequently studied the correlation between each couple of parameters, by plotting the RMS of each of these 5000 parameters sets as function of each couple of parameters (Fig.~\ref{Figure5label} of the Supplementary Material). We found that only seldom there is clear correlation or anti-correlations between the preferred values for the two parameters of the couple. Nevertheless, for the majority of the couples of parameters no such correlation can be identified. 
 
 Moreover the parameter set which provides the best RMS among this randomly generated set (i.e. the isolated point at the bottom of Fig.~\ref{Figure5label}) turns out to be not a viable one, because if used to run the simulations of other situations as for instance the double HS, it provides to the model a behaviour qualitatively different from what is observed in the experiments.
 
@@ -1544,14 +1540,14 @@ Finally, we verified that in the gradient search performed in the previous secti
 
 
 
-\section{Supplementary Material: in-depth characterization of the double heat shock}
+\section{Supplementary Material: further study of the double heat shock}
 
 In this section we present some additional simulations which illustrate extensively the features of the response to a double heat shock, and next we explain how we have extended our model to simulate the double HS experiments performed in \cite{Schroda2000}.
 
 
 
 
-\subsection{Simulating the double HS experiments to inverstigate their main features}
+\subsection{Further simulations of double HS experiments to illustrate their main features}
 \label{Sec2HSsimulations}
 
 We present in Fig.~\ref{Figure7label} four groupes of figures which illustrate how the HSR dynamics changes when we simulate a generic double heat shock experiment, providing to the system two HSs at a distance of $30$ min (A-F), $2$ h (G-L), $3$ h $30$ min (M-R) and $5$ h (S-X). For this simulation we employ a sudden variation of the temperature between 25°C and 42°C.
@@ -1667,7 +1663,7 @@ Despite these simplifications, the qualitative agreement between simulation and 
 
 
 
-\section{Supplementary Material: Steady state characterization and further applications of the model}
+\section{Supplementary Material: Additional Results}
 \label{SectionFurtherPredictions}
 
 One of the main advantages of a mathematical model, inferred and calibrated from experiments, is that it allows to simulate situations that are difficult to test with experiments and to compute quantities difficult to measure.
@@ -1814,7 +1810,7 @@ We can conceptually divide the plot in four regions (from left to right). No mat
 
 \subsection{Discussion of additional results}
 
-We ave shown in Section~\ref{SecAcclimation} that the system can adapt to higher temperatures during heat shocks longer than three hours, by shifting to a new steady state. Two distinct phases are clearly visible: an early HS lasting for about the first $3$ h, and a late HS in which the system shows adaptation (a new steady state is reached). The recovery phase is characterized by a recovery of the conditions pre-HS that occurs over several hours. 
+We have shown in Section~\ref{SecAcclimation} that the system can adapt to higher temperatures during heat shocks longer than three hours, by shifting to a new steady state. Two distinct phases are clearly visible: an early HS lasting for about the first $3$ h, and a late HS in which the system shows adaptation (a new steady state is reached). The recovery phase is characterized by a recovery of the conditions pre-HS that occurs over several hours. 
  
 We have studied in Section~\ref{SecSteadyStateConcentrations} the variation of the steady state concentrations w.r.t. changes in the temperature. The concentrations of HP, as well as of the mRNAs, increase with increasing temperature, but for not too high temperatures the concentration of unfolded proteins $\left[P^\#\right]$ is kept very close to zero, in particular well below $1\%$ of the total amount of proteins $\left[P\right] + \left[P^\#\right]$. For temperatures too high the HSR cannot prevent the accumulation of degenerated proteins and the cell dies.
 
