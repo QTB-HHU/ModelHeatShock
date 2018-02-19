@@ -504,8 +504,14 @@ that the model is able to realistically describe the HSR.
 %As a consequence, simplified models usually possess a more generic character, because
 %the heat shock response may differ in details from organism to organism, but as long as
 %the basic principles are conserved, our model serves as a generic theoretical description that can %easily be adapted.
+%All the 20 free parameters of the model were manually tuned, as we stated e.g. in the next phrase, page 4 left column lines 16-18. For some of them it is nevertheless possible to estimate reasonable ranges from data bases as e.g. Bionumbers (Milo2010). In particular, we ensured to keep the rate constants $k_P$, $k_{FG}$ and $k_{F^*G}$ in a range lower than the diffusion controlled limit of enzymatic reaction rate estimated to be within $10^2$ and $10^3$ $(\mu M s)^{-1}$ according to (BNID 103916), where it is stated that “no promoter-association rate exceeding the 3D-diffusion limit (~10^8–10^9 M^−1×s^−1) has ever been reported”. We further select a value for $k_{F^*G}$ with the same order of magnitude of the activator association rate reported in (BNID 106521). 
 A general challenge in modelling biological systems is the identification of system parameters because often these are not directly accessible experimentally. In particular,
-most of the twenty rate constants listed in Supplementary Table~\ref{TabKs}  are not explicitly known although for some of them a reasonable range can be estimated from data bases (\cite[BNID 103916, 106521, 105408]{Milo2010}). %This again
+\textcolor{blue}{the twenty rate constants listed in Supplementary Table~\ref{TabKs} are not explicitly known although for few of them a reasonable range can be estimated from data bases. In particular, we ensured to keep the rate constants $k_P$, $k_{FG}$ and $k_{F^*G}$ in a range lower than the diffusion controlled limit of enzymatic reaction rate estimated 
+% to be within $10^2$ and $10^3$ $(\mu M s)^{-1}$ (
+in \cite[BNID 103916]{Milo2010}. We further select a value for $k_{F^*G}$ with the same order of magnitude of the activator association rate reported in (\cite[BNID 106521]{Milo2010}). 
+%(\cite[BNID 103916, 106521, 105408]{Milo2010}). 
+Keeping this information into consideration, we first manually tuned all the parameters to reproduce the qualitative behaviour of the experimental data.} 
+%This again
 %supports the development of a simplified model, attempting to reduce the number of unknown 
 %model parameters as much as possible to facilitate a reasonable model calibration procedure, 
 %while maintaining the essential structural system properties. 
@@ -516,14 +522,12 @@ most of the twenty rate constants listed in Supplementary Table~\ref{TabKs}  are
 %and manually fit these parameters to qualitatively fit experimental data. In a subsequent step, explained in more detail in Section~\ref{SecCalibration}, this
 %initial manual fit was refined to optimise the reproduction of the data used for calibration, resulting in the parameter set presented in Table~\ref{TabKs} of the Supplementary Material. 
 %To find plausible and realistic parameters, w
-Based on these ranges 
-we first manually tuned the parameters to reproduce the qualitative behaviour of the experimental data.
 These parameters are referred to as the "fiducial parameter set", reported in the second column of the Supplementary Table~\ref{TabKs}.
 %The fact that a very reasonable fit to experimental data could be achieved with a straight-forward
 %manual fit relies on the simplicity of the model structure and the concomitant fundamental
 %understanding of the effects of the single parameters on the model behaviour. 
 We then used this fiducial parameter set as a starting point for a
-deeper investigation of the parameter space. For this we divided the experimental data available from the literature in two
+deeper investigation \textcolor{blue}{of the parameter space represented by the 20 rate constants.} For this we divided the experimental data available from the literature in two
 groups, one used to calibrate the model and the other to validate the model. The  data used for calibration comprises the controls of feeding
 experiments performed in Schmollinger et al.~\cite{Schmollinger2013} compromising six time course curves
 of HSF1 mRNA concentration, and six curves for the mRNA coding for HSP90A under HS and no inhibitor treatment. These data are shown in Fig.~\ref{Figure2label}~(A,B). 
@@ -1393,14 +1397,14 @@ Let us remark that the values of the variables are initiated at the initial cond
  \nu_P'       = k_{P}' \cdot [P] \cdot \omega_{TP}                            & P \rightarrow P^\#              \\
  \nu_S        = k_S \cdot [SK^*]                                              & SK^* \rightarrow SK             \\
  \nu_S'       = k_{S}' \cdot [SK] \cdot \omega_{PS}                            & S+P^\# \rightarrow SK^*+P^\#    \\
- \nu_F'       = k_{HSF}' \cdot [HSF] \cdot \frac{[SK^*]}{1+[SK^*]}            & HSF+SK^* \rightarrow HSF^*+SK^* \\
- \nu_F        = k_{HSF} \cdot [HSF^*]                                         & HSF^* \rightarrow HSF           \\    
- \nu_{HSFG}'  = k_{HSFG}' \cdot [HSFG]                                        & HSFG \rightarrow HSF + G        \\
- \nu_{HSFG}   = k_{HSFG} \cdot [G] \cdot [HSF]                                & HSF + G \rightarrow HSFG        \\ 
- \nu_{HSF^*G} = k_{HSF^*G} \cdot [G] \cdot [HSF^*]                            & HSF^* + G \rightarrow HSF^*G    \\ 
- \nu_{F^*G}'  = k_{HSF^*G}' \cdot [HSF^*G]                                    & HSF^*G \rightarrow HSF^* + G    \\
- \nu_{HSF^*}' = k_{HSF^*}' \cdot [HSF^*G]                                     & HSF^*G \rightarrow HSFG         \\
- \nu_{HSF^*}  = k_{HSF^*} \cdot [HSFG]                                        & HSFG \rightarrow HSF^*G         \\
+ \nu_F'       = k_{\textcolor{blue}{F}}' \cdot [HSF] \cdot \frac{[SK^*]}{1+[SK^*]}            & HSF+SK^* \rightarrow HSF^*+SK^* \\
+ \nu_F        = k_{\textcolor{blue}{F}} \cdot [HSF^*]                                         & HSF^* \rightarrow HSF           \\    
+ \nu_{HSFG}'  = k_{\textcolor{blue}{F}G}' \cdot [HSFG]                                        & HSFG \rightarrow HSF + G        \\
+ \nu_{HSFG}   = k_{\textcolor{blue}{F}G} \cdot [G] \cdot [HSF]                                & HSF + G \rightarrow HSFG        \\ 
+ \nu_{HSF^*G} = k_{\textcolor{blue}{F}^*G} \cdot [G] \cdot [HSF^*]                            & HSF^* + G \rightarrow HSF^*G    \\ 
+ \nu_{F^*G}'  = k_{\textcolor{blue}{F}^*G}' \cdot [HSF^*G]                                    & HSF^*G \rightarrow HSF^* + G    \\
+ \nu_{HSF^*}' = k_{\textcolor{blue}{F}^*}' \cdot [HSF^*G]                                     & HSF^*G \rightarrow HSFG         \\
+ \nu_{HSF^*}  = k_{\textcolor{blue}{F}^*} \cdot [HSFG]                                        & HSFG \rightarrow HSF^*G         \\
  \pi_{RF}     = k_{\pi_{RF}} \cdot [HSF^*G]                                   & HSF^*G: HSF^*G + mRF            \\
  \pi_{RP}     = k_{\pi_{RP}} \cdot [HSF^*G]                                   & HSF^*G: HSF^*G + mRHP           \\
  \pi_{HP}     = k_{\pi_{HP}} \cdot [mR_{HP}]                                  & mR_{HP}: HP + mR_{HP}           \\
@@ -1419,7 +1423,7 @@ $\omega_{PS} = \frac{[P^\#]^{m}}{P_0^{m}+[P^\#]^{m}}$,
 where $m=5$ and $P_0 = 600$ $\mu$M. 
 %The threshold value of $T_0 = 36^\circ\text{C}$ is motivated by \cite{Kobayashi2014}, which reports an HSR in \emph{C. reinhardtii} already at this temperature. 
 The term following the Arrhenius law is $\omega_{TP} = A \cdot \exp \left( -\frac{E_a}{R\cdot T} \right)$, with an activation energy of $E_a = 174.440$ KJ mol$^{-1}$, within the wide range reported in the literature for the activation energies of protein denaturation due to thermal stress (as discussed in the literature \cite{Bischof2006,He2003}), and with $A = 9.4318 \times 10^{28}$, $R = 8.3144598$ J mol$^{-1}$ K$^{-1}$ the ideal gas constant and $T$ the temperature.  
-Finally, the basal rates are computed as $p_{RFbasal} = d_{RF} \cdot d_{F} \cdot 0.02125 \text{ }\mu\text{M} / k_{\pi_F}$ and $p_{RPbasal} =  d_{RP} \cdot d_{HP} \cdot 17.5 \text{ }\mu\text{M} / k_{\pi_{HP}}$.}\label{TabNUs}
+Finally, the basal rates are computed as $p_{RFbasal} = d_{RF} \cdot d_{F} \cdot 0.02125 \text{ }\mu\text{M} / k_{\pi_F}$ and $p_{RPbasal} =  d_{RP} \cdot d_{HP} \cdot 17.5 \text{ }\mu\text{M} / k_{\pi_{HP}}$. \textcolor{blue}{Where not otherwise specified, the values of the parameters mentioned in this caption, as e.g. $m$ and $P_0$, were manually tuned and were not part of the parameter fitting procedure described in section \ref{SecCalibration}, which only focussed on the rate constants.}}\label{TabNUs}
 \end{table*}
 \egroup
 
@@ -1452,7 +1456,7 @@ Finally, the basal rates are computed as $p_{RFbasal} = d_{RF} \cdot d_{F} \cdot
     k_S          & 100      & 100.7 & \text{ s}^{-1}          \\
     k_S'         & 500      & 533.1 & \text{ s}^{-1}          \\
     k_F'         & 1        & 0.9557 & \text{ s}^{-1}          \\
-    k_F          & 1        & 0.9640 & \text{ ($\mu$M s)}^{-1} \\
+    k_F          & 1        & 0.9640 & \text{ \textcolor{blue}{s}}^{-1} \\
     k_{FG}'      & 0.10     & 0.08371 & \text{ s}^{-1}          \\
     k_{FG}       & 0.0050   & 0.005574 & \text{ ($\mu$M s)}^{-1} \\
     k_{F^*G}     & 1        & 0.9131 & \text{ ($\mu$M s)}^{-1} \\
