@@ -28,7 +28,10 @@ if __name__ == '__main__':
     # PART I: Calibration and RMS stuff
     ComputeRMSfiducialParamSet = "No"
     MyNumberOfRandomSets = 2
-    MCrandomScanParamSpaceRMS = "No"
+    MCrandomScanParamSpaceRMS = "Yes"
+    Part1_GenerateMCsamples = "No"
+    Part2_PlotRMSfromMC = "Yes"
+    Part3_ComputeRMSvsDoubleHS = "No"
     GradientSearchRMS = "No"
     ComputeRMSfinalParamSet = "Yes"
     # PART II: Simulations of HSR and Data comparison (main figures paper)
@@ -150,58 +153,61 @@ if __name__ == '__main__':
         #################################################################################################################################
         ################ BIG 1: Generate random (MC) params sets or change params 1by1, and compute RMS Feeding #########################
         #################################################################################################################################
-        print("\nSTARTING MC RANDOM SCAN METER SPACE...\n")
-        
         # A switch to switch between "random" and "1by1" for changing the values of the parameters !!!
         SwitchRandomSetsOrParametersK1by1Sets = "RandomSets" # "ParametersK1by1" "RandomSets" DO BOTH!!!!!!!
-        
-        # If "RandomSets" then the following parameters will be used:
-        NumberOfRandomSets = MyNumberOfRandomSets # we used up to 100000
-        FactorOfRandom = 0.5 # 0.5 means 50% variation of the parameter
-        # If "ParametersK1by1" then the following parameters will be used:
-        NumberOfValuesForEachParameterk = 3 # we used 100 
-        FactorOfK1by1 = 0.5 # 0.5 means 50% variation of the parameter
 
-        NameOfOutputFileRMSmanyParamsSets = 'OutputFileRMSmanyParamsSets.csv'
-        NameOfOutputFileKeys = 'OutputFileKeys.csv'
+        if Part1_GenerateMCsamples == "Yes":
+            print("\nSTARTING MC RANDOM SCAN METER SPACE...\n")
+        
+            # If "RandomSets" then the following parameters will be used:
+            NumberOfRandomSets = MyNumberOfRandomSets # we used up to 100000
+            FactorOfRandom = 0.5 # 0.5 means 50% variation of the parameter
+            # If "ParametersK1by1" then the following parameters will be used:
+            NumberOfValuesForEachParameterk = 3 # we used 100 
+            FactorOfK1by1 = 0.5 # 0.5 means 50% variation of the parameter
+
+            NameOfOutputFileRMSmanyParamsSets = 'OutputFileRMSmanyParamsSets.csv'
+            NameOfOutputFileKeys = 'OutputFileKeys.csv'
     
-        GenerateMCRandomOrNotParSetsAndComputeRMSFeeding(SwitchRandomSetsOrParametersK1by1Sets, NumberOfRandomSets, NumberOfValuesForEachParameterk, FactorOfRandom, FactorOfK1by1, FolderContainingCsvFiles, FolderContainingDataVsSimuCalibration, NameOfOutputFileRMSmanyParamsSets, NameOfOutputFileKeys, StartingParamSetRATES, TestParamSetForREACTIONS, DefaultParamSetInitCond, AllDataControlsFeeding, FigureExtension)
+            GenerateMCRandomOrNotParSetsAndComputeRMSFeeding(SwitchRandomSetsOrParametersK1by1Sets, NumberOfRandomSets, NumberOfValuesForEachParameterk, FactorOfRandom, FactorOfK1by1, FolderContainingCsvFiles, FolderContainingDataVsSimuCalibration, NameOfOutputFileRMSmanyParamsSets, NameOfOutputFileKeys, StartingParamSetRATES, TestParamSetForREACTIONS, DefaultParamSetInitCond, AllDataControlsFeeding, FigureExtension)
 
         
         ##############################################################################################################
         #####################    BIG 2: Plot RMS values as function of parameters, from file     #####################
         ##############################################################################################################
-        print("\nSTARTING TO PLOT RMS VALUES...\n")
+        if Part2_PlotRMSfromMC == "Yes":
+            print("\nSTARTING TO PLOT RMS VALUES...\n")
 
-        #FileNameManyParamsSetsRMS = FolderContainingCsvFiles + 'OutputFileRMSmanyParamsSets.csv'
-        FileNameManyParamsSetsRMS = FolderContainingCsvFiles + 'InterestingListsOfParamsSets/OutputFile100000.csv'#'aaa.csv'
-        # FolderContainingCsvFiles + 'OutputFileRMSmanyParamsSets.csv'                           
-        # 'InterestingListsOfParamsSets/OutputFile100000.csv'                                    
-        # 'InterestingListsOfParamsSets/OutputFileKparams1by1.csv'                               
+            #FileNameManyParamsSetsRMS = FolderContainingCsvFiles + 'OutputFileRMSmanyParamsSets.csv'
+            FileNameManyParamsSetsRMS = FolderContainingCsvFiles + 'InterestingListsOfParamsSets/OutputFile100000.csv'#'aaa.csv'
+            # FolderContainingCsvFiles + 'OutputFileRMSmanyParamsSets.csv'                           
+            # 'InterestingListsOfParamsSets/OutputFile100000.csv'                                    
+            # 'InterestingListsOfParamsSets/OutputFileKparams1by1.csv'                               
 
-        FileNameKeysNamesParamsSets = FolderContainingCsvFiles + 'InterestingListsOfParamsSets/OutputFileKeys100000.csv'#'OutputFileKeys.csv'          
-        # FolderContainingCsvFiles + 'OutputFileKeys.csv'                                      
-        # 'InterestingListsOfParamsSets/OutputFileKeys100000.csv'                               
-        # 'InterestingListsOfParamsSets/OutputFileKeys1by1.csv'    
+            FileNameKeysNamesParamsSets = FolderContainingCsvFiles + 'InterestingListsOfParamsSets/OutputFileKeys100000.csv'#'OutputFileKeys.csv'          
+            # FolderContainingCsvFiles + 'OutputFileKeys.csv'                                      
+            # 'InterestingListsOfParamsSets/OutputFileKeys100000.csv'                               
+            # 'InterestingListsOfParamsSets/OutputFileKeys1by1.csv'    
 
-        NumberOfBestRMSparamsSetsPlotted = 300#MyNumberOfRandomSets 
+            NumberOfBestRMSparamsSetsPlotted = 3000#MyNumberOfRandomSets 
                              
-        PlotRMSvaluesAsFunctionOfParametersFromFile(FolderContainingCsvFiles, FolderContaining1ParametrsRMSplots, FolderContaining2ParametrsRMSplots, FileNameManyParamsSetsRMS, FileNameKeysNamesParamsSets, NumberOfBestRMSparamsSetsPlotted, StartingParamSetRATES, SwitchRandomSetsOrParametersK1by1Sets, FigureExtension)
+            PlotRMSvaluesAsFunctionOfParametersFromFile(FolderContainingCsvFiles, FolderContaining1ParametrsRMSplots, FolderContaining2ParametrsRMSplots, FileNameManyParamsSetsRMS, FileNameKeysNamesParamsSets, NumberOfBestRMSparamsSetsPlotted, StartingParamSetRATES, SwitchRandomSetsOrParametersK1by1Sets, FigureExtension, DefaultParamSetForREACTIONS, DefaultParamSetInitCond, AllDataControlsFeeding)
 
         ######################################################################################################################################
         ##############   BIG 3: For the best 5000 points wrt RSM Feeding, compute the corresponding RMS w.r.t. Double HS   ###################
         ######################################################################################################################################
-        print("\nSTART TO COMPUTE RMS DOUBLE HS FOR ALL BEST 5000 POINTS FEEDING...\n")
+        if Part3_ComputeRMSvsDoubleHS == "Yes":
+            print("\nSTART TO COMPUTE RMS DOUBLE HS FOR ALL BEST 5000 POINTS FEEDING...\n")
 
-        NameFigureRMS1vs2 = "RMS1vs2"
+            NameFigureRMS1vs2 = "RMS1vs2"
 
-        FileNameManyParamsSetsRMSDoubleHS = FolderContainingCsvFiles + 'OutputFileRMSmanyParamsSets.csv'                       
-        # FileNameManyParamsSetsRMSDoubleHS = FolderContainingCsvFiles + 'OutputFileRMSmanyParamsSets.csv'                     
-        # FileNameManyParamsSetsRMSDoubleHS = 'InterestingListsOfParamsSets/OutputFileKparams1by1.csv'                         
-        # FileNameManyParamsSetsRMSDoubleHS = FolderContainingCsvFiles + 'CutORDEREDOutputFileRMSmanyParamsSetsMOD5000.csv'    
-        # FileNameManyParamsSetsRMSDoubleHS = 'InterestingListsOfParamsSets/CutORDEREDOutputFileRMSmanyParamsSetsMOD5000.csv'  
+            FileNameManyParamsSetsRMSDoubleHS = FolderContainingCsvFiles + 'OutputFileRMSmanyParamsSets.csv'                       
+            # FileNameManyParamsSetsRMSDoubleHS = FolderContainingCsvFiles + 'OutputFileRMSmanyParamsSets.csv'                     
+            # FileNameManyParamsSetsRMSDoubleHS = 'InterestingListsOfParamsSets/OutputFileKparams1by1.csv'                         
+            # FileNameManyParamsSetsRMSDoubleHS = FolderContainingCsvFiles + 'CutORDEREDOutputFileRMSmanyParamsSetsMOD5000.csv'    
+            # FileNameManyParamsSetsRMSDoubleHS = 'InterestingListsOfParamsSets/CutORDEREDOutputFileRMSmanyParamsSetsMOD5000.csv'  
 
-        ForBestRMSfeedingPointspointsComputeRMSDoubleHS(FolderRMS1vs2, FolderContainingCsvFiles, NameFigureRMS1vs2, FileNameManyParamsSetsRMSDoubleHS, StartingParamSetRATES, TestParamSetForREACTIONS, DefaultParamSetInitCond, AllDataControlsDoubleHS, FigureExtension)
+            ForBestRMSfeedingPointspointsComputeRMSDoubleHS(FolderRMS1vs2, FolderContainingCsvFiles, NameFigureRMS1vs2, FileNameManyParamsSetsRMSDoubleHS, StartingParamSetRATES, TestParamSetForREACTIONS, DefaultParamSetInitCond, AllDataControlsDoubleHS, FigureExtension)
 
 
     if GradientSearchRMS == "Yes":
@@ -272,8 +278,6 @@ if __name__ == '__main__':
     #(FinalParamSetMinimizingRMS)
     #(ORIGINALFinalParamSetMinimizingRMS)
     ThisParametrSet = deepcopy(BestParameterSetFromGradientSearchFromFile)
-
-
 
     if ComputeRMSfinalParamSet == "Yes":
         RMSFeedingList = ComputeRMSfeedingForGivenParameterSet(ThisParametrSet, DefaultParamSetForREACTIONS, DefaultParamSetInitCond, "Yes", AllDataControlsFeeding)

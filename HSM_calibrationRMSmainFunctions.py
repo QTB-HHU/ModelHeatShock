@@ -210,7 +210,7 @@ def PlotResultOfBestFitToData(FolderContainingDataVsSimuCalibration, FINALParamS
 
 
 
-def PlotRMSvaluesAsFunctionOfParametersFromFile(FolderContainingCsvFiles, FolderContaining1ParametrsRMSplots, FolderContaining2ParametrsRMSplots, FileNameManyParamsSetsRMS, FileNameKeysNamesParamsSets, MyNumberOfBestRMSparamsSetsPlotted, StartingParamSetRATES, SwitchRandomSetsOrParametersK1by1Sets, FigureExtension):
+def PlotRMSvaluesAsFunctionOfParametersFromFile(FolderContainingCsvFiles, FolderContaining1ParametrsRMSplots, FolderContaining2ParametrsRMSplots, FileNameManyParamsSetsRMS, FileNameKeysNamesParamsSets, MyNumberOfBestRMSparamsSetsPlotted, StartingParamSetRATES, SwitchRandomSetsOrParametersK1by1Sets, FigureExtension, DefaultParamSetForREACTIONS, DefaultParamSetInitCond, AllDataControlsFeeding):
 
     """BIG function 2 of calibration: Plots RMS values as function of parameters, from file"""
 
@@ -270,7 +270,7 @@ def PlotRMSvaluesAsFunctionOfParametersFromFile(FolderContainingCsvFiles, Folder
                 plt.close()
     """
     ############ 3) ############ do 1 big cumulative plot with all the single parameter plots
-
+    
     if SwitchRandomSetsOrParametersK1by1Sets == "RandomSets":
 
         Nlines = 2
@@ -295,6 +295,8 @@ def PlotRMSvaluesAsFunctionOfParametersFromFile(FolderContainingCsvFiles, Folder
             if ax.is_last_row():
                 ax.xaxis.set_ticks_position('bottom')
 
+        ListOfParamsValuesToPlot = []
+
         for i in range(Nlines):
             for j in range(Ncols):
                 print(" ")
@@ -304,7 +306,59 @@ def PlotRMSvaluesAsFunctionOfParametersFromFile(FolderContainingCsvFiles, Folder
                     k = j
                 elif i == 1:
                     k = j + 10
-                axes[i,j].scatter(ListOfOutputArrays[2+k], ListOfOutputArrays[0], s=25, edgecolor = '',)               
+
+                ###############################################
+
+                print("\nSTARTING TO CHARGE PARAMTER SET FROM FILE...JUST TO ADD TO SCATTER PLOT..\n")
+                # Read the whole file into a variable which is a list of every row of the file.
+                Datafile = open('OutputFileBestParametersSet.csv', 'r')
+                DataLines = Datafile.readlines()
+                Datafile.close()
+
+                # Initialize the lists which will contain the data:
+                BestParameterSetFromGradientSearchFromFile = {}
+
+                    # Scan the rows of the file stored in lines, and put the values into some variables:
+                for line in DataLines:
+                    SplittedLine = line.split()
+                    Key = str(SplittedLine[0])
+                    Value = float(SplittedLine[1])
+                    BestParameterSetFromGradientSearchFromFile.update({ Key : Value })
+
+                print("The parameter set charged from the txt file is:")
+                print(BestParameterSetFromGradientSearchFromFile)
+
+                ThisParametrSet = deepcopy(BestParameterSetFromGradientSearchFromFile)
+                RMSFeedingList = ComputeRMSfeedingForGivenParameterSet(ThisParametrSet, DefaultParamSetForREACTIONS, DefaultParamSetInitCond, "Yes", AllDataControlsFeeding)
+                RMSFeedingBestParSetGradSearch = RMSFeedingList[0]
+                print("look here!!!")
+                print(RMSFeedingBestParSetGradSearch)
+
+                CurrentParameterNameLaTeX = ListOfParametersNamesForLegend[k]
+                print(CurrentParameterNameLaTeX)
+
+                DictionaryConvertsinParNamesLaTeXToNormal = {"$k'_{F^*}$ ($s^{-1}$)":'kFsp', '$d_F$ ($s^{-1}$)':'ketaF', '$k_F$ ($(\\mu M$ $s)^{-1}$)':'kF0', '$k_P$ ($(\\mu M$ $s)^{-1}$)':'kP0', '$d_{HP}$ ($s^{-1}$)':'ketaHP', '$k_{\\pi_{HP}}$ ($s^{-1}$)':'kpiHP', "$k'_F$ ($s^{-1}$)":'kFp0', '$k_{\\pi_{F}}$ ($s^{-1}$)':'kFpi0', '$k_{FG}$ ($(\\mu M$ $s)^{-1}$)':'kFG', "$k'_S$ ($s^{-1}$)":'kSp0', '$k_{\\pi_{RF}}$ ($s^{-1}$)':'kpiRF', '$k_{F^*}$ ($s^{-1}$)':'kFs', '$d_{RF}$ ($s^{-1}$)':'ketaRF', '$k_S$ ($s^{-1}$)':'kS', '$d_{RP}$ ($s^{-1}$)':'ketaRHP', "$k'_{FG}$ ($s^{-1}$)":'kFGp', '$k_{\\pi_{RH}}$ ($s^{-1}$)':'kpiRH', "$k'_P$ ($s^{-1}$)":'kP0p', '$k_{F^*G}$ ($(\\mu M$ $s)^{-1}$)':'kFsG', "$k'_{F^*G}$ ($s^{-1}$)":'kFsGp'}
+
+                CurrentParameterNameNormal = DictionaryConvertsinParNamesLaTeXToNormal[CurrentParameterNameLaTeX]
+                print(CurrentParameterNameNormal)
+
+                CurrentParamValueFromBestParSetGradSearch = BestParameterSetFromGradientSearchFromFile[CurrentParameterNameNormal]
+                print(CurrentParamValueFromBestParSetGradSearch)
+                #ListOfParamsValuesToPlot.append(CurrentParamValueFromBestParSetGradSearch)
+                #print(ListOfParamsValuesToPlot)
+
+                #RMSlist = [RMSFeedingBestParSetGradSearch]*len(ListOfParamsValuesToPlot)
+                #print(RMSlist)
+
+                CurrentParamFiducialValue = StartingParamSetRATES[CurrentParameterNameNormal]
+
+                #HERE THE PROBLEM: IT MATHCES CORRECTLY THE PARAM NAMES, BUT FOR SCATTER PLOT IT RETAINS ONLY THE LAST ONE OF THE VALUES FOR CurrentParamValueFromBestParSetGradSearch. SHOULD PUT ALL THE SUBSEQUENT VALUES IN AN ARRAY TO BE PLOTTED AT ONCE IN SCATTERPLOT
+                ##############################################
+
+                axes[i,j].scatter(ListOfOutputArrays[2+k], ListOfOutputArrays[0], s=18, edgecolor = '',) # Here!!!!!!! 
+                axes[i,j].axvline(x=CurrentParamFiducialValue, color = 'red', linewidth = 1.5)    
+                axes[i,j].scatter(CurrentParamValueFromBestParSetGradSearch, RMSFeedingBestParSetGradSearch, s=400, color = 'yellow', marker = "*", edgecolor = 'black', linewidths = 2) 
+
                 axes[i,j].set_xlim(min(ListOfOutputArrays[2+k]),max(ListOfOutputArrays[2+k]))
                 axes[i,j].set_ylim(min(ListOfOutputArrays[0]),max(ListOfOutputArrays[0]))
                 #plt.setp(axes[i,j].get_xticklabels(), rotation=45, horizontalalignment='left')
@@ -367,22 +421,22 @@ def PlotRMSvaluesAsFunctionOfParametersFromFile(FolderContainingCsvFiles, Folder
 
         for i in range(NumberOfParameters):
             for j in range(NumberOfParameters):
-
+                DotSize = 6
                 if i>j:
                     if (i % 2) != 0:
                         if (j % 2) != 0:
-                            im = axes[i,j].scatter(ListOfOutputArrays[2+j], ListOfOutputArrays[2+i], s=14, c=ListOfOutputArrays[0],
+                            im = axes[i,j].scatter(ListOfOutputArrays[2+j], ListOfOutputArrays[2+i], s=DotSize, c=ListOfOutputArrays[0],
          edgecolor = '', cmap=plt.cm.rainbow_r)
                     elif (i % 2) == 0:
                         if  (j % 2) == 0:
-                            im = axes[i,j].scatter(ListOfOutputArrays[2+j], ListOfOutputArrays[2+i], s=14, c=ListOfOutputArrays[0],  edgecolor = '', cmap=plt.cm.rainbow_r)
+                            im = axes[i,j].scatter(ListOfOutputArrays[2+j], ListOfOutputArrays[2+i], s=DotSize, c=ListOfOutputArrays[0],  edgecolor = '', cmap=plt.cm.rainbow_r)
                 elif i<j:
                     if (i % 2) != 0:
                         if (j % 2) == 0:
-                            im = axes[i,j].scatter(ListOfOutputArrays[2+j], ListOfOutputArrays[2+i], s=14, c=ListOfOutputArrays[0], edgecolor = '', cmap=plt.cm.rainbow_r)
+                            im = axes[i,j].scatter(ListOfOutputArrays[2+j], ListOfOutputArrays[2+i], s=DotSize, c=ListOfOutputArrays[0], edgecolor = '', cmap=plt.cm.rainbow_r)
                     elif (i % 2) == 0:
                         if (j % 2) != 0:
-                            im = axes[i,j].scatter(ListOfOutputArrays[2+j], ListOfOutputArrays[2+i], s=14, c=ListOfOutputArrays[0], edgecolor = '', cmap=plt.cm.rainbow_r)
+                            im = axes[i,j].scatter(ListOfOutputArrays[2+j], ListOfOutputArrays[2+i], s=DotSize, c=ListOfOutputArrays[0], edgecolor = '', cmap=plt.cm.rainbow_r)
                 elif i==j:
                     # Label the diagonal subplots...
                     axes[i,j].annotate(ListOfParametersNamesForLegend[i].split(" ", 1)[0], (0.5, 0.5), xycoords='axes fraction', ha='center', va='center',)
