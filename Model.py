@@ -189,7 +189,7 @@ if __name__ == '__main__':
             # 'InterestingListsOfParamsSets/OutputFileKeys100000.csv'                               
             # 'InterestingListsOfParamsSets/OutputFileKeys1by1.csv'    
 
-            NumberOfBestRMSparamsSetsPlotted = 3000#MyNumberOfRandomSets 
+            NumberOfBestRMSparamsSetsPlotted = 300#MyNumberOfRandomSets 
                              
             PlotRMSvaluesAsFunctionOfParametersFromFile(FolderContainingCsvFiles, FolderContaining1ParametrsRMSplots, FolderContaining2ParametrsRMSplots, FileNameManyParamsSetsRMS, FileNameKeysNamesParamsSets, NumberOfBestRMSparamsSetsPlotted, StartingParamSetRATES, SwitchRandomSetsOrParametersK1by1Sets, FigureExtension, DefaultParamSetForREACTIONS, DefaultParamSetInitCond, AllDataControlsFeeding)
 

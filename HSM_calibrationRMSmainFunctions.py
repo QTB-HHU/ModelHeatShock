@@ -421,7 +421,7 @@ def PlotRMSvaluesAsFunctionOfParametersFromFile(FolderContainingCsvFiles, Folder
 
         for i in range(NumberOfParameters):
             for j in range(NumberOfParameters):
-                DotSize = 6
+                DotSize = 14
                 if i>j:
                     if (i % 2) != 0:
                         if (j % 2) != 0:
