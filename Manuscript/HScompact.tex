@@ -921,7 +921,7 @@ Hence, which kind of HS is a \emph{C. reinhardtii} cell going to experience in t
 %Thinking at a green alga living in a field of some English county (as it seems that 
 %The \emph{C. reinhardtii} strain that we today call "wild type" was originally caught in a field in England, and t
 This green algae is widely distributed around the world in various environments such as soil and fresh water. 
-Thus, a natural heat shock condition it encounters is the daily variation of the temperature, which is low at night, increases during the day, reaches a peek and then drops again.
+Thus, a natural heat shock condition it encounters is the daily variation of the temperature, which is low at night, increases during the day, reaches a peak and then drops again.
 % (with possibly some random fluctuations in addition).
 To investigate the natural HSR in \emph{C. reinhardtii}, we  simulate an idealized temperature variation mimicking  a hot day by imposing a sinusoidal variation between 22°C and 40°C with a period of 1 day and a maximum at 3 pm (Fig.~\ref{Figure4label}~G). 
 
@@ -929,17 +929,21 @@ As we can see from Fig.~\ref{Figure4label}~(A-F), the concentrations of the mRNA
 %This reflects the fact that when the temperature starts to rise the HSR is rapidly activated and then the normal attenuation of the response is counterbalanced by the further increase in the temperature, and the result is a slower decrease. 
 %Interestingly, the concentration of HSP changes in an almost perfectly symmetric manner (panel F), as the temperature. 
 
-\textcolor{blue}{We should notice that the accumulation of unfolded proteins remains very close to zero, i.e. considerably smaller than $1\%$ of the total amount of proteins $\left[P\right]+\left[P^\#\right]$, panel A. This is remarkable because this value is more than one order of magnitude smaller than the values of accumulated unfolded proteins for HS with a stepwise increase of the temperature, Fig.~\ref{Figure1label}~B.} Since unfolded proteins are undesired by the cell, it is meaningful that the HSR, which for a sudden increase of 20°C is not fast enough and allows for a certain transient accumulation of unfolded proteins, is on the other hand perfectly capable to prevent the accumulation of unfolded proteins during a HS like those that occur in nature. 
+\textcolor{blue}{Importantly, the accumulation of unfolded proteins remains considerably smaller than $1\%$ of the total amount of 
+proteins ($\left[P\right]+\left[P^\#\right]$, panel A). This is remarkable because this value is more than one order of magnitude smaller than
+that obtained for a stepwise increase of the temperature, Fig.~\ref{Figure1label}~B.} Since unfolded proteins are undesired by the cell, it is meaningful that the HSR, which for a sudden increase of 20°C is not fast enough and allows for a certain transient accumulation of unfolded proteins, is on the other hand perfectly capable to prevent the accumulation of unfolded proteins during a HS like those that occur in nature. 
 %A systematic study on how the maximal concentration of HP changes when changing the time that is needed to increase the temperature from the ambient value to a higher value providing HS is presented in Section~\ref{MaximalHPtau} of the Supplementary Material.
 % to deal with the unfolded proteins in such a way that they do not accumulate, not even for a short time.
 
-The Circadian clock of \emph{C. reinhardtii} is well studied \cite{Mittag2005,Jacobshagen2001}, 
+The circadian clock of \emph{C. reinhardtii} is well studied \cite{Mittag2005,Jacobshagen2001}, 
 it is known to regulate also some HSP as e.g.~HSP70B, which exhibits a maximal concentration at dawn. 
-The HSR that we model is not a circadian clock, and has no oscillatory behaviour on its own\textcolor{blue}{. We nevertheless observe from Fig.~\ref{Figure4label}~(B-F) that this HSR is activated just before dawn, i.e. at around 6:00 a.m., when the concentration of $P^\#$ shown in Fig.~\ref{Figure4label}~panel~A becomes enough to trigger the HSR. Then, the intensity of the HSR reaches a maximum about one hour and a half before the maximum of the temperature, which occurs at 15:00. 
+The HSR that we model is not a circadian clock, and has no oscillatory behaviour on its own\textcolor{blue}{. We nevertheless observe from Fig.~\ref{Figure4label}~(B-F) that the HSR is activated just before dawn, i.e. at around 6:00 a.m., when the concentration of $P^\#$ shown in Fig.~\ref{Figure4label}~panel~A becomes sufficiently high to trigger the HSR. Then, the intensity of the HSR reaches a maximum about one hour and a half before the maximum of the temperature, which occurs at 15:00. 
 %, Fig.~\ref{Figure4label}~panel~G). 
-It then drops slowly during the rest of the day, it is roughly off when night comes, and it stays off over night. We indeed observe in Fig.~\ref{Figure4label}~(A-F) that, as soon as the temperature increase has led to the accumulation of enough $P^\#$ to trigger an HSR, this HSR is strong enough not only to handle the currently present amount of $P^\#$, but also to prevent the subsequent temperature increase (which still continue for hours) to lead to the increase of $\left[ P^\# \right]$ above the level which triggered the initiation of the HSR. This allows the cell to remain exposed to high temperatures for several hours during the day 
+It then drops slowly during the rest of the day, it is roughly off when night comes, and it stays off over night. We observe in Fig.~\ref{Figure4label}~(A-F) that, as soon as the temperature increase has led to a sufficient accumulation of $P^\#$ to trigger an HSR, this response is strong enough not only to handle the currently present amount of $P^\#$, but also to prevent the subsequent temperature increase (which still continues for hours) to lead to an accumulation of $\left[ P^\# \right]$ above the level which triggered the initiation of the HSR. This allows the cell to remain exposed to high temperatures for several hours during the day 
 %as shown in Fig.~\ref{Figure4label}~panel~G, 
-accumulating at maximum a concentration of $P^\#$ remarkably smaller than the concentration reached when the temperature increase occurs within minutes instead of hours, as already underlined. This observation may lead to speculate and propose the hypothesis that the HSR might be adapted to daily temperature variations rather than abrupt temperature changes. The system's parameters could thus be the result of adaptation to variable thermal environments, such that the HSR would be well suited to handle daily temperature fluctuations.}
+accumulating far less unfolded proteins than that what is reached when the temperature increase occurs within minutes instead of hours.
+This observation allows us to speculate and propose the hypothesis that the HSR might be adapted to naturally occurring,
+smooth daily temperature variations rather than abrupt temperature changes. The system's parameters could thus be the result of adaptation to variable thermal environments, such that the HSR would be well suited to handle daily temperature fluctuations.}
 
 %\section{Supplementary Material: Maximal accumulation of degenerated proteins as function of time necessary to increase the temperature during HS}
 
@@ -965,6 +969,16 @@ We have finally been able to systematically investigate how the accumulation of 
 %\label{SectionConclusions}
 In this work, we have developed a data driven mathematical model for the HSR in \emph{Chlamydomonas \textcolor{blue}{reinhardtii}}, a photosynthetic model organism. We have extracted the signalling network structure from various experiments, and experimental data are used for model parameterization.
 % we have introduced the model. We have described the signalling pathway underlying the model and presented the mathematical description of the mechanism that we implement in Section~\ref{SectionModel}. We have discussed the typical behaviour of the model in Section~\ref{TypicalBehav}. We have explained how we calibrated the model by fitting the parameters to experimental data in Section~\ref{SecCalibration}.
+
+\textcolor{blue}{The model is based on a number of simplifying assumptions. Foremost, we assume that the simulated cells are close 
+to a stationary state, in which the total numbers of proteins remain constant. This, however, may be inappropriate if either 
+extreme and prolonged stress conditions apply, or if synchronized cells in periodic diurnal conditions are considered. 
+Especially the latter is important for our predictive study regarding the response to natural daily temperature variations. 
+It is well known, that also heat shock proteins underly a circadian rhythm. For a future study, 
+it would therefore be interesting to link the gene expression
+dynamics with the output of a model of the circadian clock, in order to study how the results obtained here would be influenced by 
+including dynamic protein concentrations. Such an extended model would moreover provide the possibility to investigate and predict
+how the heat-shock response depends on the time of the day when it is applied.}
 
 For model validation,  we have tested the model behavior with independent experimental results extracted from the literature and not employed for the calibration: 
 % We have described which experimental data we consider
@@ -995,7 +1009,7 @@ This \textcolor{blue}{result} supports the notion that the HSR of \emph{Chlamydo
 negligible levels if the increase in temperature occurs on a time scale of several minutes to hours, in sharp contrast to the sharp increases usually applied in experiments. %These findings are of rather general validity for plants due to the conservation of the HSR among species. 
 %Finally, in Section~\ref{SectionLightActivation} we have motivated a possible extension of our model which aims at including the activation of the HSR by a shift from dark to light of the cells.
 This indicates that the HSR of \emph{Chlamydomonas \textcolor{blue}{reinhardtii}} is indeed adapted to natural temperature variations due to a match of the intrinsic time scale of the HSR system, which could be easily tested in experiments. 
-Moreover, as we have shown with several applications, our model provides a framework to explore further situations of interest and to generate new hypothesis to be tested by exeriments.
+Moreover, as we have shown with several applications, our model provides a framework to explore further situations of interest and to generate new hypothesis to be tested by experiments.
 
 %(FIXME: the following section arises from the merging of 2 sections, an outlook describing how the model can be extended to include light activation, and the conclusions, thus needs to be shortened and smoothened.) 
 %\section{Outlook: a possible extension of the model to include light activation of the HSR}
@@ -1027,6 +1041,16 @@ Moreover, as we have shown with several applications, our model provides a frame
 %Finally, the HSP genes are involved in helping the cell to face other types of stress. For instance their role in helping the recovery from photo-inhibition is investigated in \cite{Schroda1999}, and evidence for protection by heat-shock proteins against photo-inhibition during heat-shock is discussed in \cite{Schuster1988}. %This too would represent very interesting directions in which our model could possibly be expanded. 
 %These represent further research direction in which our model could possibly be extended.
 %
+
+\textcolor{blue}{Whereas models as the one presented here may help greatly to elucidate molecular mechanisms and allow interpreting
+experimental data in a sound theoretical framework, they are clearly idealized and represent an 'average' cell. Thus, it is not
+straight-forward to employ this model if one wishes to make predictions about the adaptive behavior of a cell population, in particular
+over longer time scales. However, in principle it seems possible that ensembles of models such as the one presented here, 
+each with slightly modified parameters to reflect the plasticity found within a natural population, 
+can be used to predict in which direction a population~\cite{Kremer2018}, or even whole ecosystems and their 
+stoichiometries~\cite{Yvon-Durocher2017}, may evolve under prolonged environmental 
+perturbations.
+}
 
 
 
