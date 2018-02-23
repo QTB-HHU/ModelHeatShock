@@ -26,7 +26,10 @@ if __name__ == '__main__':
 
     # Select which simulations you want to launch
     # PART I: Calibration and RMS stuff
-    ComputeRMSfiducialParamSet = "No"
+    ComputeRMSfiducialParamSet = "Yes"
+    EpsilonChangesInParametersRMS = "No"
+    Part1_GenerateSamplesEpsilonChangesInParametersRM = "No"
+    Part2_PlotEpsilonChangesInParametersRM = "No"
     MyNumberOfRandomSets = 2
     MCrandomScanParamSpaceRMS = "Yes"
     Part1_GenerateMCsamples = "No"
@@ -147,6 +150,55 @@ if __name__ == '__main__':
         RMSdoubleHS = ComputeRMSdoubleHSforGivenParameterSet(DefaultParamSetRATES, DefaultParamSetForREACTIONS, DefaultParamSetInitCond, "Yes", AllDataControlsDoubleHS)
         print("\nFor the FIDUCIAL PARAMETER SET, RMS w.r.t. Feeding is " + str(RMSFeeding) + " and RMS w.r.t. Double HS is " + str(RMSdoubleHS) + "\n")
 
+    #####################################################################################################
+
+    if EpsilonChangesInParametersRMS == "Yes":
+
+        #####################################################################################################
+        ################ BIG EPSILON 01: change params 1by1, and compute RMS Feeding #########################
+        #####################################################################################################
+        # A switch to switch between "random" and "1by1" for changing the values of the parameters !!!
+        SwitchRandomSetsOrParametersK1by1Sets ="ParametersK1by1" #  "RandomSets" DO BOTH!!!!!!!
+
+        if Part1_GenerateSamplesEpsilonChangesInParametersRM == "Yes":
+            print("\nSTARTING EPSILON SCAN METER SPACE...\n")
+        
+            # If "RandomSets" then the following parameters will be used:
+            NumberOfRandomSets = MyNumberOfRandomSets # we used up to 100000
+            FactorOfRandom = 0.5 # 0.5 means 50% variation of the parameter
+            # If "ParametersK1by1" then the following parameters will be used:
+            NumberOfValuesForEachParameterk = 40 # we used 100 
+            FactorOfK1by1 = 0.8 # 0.5 means 50% variation of the parameter
+
+            NameOfOutputFileRMSmanyParamsSets = 'OutputFileRMSmanyParamsSets.csv'
+            NameOfOutputFileKeys = 'OutputFileKeys.csv'
+    
+            GenerateMCRandomOrNotParSetsAndComputeRMSFeeding(SwitchRandomSetsOrParametersK1by1Sets, NumberOfRandomSets, NumberOfValuesForEachParameterk, FactorOfRandom, FactorOfK1by1, FolderContainingCsvFiles, FolderContainingDataVsSimuCalibration, NameOfOutputFileRMSmanyParamsSets, NameOfOutputFileKeys, StartingParamSetRATES, TestParamSetForREACTIONS, DefaultParamSetInitCond, AllDataControlsFeeding, FigureExtension)
+
+        
+        ##############################################################################################################
+        #####################    BIG EPSILON 02: Plot RMS values as function of parameters, from file     ############
+        ##############################################################################################################
+        if Part2_PlotEpsilonChangesInParametersRM == "Yes":
+            print("\nSTARTING TO PLOT RMS VALUES...\n")
+
+            #FileNameManyParamsSetsRMS = FolderContainingCsvFiles + 'OutputFileRMSmanyParamsSets.csv'
+            FileNameManyParamsSetsRMS = FolderContainingCsvFiles + 'OutputFileRMSmanyParamsSets.csv'#FolderContainingCsvFiles + 'InterestingListsOfParamsSets/OutputFile100000.csv'#'aaa.csv'
+            # FolderContainingCsvFiles + 'OutputFileRMSmanyParamsSets.csv'                           
+            # 'InterestingListsOfParamsSets/OutputFile100000.csv'                                    
+            # 'InterestingListsOfParamsSets/OutputFileKparams1by1.csv'                               
+
+            FileNameKeysNamesParamsSets = FolderContainingCsvFiles + 'OutputFileKeys.csv'#FolderContainingCsvFiles + 'InterestingListsOfParamsSets/OutputFileKeys100000.csv'#'OutputFileKeys.csv'          
+                                                  
+            # 'InterestingListsOfParamsSets/OutputFileKeys100000.csv'                               
+            # 'InterestingListsOfParamsSets/OutputFileKeys1by1.csv'    
+
+            NumberOfBestRMSparamsSetsPlotted = 300#MyNumberOfRandomSets 
+                             
+            PlotRMSvaluesAsFunctionOfParametersFromFile(FolderContainingCsvFiles, FolderContaining1ParametrsRMSplots, FolderContaining2ParametrsRMSplots, FileNameManyParamsSetsRMS, FileNameKeysNamesParamsSets, NumberOfBestRMSparamsSetsPlotted, StartingParamSetRATES, SwitchRandomSetsOrParametersK1by1Sets, FigureExtension, DefaultParamSetForREACTIONS, DefaultParamSetInitCond, AllDataControlsFeeding)
+
+    #####################################################################################################
+
 
     if MCrandomScanParamSpaceRMS == "Yes":
 
@@ -170,7 +222,6 @@ if __name__ == '__main__':
             NameOfOutputFileKeys = 'OutputFileKeys.csv'
     
             GenerateMCRandomOrNotParSetsAndComputeRMSFeeding(SwitchRandomSetsOrParametersK1by1Sets, NumberOfRandomSets, NumberOfValuesForEachParameterk, FactorOfRandom, FactorOfK1by1, FolderContainingCsvFiles, FolderContainingDataVsSimuCalibration, NameOfOutputFileRMSmanyParamsSets, NameOfOutputFileKeys, StartingParamSetRATES, TestParamSetForREACTIONS, DefaultParamSetInitCond, AllDataControlsFeeding, FigureExtension)
-
         
         ##############################################################################################################
         #####################    BIG 2: Plot RMS values as function of parameters, from file     #####################

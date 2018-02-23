@@ -23,7 +23,7 @@ def GenerateMCRandomOrNotParSetsAndComputeRMSFeeding(SwitchRandomSetsOrParameter
     elif SwitchRandomSetsOrParametersK1by1Sets == "ParametersK1by1":
         NumberOfValuesForEachParameterk = MyNumberOfValuesForEachParameterk # 1 # we used 100 
         FactorOf = FactorOfK1by1 # 0.5 # 0.5 means 50% variation of the parameter
-        ListOfManyDictionariesOfParameters = GenerateParametersSetsChangingOneParameter(NumberOfValuesForEachParameterk, FactorOf, StartingParamSetRATES, TestParamSetForREACTIONS, DefaultParamSetInitCond, AllDataControlsFeeding)
+        ListOfManyDictionariesOfParameters = GenerateParametersSetsChangingOneParameter(NumberOfValuesForEachParameterk, FactorOf, StartingParamSetRATES)#, TestParamSetForREACTIONS, DefaultParamSetInitCond, AllDataControlsFeeding)
     else:
         print("Error in the value of the switch SwitchRandomSetsOrParametersK1by1Sets!!!")
 
@@ -271,7 +271,7 @@ def PlotRMSvaluesAsFunctionOfParametersFromFile(FolderContainingCsvFiles, Folder
     """
     ############ 3) ############ do 1 big cumulative plot with all the single parameter plots
     
-    if SwitchRandomSetsOrParametersK1by1Sets == "RandomSets":
+    if SwitchRandomSetsOrParametersK1by1Sets == "RandomSets" or SwitchRandomSetsOrParametersK1by1Sets == "ParametersK1by1" :
 
         Nlines = 2
         Ncols = 10
@@ -311,6 +311,10 @@ def PlotRMSvaluesAsFunctionOfParametersFromFile(FolderContainingCsvFiles, Folder
 
                 print("\nSTARTING TO CHARGE PARAMTER SET FROM FILE...JUST TO ADD TO SCATTER PLOT..\n")
                 # Read the whole file into a variable which is a list of every row of the file.
+                #if SwitchRandomSetsOrParametersK1by1Sets == "RandomSets":
+                #    Datafile = open('OutputFileBestParametersSet.csv', 'r')
+                #elif SwitchRandomSetsOrParametersK1by1Sets == "ParametersK1by1":
+                #    Datafile = open('./CsvFilesWithRMSandParamSets/OutputFileRMSmanyParamsSets.csv', 'r')
                 Datafile = open('OutputFileBestParametersSet.csv', 'r')
                 DataLines = Datafile.readlines()
                 Datafile.close()
@@ -327,7 +331,8 @@ def PlotRMSvaluesAsFunctionOfParametersFromFile(FolderContainingCsvFiles, Folder
 
                 print("The parameter set charged from the txt file is:")
                 print(BestParameterSetFromGradientSearchFromFile)
-
+                
+                #if SwitchRandomSetsOrParametersK1by1Sets == "RandomSets": 
                 ThisParametrSet = deepcopy(BestParameterSetFromGradientSearchFromFile)
                 RMSFeedingList = ComputeRMSfeedingForGivenParameterSet(ThisParametrSet, DefaultParamSetForREACTIONS, DefaultParamSetInitCond, "Yes", AllDataControlsFeeding)
                 RMSFeedingBestParSetGradSearch = RMSFeedingList[0]
@@ -342,9 +347,10 @@ def PlotRMSvaluesAsFunctionOfParametersFromFile(FolderContainingCsvFiles, Folder
                 CurrentParameterNameNormal = DictionaryConvertsinParNamesLaTeXToNormal[CurrentParameterNameLaTeX]
                 print(CurrentParameterNameNormal)
 
+                #if SwitchRandomSetsOrParametersK1by1Sets == "RandomSets": 
                 CurrentParamValueFromBestParSetGradSearch = BestParameterSetFromGradientSearchFromFile[CurrentParameterNameNormal]
                 print(CurrentParamValueFromBestParSetGradSearch)
-                #ListOfParamsValuesToPlot.append(CurrentParamValueFromBestParSetGradSearch)
+                ListOfParamsValuesToPlot.append(CurrentParamValueFromBestParSetGradSearch)
                 #print(ListOfParamsValuesToPlot)
 
                 #RMSlist = [RMSFeedingBestParSetGradSearch]*len(ListOfParamsValuesToPlot)
@@ -352,12 +358,39 @@ def PlotRMSvaluesAsFunctionOfParametersFromFile(FolderContainingCsvFiles, Folder
 
                 CurrentParamFiducialValue = StartingParamSetRATES[CurrentParameterNameNormal]
 
-                #HERE THE PROBLEM: IT MATHCES CORRECTLY THE PARAM NAMES, BUT FOR SCATTER PLOT IT RETAINS ONLY THE LAST ONE OF THE VALUES FOR CurrentParamValueFromBestParSetGradSearch. SHOULD PUT ALL THE SUBSEQUENT VALUES IN AN ARRAY TO BE PLOTTED AT ONCE IN SCATTERPLOT
                 ##############################################
 
-                axes[i,j].scatter(ListOfOutputArrays[2+k], ListOfOutputArrays[0], s=18, edgecolor = '',) # Here!!!!!!! 
+                #if SwitchRandomSetsOrParametersK1by1Sets == "RandomSets":
+                #    MyColor = 'blue'
+                #elif SwitchRandomSetsOrParametersK1by1Sets == "ParametersK1by1":
+                #    ThisArray = ListOfOutputArrays[2+k]
+                #    CentralValueOfThisArray = ThisArray[(len(ThisArray)-1)/2.0]
+                #    if CurrentParamFiducialValue == CentralValueOfThisArray :
+                #        MyColor = 'green'
+                #    else:
+                #        MyColor = 'blue'
+
+                MyXarray = ListOfOutputArrays[2+k]
+                MyYarray = ListOfOutputArrays[0]
+                #MyColor = 'blue'
+
+                ll = 0
+                TempArrayX = []
+                TempArrayY = []
+                for Datum in MyXarray:
+                    if Datum != CurrentParamFiducialValue:
+                        TempArrayX.append(Datum)
+                        TempArrayY.append(MyYarray[ll])
+                    ll = ll+1
+                MyXarrayParamPERTURBED = TempArrayX
+                MyYarrayParamPERTURBED = TempArrayY
+                MyColorParamPERTURBED = 'blue'
+
+                #axes[i,j].scatter(MyXarray, MyYarray, s=18, edgecolor = '', color = MyColor) # Here!!!!!!! 
+                axes[i,j].scatter(MyXarrayParamPERTURBED, MyYarrayParamPERTURBED, s=18, edgecolor = '', color = MyColorParamPERTURBED) # Here!!!!!!! 
                 axes[i,j].axvline(x=CurrentParamFiducialValue, color = 'red', linewidth = 1.5)    
-                axes[i,j].scatter(CurrentParamValueFromBestParSetGradSearch, RMSFeedingBestParSetGradSearch, s=400, color = 'yellow', marker = "*", edgecolor = 'black', linewidths = 2) 
+                if SwitchRandomSetsOrParametersK1by1Sets == "RandomSets":
+                    axes[i,j].scatter(CurrentParamValueFromBestParSetGradSearch, RMSFeedingBestParSetGradSearch, s=400, color = 'yellow', marker = "*", edgecolor = 'black', linewidths = 2) 
 
                 axes[i,j].set_xlim(min(ListOfOutputArrays[2+k]),max(ListOfOutputArrays[2+k]))
                 axes[i,j].set_ylim(min(ListOfOutputArrays[0]),max(ListOfOutputArrays[0]))
@@ -497,11 +530,11 @@ def PlotRMSvaluesAsFunctionOfParametersFromFile(FolderContainingCsvFiles, Folder
         for i in range(len(SplittedLine)-2):
                 BestRMSDictionaryParameters.update({deepcopy(ListOfParametersNames[i]) : float(SplittedLine[i+2])})
 
-    print()
-    print("RMS best = " + str(SplittedLine[0]))
-    print()
-    print(BestRMSDictionaryParameters)
-    print()
+        print()
+        print("RMS best = " + str(SplittedLine[0]))
+        print()
+        print(BestRMSDictionaryParameters)
+        print()
 
 
 
