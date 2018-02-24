@@ -48,7 +48,7 @@
 
 \begin{document}
 
-\title{Data-driven dynamical model indicates that the heat shock response in \emph{Chlamydomonas reinhardtii} is tailored to handle natural temperature variation}
+\title{Data-driven dynamical model indicates that the heat shock response in \emph{Chlamydomonas reinhardtii} is \textcolor{blue}{tailored to handle} natural temperature variation}
 
 \author[1,2]{Stefano Magni}
 \author[3,5]{Antonella Succurro}
@@ -562,13 +562,13 @@ The fiducial parameter set has a RMS w.r.t.~the controls of the feeding experime
 %}
 %\label{figure2}
 %\end{figure}
-We select only the best $5\%$ of the parameters sets, those corresponding to the lowest values of the RMS, 
+We select only the best \textcolor{blue}{$300$} parameters sets, those corresponding to the lowest values of the RMS, 
 %(which then range between $0.130$ and $0.149$). 
 and we show in Fig.~\ref{Figure2label}~C (for each of the 20 parameters separately) the values of the RMS versus the value of each parameter. 
 
 We observe that for the vast majority of the parameters no preferred interval in which the lowest values of the RMS occur more often can be identified. % Very low values of the RMS can occur almost everywhere in the interval used for the random scan. 
-%We subsequently studied the correlation between each couple of parameters, by plotting the RMS of each of these 5000 parameters sets as function of each couple of parameters (Fig.~\ref{figure2} of the Supplementary Material). We found that only seldom there is clear correlation or anti-correlations between the preferred values for the two parameters of the couple. Nevertheless, for the majority of the couples of parameters no such correlation can be identified. 
-%Moreover the parameter set which provides the best RMS among this randomly generated set (i.e. the isolated point at the bottom of Fig.~\ref{Figure1}) turns out to be not a viable one, because if used to run the simulations of other situations as for instance the double HS, it provides to the model a qualitative behaviour different from what is observed in the experiments, thus showing that moving away from the neighborhood of the fiducial parameter set, we can also end up in parameter combinations which have a small RMS while providing to the model a qualitative behaviour less succesfull in reproducing further experiments.
+%We subsequently studied the correlation between each couple of parameters, by plotting the RMS of each of these 300 parameters sets as function of each couple of parameters (Fig.~\ref{figure2} of the Supplementary Material). We found that only seldom there is clear correlation or anti-correlations between the preferred values for the two parameters of the couple. Nevertheless, for the majority of the couples of parameters no such correlation can be identified. 
+%Moreover the parameter set which provides the best RMS among this randomly generated set (i.e. the point at the bottom of Fig.~\ref{Figure1}) turns out to be not a viable one, because if used to run the simulations of other situations as for instance the double HS, it provides to the model a qualitative behaviour different from what is observed in the experiments, thus showing that moving away from the neighborhood of the fiducial parameter set, we can also end up in parameter combinations which have a small RMS while providing to the model a qualitative behaviour less succesfull in reproducing further experiments.
 This observation means that many different configurations in the parameter space would allow us to obtain a small RMS with respect to the data. 
 \textcolor{blue}{It is thus important to note that the calibration data we used, which only provides a relative quantification of
 two molecular species, namely $mR_{F}$ and $mR_{HP}$, are not sufficient to identify the model parameters uniquely, 
@@ -594,8 +594,9 @@ include a rapid initial response followed by the production of HSF proteins lead
 A more detailed description of the calibration 
 %, and in particular of the Monte Carlo scan of the parameter space and of the gradient search algorithm implemented, 
 is provided in Supplementary Material \ref{SecCalibrationExtended}. 
+\textcolor{blue}{Therein, we also perform a sensitivity analysis to assess how much small variations in each of the 20 rate constants influence the RMS, Supplementry Material Fig.~\ref{Figure9label}.} 
+ 
 %There we investigate also potential correlations among model parameters (Fig.~\ref{figure2}), and the use of an alternative RMS (Fig.~\ref{{Figure6label}}).
-
 %The second group contains data not used for model
 %calibration, but for verification that the model is able to at least 
 %qualitatively predict the behaviour of this set. 
@@ -606,7 +607,6 @@ is provided in Supplementary Material \ref{SecCalibrationExtended}.
 %with the experimental data demonstrates that the model is able to
 %reproduce the qualitative, and often the quantitative (relative, not absolute on which we do not have nformation) behaviour of the data extremely well (see
 %Sections \ref{SecFeeding} and \ref{Sec2HS}).
-
 
 
 
@@ -950,7 +950,8 @@ smooth daily temperature variations rather than abrupt temperature changes. The 
 To investigate how the maximum concentration of unfolded proteins accumulated during a HS depends on the dynamics of the  temperature increase from the initial value $T_{low}$ to the final value $T_{high}$ we systematically simulated HSs in which the temperature raised from $T_{low}=$25°C to $T_{high}=$42°C in a cosinusoidal way during a time  $\tau$ and subsequently stayed at $T_{high}$ (Fig. \ref{Figure4label}~H). 
 %In this way the function $T\left(t\right)$ is not only continuous, but also everywhere differentiable. 
 We screened for various values of   $\tau$ as shown  in Fig.~\ref{Figure4label}~I. We observed that for an instantaneous increase in temperature, up to increases which require about 1 minute (similar to those provided to cells during experiments), the maximum value of the degenerated protein concentration  does not change, and exhibits a very large value. For $\tau$ between about 1 minute and 100 minutes there is a steep fall, and another plateau is reached for $\tau$ larger than about 100 minutes. These are the time-scales which a $Chlamydomonas$ cell is more likely to experience for an increase of temperature in natural conditions. The accumulated concentration of HSP is much lower than for shorter times $\tau$, \textcolor{blue}{contributing to generate the hypothesis that the HSR dynamics might be adapted to natural temperature variations} %More general, we see that the system we modeled is able, for slow temperature increases, to prevent the accumulation of unfolded proteins in high concentrations. 
-(notice that the scale on the horizontal axis of Fig.~\ref{Figure4label}~I is logarithmic).
+(notice that the scale on the horizontal axis of Fig.~\ref{Figure4label}~I is logarithmic). 
+\textcolor{blue}{In Supplementary Material Section~\ref{SecRobustness} we show that these results are robust against changes in the parameters $m$ and $P_0$ of the Hill kinetics term $\omega_{PS}$ by which the stress kinase $SK$ gets activated (Table~\ref{TabNUs}).}
 
 One of the main advantages of a mathematical model, inferred and calibrated from experiments, is that it allows to simulate situations that are difficult to test with experiments and to compute quantities difficult to measure. To outline the potential of our model, we \textcolor{blue}{employed} it to simulate \textcolor{blue}{systematically} further situations. 
 We have been able, as described in \textcolor{blue}{Supplementary Material~\ref{SecAcclimation}}, to show the ability of the system to adapt to temperatures higher than usual during heat shocks longer than three hours by shifting to a new steady state. Two distinct phases are clearly visible in Fig.~\ref{Figure8label}~(A-F): an early HS lasting for about the first $3$ h, and a late HS in which the system shows adaptation (a new steady state is reached). 
@@ -1152,7 +1153,7 @@ The normalization factors used to represent the concentrations in arbitrary unit
 %  \includegraphics[width=\textwidth, height=0.26\textheight]%{FittingToDataPAPERversionConrol.pdf}
 %  }%\caption*{\small{2D: Fitting to Controls of Feeding Experiments. Left HSF, right %HSP.}}
 %\endminipage\hfill
-%\caption{\small{Calibration of the model. (a) 1-dimenasional projection w.r.t. each of %the 20 parameters of the Monte Carlo scan of the parameter space, for the points %corresponding to the 5000 random parameter sets with lowest RMS. (b) RMS decrease for %subsequent iterations of the gradient search algorithm. (c) Data from the controls of %the feeding
+%\caption{\small{Calibration of the model. (a) 1-dimenasional projection w.r.t. each of %the 20 parameters of the Monte Carlo scan of the parameter space, for the points %corresponding to the 300 random parameter sets with lowest RMS. (b) RMS decrease for %subsequent iterations of the gradient search algorithm. (c) Data from the controls of %the feeding
 %experiments of~\cite{Schmollinger2013}. These correspond to six curves
 %representing the time evolution of the concentration of mRNA coding
 %for HSF1 (left panel), and six curves for the mRNA coding for HSP90A (right panel), %under heat
@@ -1168,7 +1169,7 @@ The normalization factors used to represent the concentrations in arbitrary unit
 experiments of Schmollinger et al.~\cite{Schmollinger2013}. These correspond to six curves
 representing the time evolution of the concentration of mRNA coding
 for HSF1 \textbf{(A)}, and six curves for the mRNA coding for HSP90A \textbf{(B)}, under heat
-shock and no inhibitor treatment. The superposed continuous black line shows the model prediction obtained with the final parameter set. \textbf{(C)} Projection w.r.t. each of the 20 parameters of the Monte Carlo scan of the parameter space, for the points corresponding to the 5000 random parameter sets with lowest RMS. \textbf{(D)}} RMS decrease for subsequent iterations of the gradient search algorithm.}
+shock and no inhibitor treatment. The superposed continuous black line shows the model prediction obtained with the final parameter set. \textbf{(C)} Projection w.r.t. each of the 20 parameters of the Monte Carlo (MC) scan of the parameter space, for the points corresponding to the 300 random parameter sets with lowest RMS \textcolor{blue}{among the $10^5$ sets randomly generated. The RMS corresponding to these $10^5$ sets ranged between 0.130 and 0.700, while this panel is strongly magnified and only shows parameter sets with RMS between 0.130 and 0.139. The vertical red line in each sub-panel indicates the fiducial value of the corresponding parameter, i.e. the starting point of the two alternative calibration approaches used, the MC described in this panel, and the gradient search eventually employed. The yellow star in each sub-panel indicates the parameter values finally retained after the gradient search, referred to as the "final parameter set" (Supplementary Material Table~\ref{TabKs}). These values are relatively close to the fiducial values, and the corresponding RMS of 0.137 is close to the lower extreme of the range of values obtained with the MC (0.130 to 0.700).} \textbf{(D)}} RMS decrease for subsequent iterations of the gradient search algorithm.}
 \label{Figure2label}
 \end{figure*}
 
@@ -1431,48 +1432,6 @@ Let us remark that the values of the variables are initiated at the initial cond
 \egroup
 
 
-\bgroup
-\def\arraystretch{1.5}%  1 is the default
-\begin{table*}[h!]
-\[\begin{array}{ll}
-\toprule
- \text{\textbf{Rate law}}                                                              & \text{\textbf{Reaction}}                 \\
-\midrule
- \nu_P        = k_{P} \cdot [P^\#] \cdot [HP]                                 & P^\# + HP \rightarrow P + HP    \\
- \nu_P'       = k_{P}' \cdot [P] \cdot \omega_{TP}                            & P \rightarrow P^\#              \\
- \nu_S        = k_S \cdot [SK^*]                                              & SK^* \rightarrow SK             \\
- \nu_S'       = k_{S}' \cdot [SK] \cdot \omega_{PS}                            & S+P^\# \rightarrow SK^*+P^\#    \\
- \nu_F'       = k_{\textcolor{blue}{F}}' \cdot [HSF] \cdot \frac{[SK^*]}{1+[SK^*]}            & HSF+SK^* \rightarrow HSF^*+SK^* \\
- \nu_F        = k_{\textcolor{blue}{F}} \cdot [HSF^*]                                         & HSF^* \rightarrow HSF           \\    
- \nu_{HSFG}'  = k_{\textcolor{blue}{F}G}' \cdot [HSFG]                                        & HSFG \rightarrow HSF + G        \\
- \nu_{HSFG}   = k_{\textcolor{blue}{F}G} \cdot [G] \cdot [HSF]                                & HSF + G \rightarrow HSFG        \\ 
- \nu_{HSF^*G} = k_{\textcolor{blue}{F}^*G} \cdot [G] \cdot [HSF^*]                            & HSF^* + G \rightarrow HSF^*G    \\ 
- \nu_{F^*G}'  = k_{\textcolor{blue}{F}^*G}' \cdot [HSF^*G]                                    & HSF^*G \rightarrow HSF^* + G    \\
- \nu_{HSF^*}' = k_{\textcolor{blue}{F}^*}' \cdot [HSF^*G]                                     & HSF^*G \rightarrow HSFG         \\
- \nu_{HSF^*}  = k_{\textcolor{blue}{F}^*} \cdot [HSFG]                                        & HSFG \rightarrow HSF^*G         \\
- \pi_{RF}     = k_{\pi_{RF}} \cdot [HSF^*G]                                   & HSF^*G: HSF^*G + mRF            \\
- \pi_{RP}     = k_{\pi_{RP}} \cdot [HSF^*G]                                   & HSF^*G: HSF^*G + mRHP           \\
- \pi_{HP}     = k_{\pi_{HP}} \cdot [mR_{HP}]                                  & mR_{HP}: HP + mR_{HP}           \\
- \pi_F        = k_{\pi_F} \cdot [mR_F]                                        & mR_F: HSF + mR_F                \\
- \eta_F       = d_{F} \cdot [HSF]                                             & HSF \dashrightarrow             \\
- \eta_{HP}    = d_{{HP}} \cdot [HP]                                           & HP \dashrightarrow              \\
- \eta_{RF}    = d_{{RF}} \cdot [mR_{F}]                                       & mR_F \dashrightarrow            \\
- \eta_{RP}    = d_{{RP}} \cdot [mR_{HP}]                                      & mR_{HP} \dashrightarrow         \\
- \pi_{RFbasal}= p_{RFbasal}                                                   & \rightarrow mR_F                \\
- \pi_{RPbasal}= p_{RPbasal}                                                   & \rightarrow mR_P                \\
- \bottomrule
-\end{array}\]
-\caption{\textbf{Kinetic rate laws used in the model.} The reactions are those represented in the scheme of Fig.~\ref{Figure1label}~A, and the rate laws are mainly based on mass action kinetics, \textcolor{blue}{apart} from some terms \textcolor{blue}{which} follows Arrhenius law or have a Michaelis-Menten or Hill kinetics behaviour. The last is 
-%$\omega_{TP} = \frac{T^{n}}{T_0^{n}+T^{n}}$ $n=10$, 
-$\omega_{PS} = \frac{[P^\#]^{m}}{P_0^{m}+[P^\#]^{m}}$, 
-where $m=5$ and $P_0 = 600$ $\mu$M. 
-%The threshold value of $T_0 = 36^\circ\text{C}$ is motivated by \cite{Kobayashi2014}, which reports an HSR in \emph{C. reinhardtii} already at this temperature. 
-The term following the Arrhenius law is $\omega_{TP} = A \cdot \exp \left( -\frac{E_a}{R\cdot T} \right)$, with an activation energy of $E_a = 174.440$ KJ mol$^{-1}$, within the wide range reported in the literature for the activation energies of protein denaturation due to thermal stress (as discussed in the literature \cite{Bischof2006,He2003}), and with $A = 9.4318 \times 10^{28}$, $R = 8.3144598$ J mol$^{-1}$ K$^{-1}$ the ideal gas constant and $T$ the temperature.  
-Finally, the basal rates are computed as $p_{RFbasal} = d_{RF} \cdot d_{F} \cdot 0.02125 \text{ }\mu\text{M} / k_{\pi_F}$ and $p_{RPbasal} =  d_{RP} \cdot d_{HP} \cdot 17.5 \text{ }\mu\text{M} / k_{\pi_{HP}}$. \textcolor{blue}{Where not otherwise specified, the values of the parameters mentioned in this caption, as e.g. $m$ and $P_0$, were manually tuned and were not part of the parameter fitting procedure described in section \ref{SecCalibration}, which only focussed on the rate constants.}}\label{TabNUs}
-\end{table*}
-\egroup
-
-
 \begin{table}[h!]
 \[\begin{array}{ll}
 \toprule
@@ -1522,9 +1481,52 @@ Finally, the basal rates are computed as $p_{RFbasal} = d_{RF} \cdot d_{F} \cdot
 \end{table}
 
 
+\bgroup
+\def\arraystretch{1.5}%  1 is the default
+\begin{table*}[h!]
+\[\begin{array}{ll}
+\toprule
+ \text{\textbf{Rate law}}                                                              & \text{\textbf{Reaction}}                 \\
+\midrule
+ \nu_P        = k_{P} \cdot [P^\#] \cdot [HP]                                 & P^\# + HP \rightarrow P + HP    \\
+ \nu_P'       = k_{P}' \cdot [P] \cdot \omega_{TP}                            & P \rightarrow P^\#              \\
+ \nu_S        = k_S \cdot [SK^*]                                              & SK^* \rightarrow SK             \\
+ \nu_S'       = k_{S}' \cdot [SK] \cdot \omega_{PS}                            & S+P^\# \rightarrow SK^*+P^\#    \\
+ \nu_F'       = k_{\textcolor{blue}{F}}' \cdot [HSF] \cdot \frac{[SK^*]}{1+[SK^*]}            & HSF+SK^* \rightarrow HSF^*+SK^* \\
+ \nu_F        = k_{\textcolor{blue}{F}} \cdot [HSF^*]                                         & HSF^* \rightarrow HSF           \\    
+ \nu_{HSFG}'  = k_{\textcolor{blue}{F}G}' \cdot [HSFG]                                        & HSFG \rightarrow HSF + G        \\
+ \nu_{HSFG}   = k_{\textcolor{blue}{F}G} \cdot [G] \cdot [HSF]                                & HSF + G \rightarrow HSFG        \\ 
+ \nu_{HSF^*G} = k_{\textcolor{blue}{F}^*G} \cdot [G] \cdot [HSF^*]                            & HSF^* + G \rightarrow HSF^*G    \\ 
+ \nu_{F^*G}'  = k_{\textcolor{blue}{F}^*G}' \cdot [HSF^*G]                                    & HSF^*G \rightarrow HSF^* + G    \\
+ \nu_{HSF^*}' = k_{\textcolor{blue}{F}^*}' \cdot [HSF^*G]                                     & HSF^*G \rightarrow HSFG         \\
+ \nu_{HSF^*}  = k_{\textcolor{blue}{F}^*} \cdot [HSFG]                                        & HSFG \rightarrow HSF^*G         \\
+ \pi_{RF}     = k_{\pi_{RF}} \cdot [HSF^*G]                                   & HSF^*G: HSF^*G + mRF            \\
+ \pi_{RP}     = k_{\pi_{RP}} \cdot [HSF^*G]                                   & HSF^*G: HSF^*G + mRHP           \\
+ \pi_{HP}     = k_{\pi_{HP}} \cdot [mR_{HP}]                                  & mR_{HP}: HP + mR_{HP}           \\
+ \pi_F        = k_{\pi_F} \cdot [mR_F]                                        & mR_F: HSF + mR_F                \\
+ \eta_F       = d_{F} \cdot [HSF]                                             & HSF \dashrightarrow             \\
+ \eta_{HP}    = d_{{HP}} \cdot [HP]                                           & HP \dashrightarrow              \\
+ \eta_{RF}    = d_{{RF}} \cdot [mR_{F}]                                       & mR_F \dashrightarrow            \\
+ \eta_{RP}    = d_{{RP}} \cdot [mR_{HP}]                                      & mR_{HP} \dashrightarrow         \\
+ \pi_{RFbasal}= p_{RFbasal}                                                   & \rightarrow mR_F                \\
+ \pi_{RPbasal}= p_{RPbasal}                                                   & \rightarrow mR_P                \\
+ \bottomrule
+\end{array}\]
+\caption{\textbf{Kinetic rate laws used in the model.} The reactions are those represented in the scheme of Fig.~\ref{Figure1label}~A, and the rate laws are mainly based on mass action kinetics, \textcolor{blue}{apart} from some terms \textcolor{blue}{which} follows Arrhenius law or have a Michaelis-Menten or Hill kinetics behaviour. The last is 
+%$\omega_{TP} = \frac{T^{n}}{T_0^{n}+T^{n}}$ $n=10$, 
+$\omega_{PS} = \frac{[P^\#]^{m}}{P_0^{m}+[P^\#]^{m}}$, 
+where $m=5$ and $P_0 = 600$ $\mu$M. 
+%The threshold value of $T_0 = 36^\circ\text{C}$ is motivated by \cite{Kobayashi2014}, which reports an HSR in \emph{C. reinhardtii} already at this temperature. 
+The term following the Arrhenius law is $\omega_{TP} = A \cdot \exp \left( -\frac{E_a}{R\cdot T} \right)$, with an activation energy of $E_a = 174.440$ KJ mol$^{-1}$, within the wide range reported in the literature for the activation energies of protein denaturation due to thermal stress (as discussed in the literature \cite{Bischof2006,He2003}), and with $A = 9.4318 \times 10^{28}$, $R = 8.3144598$ J mol$^{-1}$ K$^{-1}$ the ideal gas constant and $T$ the temperature.  
+Finally, the basal rates are computed as $p_{RFbasal} = d_{RF} \cdot d_{F} \cdot 0.02125 \text{ }\mu\text{M} / k_{\pi_F}$ and $p_{RPbasal} =  d_{RP} \cdot d_{HP} \cdot 17.5 \text{ }\mu\text{M} / k_{\pi_{HP}}$. \textcolor{blue}{Where not otherwise specified, the values of the parameters mentioned in this caption, as e.g. $m$ and $P_0$, were manually tuned and were not part of the parameter fitting procedure described in section \ref{SecCalibration}, which only focussed on the rate constants.}}\label{TabNUs}
+\end{table*}
+\egroup
+
+
+
+
+
 \clearpage
-
-
 
 
 \section{Supplementary Material: extended description of the calibration of the model}
@@ -1548,7 +1550,7 @@ The fiducial parameter set from which we start, manually tuned by means of our u
 %\begin{figure}
 %\centering
 %\includegraphics[width=\columnwidth]{Figure1.pdf}
-%\caption{Example showing RMS vs 1 of the model's parameters for the points corresponding to the 5000 random %parameter sets with lowest RMS. We repeated this analysis for the 20 parameters, obtaining similar results.}
+%\caption{Example showing RMS vs 1 of the model's parameters for the points corresponding to the 300 random %parameter sets with lowest RMS. We repeated this analysis for the 20 parameters, obtaining similar results.}
 %\label{Figure1}
 %\end{figure}
 
@@ -1568,10 +1570,20 @@ The fiducial parameter set has a RMS w.r.t. the controls of the feeding experime
 %\label{figure2}
 %\end{figure}
 
-We then select the $5\%$ of the points corresponding to the best (i.e. lowest) values of the RMS (which then range between $0.130$ and $0.149$). 
+We then select the \textcolor{blue}{$300$} points corresponding to the best (i.e. lowest) values of the RMS (which then range between $0.130$ and $0.149$). 
 By plotting for these points the value of the RMS versus the value of each parameter (as shown in Fig.~\ref{Figure2label}~C for the 20 parameters), we observe that for the vast majority of the parameters no preferred interval in which the lowest values of the RMS occur more often can be identified. Very low values of the RMS can occur everywhere in the interval used for the random scan, depending on the values assumed by the other parameters. 
 
-We subsequently studied the correlation between each couple of parameters, by plotting the RMS of each of these 5000 parameters sets as function of each couple of parameters (Fig.~\ref{Figure5label} of the Supplementary Material). \textcolor{blue}{We found that only seldomly there are clear correlations or anti-correlations} between the preferred values for the two parameters of the couple. Nevertheless, for the majority of the couples of parameters no such correlation can be identified. 
+We subsequently studied the correlation between each couple of parameters, by plotting the RMS of each of these \textcolor{blue}{300} parameters sets (which as we stated previously where selected among the randomly generated $10^5$) as function of each couple of parameters (Fig.~\ref{Figure5label} of the Supplementary Material). \textcolor{blue}{We found that only seldomly there are clear correlations or anti-correlations} between the preferred values for the two parameters of the couple. Nevertheless, for the majority of the couples of parameters no such correlation can be identified. 
+
+
+\begin{figure*}
+\centering
+\includegraphics[width=0.88\textwidth]{Figure5_SupMat.pdf}
+\caption{\small{\textbf{Projection w.r.t. each couple of parameters of the MC scan of the parameter space.} Colours show the RMS for the same points of Fig.~\ref{Figure2label}~C, to investigate the presence of correlations among them.}
+}
+\label{Figure5label}
+\end{figure*}
+
 
 \textcolor{blue}{Interestingly}, the parameter set which provides the best RMS among this randomly 
 generated \textcolor{blue}{sets (i.e. the isolated point at the very bottom of each panel in Fig.~\ref{Figure2label}~C), 
@@ -1590,8 +1602,20 @@ result in a small RMS, but fail to reproduce key features. Since the fiducial pa
 results in an only slightly higher RMS than the lowest obtained by the random sampling approach, we chose a gradient search for a
 local optimization of the manually tuned parameter set.}
 
-On the other hand, if we consider small variations of one parameter at a time, we observe smooth variations in the RMS values, indicating that the RMS is roughly parabolic for perturbations of each one of the majority of the parameters around the corresponding fiducial value, and that the fiducial value often lies close to the minimum.
+
+On the other hand, if we consider small variations of one parameter at a time, we observe smooth variations in the RMS values, indicating that the RMS is roughly parabolic for perturbations of each one of the majority of the parameters around the corresponding fiducial value, and that the fiducial value often lies \textcolor{blue}{already} close to the minimum\textcolor{blue}{, as shown in Fig.~\ref{Figure10label}.} 
+
+\textcolor{blue}{This figure shows how much the RMS decays for small changes in any of the 20 rate constants considered in our fitting procedure and listed in Table~\ref{TabKs}. We have here considered small variations of one parameter at a time, adding or subtracting up to $80\%$ of its fiducial value, for each parameter. For a parameter with fiducial value e.g. $100$ $s^{-1}$, this means considering the range from $20$ $s^{-1}$ to $180$ $s^{-1}$, which contribute to the asymmetry in the majority of the sub-panels of Fig.~\ref{Figure10label}, where the RMS appears to grow more when lowering the corresponding rate constant. We clearly see that for similar perturbations different parameters produce drastically different changes in the RMS. While over the range of perturbations considered some parameters induce changes in the RMS spanning only the range from $0.14$ to $0.16$, some other parameters lead to increases of the RMS up to about $0.40$. This analysis provides thus an idea of how important each parameter is to the overall quality of the model fit and it might offer some motivation for future experimental work, by suggesting which parameters it would be most useful to measure empirically, where possible. We finally notice that by changing only one parameter at a time the RMS does not decrease below $0.140$.}
 % (as shown in the example of Fig.~\ref{figure3}). 
+
+
+\begin{figure*}[h!]
+\centering
+\includegraphics[width=\textwidth]{Figure10_SupMat.pdf}
+\caption{\small{\textcolor{blue}{\textbf{Sensitivity analysis: effect on the RMS of small perturbations in each parameter.} Each sub-panel shows the changes in the RMS occurring for small perturbations of one parameter at a time. The vertical red line in each sub-panel indicates the fiducial value of the corresponding parameter, i.e. the starting point of the two alternative calibration approaches used, the MC and the gradient search. For each parameter separately, perturbations are performed by adding or subtracting up to $80\%$ of its fiducial value.}}}
+\label{Figure10label}
+\end{figure*}
+ 
 
 %\begin{figure}
 %\centering
@@ -1658,7 +1682,7 @@ As a final test we defined, similarly to what we have done above, a RMS distance
 Defining such an RMS is much more arbitrary than defining the RMS w.r.t. the controls of the feeding experiments, because of the previously mentioned hypothesis on the proportionality between the enzyme concentration and its activity. %This is ways more arbitrary and approximate, given that we would have to compute this RMS combining data about the activity of the ARS enzyme with model predictions about the concentration of this enzyme. Moreover, it would then become necessary to combine the RMS w.r.t. the controls of the feeding experiments, and 
 We do not combine the two RMSs, as this would require to attribute to the two a weight which would be highly arbitrary. 
 
-For these reasons we only compute this second RMS a posteriori as a check, for the best 5000 among the random parameters sets selected above, and show the distribution of the values of the two different RMS in Fig~.\ref{Figure6label} of the Supplementary Material. This shows that minimizing both at the same time cannot be obtained, and one needs to find a trade-off between the two. The values of the RMS w.r.t. double HS run between $0.11$ and $0.55$ (not all visible in the figure, which is magnified). We can a posteriori compute this RMS for the fiducial parameter set, finding $0.170$, and for the final parameter set, obtaining $0.168$.
+For these reasons we only compute this second RMS a posteriori as a check, for the best \textcolor{blue}{(i.e. here those with $RMS < 0.149$)} among the random parameters sets selected above, and show the distribution of the values of the two different RMS in Fig.~\ref{Figure6label} of the Supplementary Material. This shows that minimizing both at the same time cannot be obtained, and one needs to find a trade-off between the two. The values of the RMS w.r.t. double HS run between $0.11$ and $0.55$ (not all visible in the figure, which is magnified). We can a posteriori compute this RMS for the fiducial parameter set, finding $0.170$, and for the final parameter set, obtaining $0.168$.
 
 Finally, we verified that in the gradient search performed in the previous section, if we employ the sum of the two RMS instead of the RMS w.r.t. to feedings only, we can improve the fit to the double HS data, but at the cost of having non-realistic behaviours in the model consisting of big oscillations in the concentrations after onset of HS (and of introducing an arbitrary weight between the two RMSs). We eventually decided to employ for the calibration only the RMS w.r.t. the feeding data.
 
@@ -1672,7 +1696,6 @@ Finally, we verified that in the gradient search performed in the previous secti
 
 
 
-
 %\subsection{The model reproduces the qualitative behaviour observed in the experiments}
 
 %We have compared the results of our simulations to the corresponding experimental data, those of the second group. These are the double heat shock experiments performed in \cite{Schroda2000} and shown in Fig.~\ref{Figure7label} and the feeding with Staurosporine and Radicicol performed in \cite{Schmollinger2013} and shown in Fig.~\ref{Figure3label}~(A-B). Additional comparison with data on the expression of the HP protein collected in \cite{Muehlhaus2011} are shown in Fig.~\ref{Figure3label}~D. 
@@ -1680,6 +1703,7 @@ Finally, we verified that in the gradient search performed in the previous secti
 %The figures mentioned above show the corresponding results of the simulations performed with our model using the final parameter set determined as described in the previous section. 
 %The experimental set-ups, the salient features of each experiment and the way to use our model to simulate these experiments have been widely described in Sections \ref{SecFeeding} and \ref{Sec2HS}.
 %As we can see from the figures, the model reproduces well the qualitative and the (relative) quantitative behaviour of these experimental data.
+
 
 \begin{figure}
 \centering
@@ -1689,17 +1713,13 @@ Finally, we verified that in the gradient search performed in the previous secti
 \label{Figure6label}
 \end{figure}
 
-\clearpage
 
-\begin{figure*}
-\centering
-\includegraphics[width=0.88\textwidth]{Figure5_SupMat.pdf}
-\caption{\small{\textbf{Projection w.r.t. each couple of parameters of the MC scan of the parameter space.} Colours show the RMS for the same points of Fig.~\ref{Figure2label}~C, to investigate the presence of correlations among them.}
-}
-\label{Figure5label}
-\end{figure*}
+\subsection{\textcolor{blue}{An alternative possible approach to the calibration of this model}}
 
-\clearpage
+\textcolor{blue}{The MC sampling from the joint prior parameter distribution which we performed here just provided us a hint on the structure of the 20-dimensional parameter space, without exploring it extensively. The local optimization method which we used instead, the gradient search, neither leads to an extensive exploration of the parameter space, nor to identify a unique parameter set. As already underlined, our goal was not to uniquely identify the best parameter set according to the RMS (only based on a rather small dataset), or to fully characterize the correlations among parameters. Our goal was instead to identify one (among many) viable parameter set, to verify that the model structure (signalling network of Fig.~\ref{Figure1label}~A, ODEs and rate laws of Supplementary Material Table~\ref{TabVars} and Table~\ref{TabNUs}) could indeed reproduce the behavior observed in several experimental data sets (Fig.~\ref{Figure3label}).
+To extensively explore the 20-dimensional parameter space, to identify a most suitable parameter set, and to perform an in-depth study of parameters correlations, more elaborate methods could be applied. For instance, we could define a Likelihood function incorporating the joint prior probability distribution which we assumed for the model parameters, together with the probability distribution of observing the measured data provided the values of a given parameter set. This last could be based on the root mean square deviation of the observed values from those obtained from the model for any given parameter set, e.g. assuming Gaussian measurement noise. While usually it is not easy or not even possible to compute the resulting Likelihood function, this could be overcome by applying a Markov chain Monte Carlo (MCMC) method, e.g. the well known Metropolis-Hastings algorithm. This would allow to obtain an estimate of the posterior probability distribution for the model parameters, and ultimately to identify the best estimate of the parameters and the corresponding variance providing an error on their estimate. Correlations among model parameters could have been studied by computing the corresponding covariance matrix. We have left such an approach for future potential developments since, as explained above, we consider it beyond the scope of this work.}
+
+
 
 
 
@@ -2030,20 +2050,29 @@ the variables relax to the original stationary state over a period of several ho
 
 
 
+\clearpage
+
+\section{\textcolor{blue}{Supplementary Material: Robustness of the results against changes in Hill kinetics parameters}}
+\label{SecRobustness}
+
+\textcolor{blue}{The non-linearity introduced by the Hill kinetics term $\omega_{PS}$ by which the stress kinases $SK$ get activated (Table~\ref{TabNUs}) is crucial to achieve the current model behavior, which would be impossible to achieve with e.g. a linear term. This non-linearity is a critical component necessary for the model to provide the highly sensitive initiation of the heat shock response. On the other hand, the values of the two parameters $m$ and $P_0$ are not that crucial, and thus were not part of the parameter estimation procedure, which involved only the 20 rate constants. Their values were manually set before the fitting procedure, which was then performed with these two parameters fixed at the nominal values of $m=5$ and $P_0=600$ $\mu M$.} 
+
+\textcolor{blue}{To investigate how relevant the values of these two parameters are on the results which we obtain, and to assess the robustness of our results against changes in $m$ and $P_0$, we perform here additional simulations to show what is the impact of perturbations in these two parameters. We consider the effects on the result of the calibration procedure (\ref{Figure2label}~A and Fig.~\ref{Figure2label}~B) on the one hand, and on the main result of this paper, i.e. how the maximum concentration of unfolded protein $P^\#$ during HS depends on how fast the heat shock was applied (Fig.~\ref{Figure4label}~I), on the other hand. These figures are reproposed in Fig.~\ref{Figure9label}~A to simplify the comparison. The value in the green circle in the third panel corresponds to the value of the peak in Fig.~\ref{Figure1label}~B, because the HS of that figire exhibits an increase in temperature which occurs within less then 1 minute. We thus consider the effects produced by variations in the two parameters $m$ and $P_0$ on the simulations reported in panel A. We first consider effects of variations only of $m$, decreasing it, panel~B, or increasing it, panel~C. We then consider the effects of variations only of $P_0$, decreasing it panel~D, or increasing it, panel~E.
+We finally consider the effects of simultaneous variations of both $m$ and $P_0$, aiming at maintaining a low RMS.} 
+
+\textcolor{blue}{We clearly see that in all cases the RMS is higher (i.e. worse) than using the original values $m=5$ and $P_0=600$ $\mu M$, due to the fact that these values were kept constant during the fitting of the 20 rate constants to the data. 
+As we can see, the qualitative behavior of the maximum concentration of unfolded protein $P^\#$ (right column) in any case does not change significantly, and the switch between the two regimes always occurs in the range between around $1$ $min$ and $100$ $min$ for the duration of the HS onset. Thus our main conclusion, i.e. that the accumulation of unfolded proteins dramatically differs for abrupt (e.g. $< 1$ $min$), or gradual (e.g. $> 100$ $min$) temperature increases, is robust.
+One might notice that the value of the maximum concentration of unfolded protein P$P^\#$  for short times (values in the circles) changes across half an order of magnitude. While this might seem a lot at a first glance, it should be considered that changes in only one of the two parameters $m$ and $P_0$ lead often to a dramatic increase in the RMS (by far worse than the RMS value corresponding to the final or fiducial parameter set). A low RMS can be achieved for instance by simultaneous changes of both parameters, panel~F. In this case we see that the maximal value of $[P^\#]$ is $0.035$ $\mu M$, close to the original one which was $0.05$ $\mu M$.} 
+
+\textcolor{blue}{To summarize, both parameters could have been included in the fitting procedure, which would have tended to minimize the RMS, but we considered this not necessary. In fact, the drastic difference in accumulated unfolded proteins between sharp and gradual HSs is very robust and occurs for all the variations considered, despite changes in the absolute values of the accumulated unfolded protein. All the parameter changes considered here are anyway discouraged by the calibration data, as the considerably increased RMS obtained in all cases proves.}
+
+
+
 \begin{figure*}
 \centering
-\includegraphics[width=\textwidth]{Figure9_SupMat.pdf}
-\caption{\small{\textbf{Robustness of our results against changes in the parameters related to the Hill kinetics employed to describe the activation of the stress kinases.} \textbf{(A-...)} ... FIX ME ...}}
+\includegraphics[width=0.75\textwidth]{Figure9_SupMat.pdf}
+\caption{\small{\textcolor{blue}{\textbf{Robustness of the results against changes in Hill kinetics parameters} \textbf{(A)} Calibration data and corresponding model simulation reproposed from Fig.~\ref{Figure2label}~A and Fig.~\ref{Figure2label}~B, and main result on the maximum concentration of unfolded proteins accumulated at steady state reproposed from Fig.~\ref{Figure4label}~I. \textbf{(B,F)} Effects on the simulations of panel A produced by changes in the two parameters $m$ and $P_0$ appearing in the Hill kinetics term $\omega_{PS}$ by which the stress kinease $SK$ gets activated (Table~\ref{TabNUs}). These two parameters where not part of the model fitting procedure but rather manually selected, this figure thus describes the robustness of the result shown in Fig.~\ref{Figure4label}~I against changes in $m$ and $P_0$. \textbf{(B,C)} Effects of variations only of $m$, decreasing it \textbf{(B)} or increasing it \textbf{(C)}. \textbf{(D,E)} Effects of variations only of $P_0$, decreasing it \textbf{(D)} or increasing it \textbf{(E)}. \textbf{(F)} Effects of simultaneous variation of both $m$ and $P_0$, aiming at maintaining a low RMS. The drastic difference in accumulated unfolded proteins between sharp and gradual HSs is very robust and occurs for all the variations considered, despite changes in the absolute values of the accumulated unfolded protein. All the parameter changes considered here are anyway discouraged by the calibration data, as the considerably increased RMS obtained in all cases proves.}}}
 \label{Figure9label}
-\end{figure*}
-
-
-
-\begin{figure*}
-\centering
-\includegraphics[width=\textwidth]{Figure10_SupMat.pdf}
-\caption{\small{\textbf{Effect on the RMS of small changes in each parameter.} \textbf{(A-...)} ... FIX ME ...}}
-\label{Figure10label}
 \end{figure*}
 
 
