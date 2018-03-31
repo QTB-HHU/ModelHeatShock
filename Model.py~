@@ -34,9 +34,9 @@ if __name__ == '__main__':
     EpsilonChangesInParametersRMS_FIDUCIALparameters = "No"
     Part1_GenerateSamplesEpsilonChangesInParametersRM_FIDUCIALparameters = "No"
     Part2_PlotEpsilonChangesInParametersRM_FIDUCIALparameters = "No"
-    EpsilonChangesInParametersRMS_FINALparameters = "No"
-    Part1_GenerateSamplesEpsilonChangesInParametersRM_FINALparameters = "No"
-    Part2_PlotEpsilonChangesInParametersRM_FINALparameters = "No"
+    EpsilonChangesInParametersRMS_FINALparameters = "Yes"
+    Part1_GenerateSamplesEpsilonChangesInParametersRM_FINALparameters = "Yes"
+    Part2_PlotEpsilonChangesInParametersRM_FINALparameters = "Yes"
     MyNumberOfRandomSets = 2
     MCrandomScanParamSpaceRMS = "Yes"
     Part1_GenerateMCsamples = "No"

@@ -85,7 +85,7 @@ def GenerateMCRandomOrNotParSetsAndComputeRMSFeeding(SwitchRandomSetsOrParameter
     SimulationFeedingControlsDataRMStimes_Fiducial = ResultOfComputingRMSfromFeeding_Fiducial[3]
 
     print()
-    print("The FIDUCIAL parameter set, i.e. the one we start with, is:\n")
+    print("The parameter set we start with, i.e. the FIDUCIAL or the FINAL depending on which options you selected, is:\n")
     print(FiducialParameterSetRates)
     print("\nand corresponds to a RMS of\n" + str(RMS_simulation_Fiducial))
     print()
@@ -210,7 +210,7 @@ def PlotResultOfBestFitToData(FolderContainingDataVsSimuCalibration, FINALParamS
 
 
 
-def PlotRMSvaluesAsFunctionOfParametersFromFile(FolderContainingCsvFiles, FolderContaining1ParametrsRMSplots, FolderContaining2ParametrsRMSplots, FileNameManyParamsSetsRMS, FileNameKeysNamesParamsSets, MyNumberOfBestRMSparamsSetsPlotted, StartingParamSetRATES, SwitchRandomSetsOrParametersK1by1Sets, FigureExtension, DefaultParamSetForREACTIONS, DefaultParamSetInitCond, AllDataControlsFeeding):
+def PlotRMSvaluesAsFunctionOfParametersFromFile(FolderContainingCsvFiles, FolderContaining1ParametrsRMSplots, FolderContaining2ParametrsRMSplots, FileNameManyParamsSetsRMS, FileNameKeysNamesParamsSets, MyNumberOfBestRMSparamsSetsPlotted, StartingParamSetRATES, SwitchRandomSetsOrParametersK1by1Sets, FigureExtension, DefaultParamSetForREACTIONS, DefaultParamSetInitCond, AllDataControlsFeeding, FiducialOnlyParamSetRATES):
 
     """BIG function 2 of calibration: Plots RMS values as function of parameters, from file"""
 
@@ -356,8 +356,8 @@ def PlotRMSvaluesAsFunctionOfParametersFromFile(FolderContainingCsvFiles, Folder
                 #RMSlist = [RMSFeedingBestParSetGradSearch]*len(ListOfParamsValuesToPlot)
                 #print(RMSlist)
 
-                CurrentParamFiducialValue = StartingParamSetRATES[CurrentParameterNameNormal]
-
+                CurrentParamFiducialValue = FiducialOnlyParamSetRATES[CurrentParameterNameNormal]
+                CurrentParamStartingValue = StartingParamSetRATES[CurrentParameterNameNormal]
                 ##############################################
 
                 #if SwitchRandomSetsOrParametersK1by1Sets == "RandomSets":
@@ -378,7 +378,9 @@ def PlotRMSvaluesAsFunctionOfParametersFromFile(FolderContainingCsvFiles, Folder
                 TempArrayX = []
                 TempArrayY = []
                 for Datum in MyXarray:
-                    if Datum != CurrentParamFiducialValue:
+                    print(Datum)
+                    print(CurrentParamStartingValue)
+                    if Datum != CurrentParamStartingValue:
                         TempArrayX.append(Datum)
                         TempArrayY.append(MyYarray[ll])
                     ll = ll+1
@@ -387,13 +389,13 @@ def PlotRMSvaluesAsFunctionOfParametersFromFile(FolderContainingCsvFiles, Folder
                 MyColorParamPERTURBED = 'blue'
 
                 #axes[i,j].scatter(MyXarray, MyYarray, s=18, edgecolor = '', color = MyColor) # Here!!!!!!! 
-                axes[i,j].scatter(MyXarrayParamPERTURBED, MyYarrayParamPERTURBED, s=18, edgecolor = '', color = MyColorParamPERTURBED) # Here!!!!!!! 
                 axes[i,j].axvline(x=CurrentParamFiducialValue, color = 'red', linewidth = 1.5)    
-                if SwitchRandomSetsOrParametersK1by1Sets == "RandomSets":
-                    axes[i,j].scatter(CurrentParamValueFromBestParSetGradSearch, RMSFeedingBestParSetGradSearch, s=400, color = 'yellow', marker = "*", edgecolor = 'black', linewidths = 2) 
+                axes[i,j].scatter(MyXarrayParamPERTURBED, MyYarrayParamPERTURBED, s=18, edgecolor = '', color = MyColorParamPERTURBED) # Here!!!!!!! 
+                #if SwitchRandomSetsOrParametersK1by1Sets == "RandomSets":
+                axes[i,j].scatter(CurrentParamValueFromBestParSetGradSearch, RMSFeedingBestParSetGradSearch, s=400, color = 'yellow', marker = "*", edgecolor = 'black', linewidths = 2) 
 
                 axes[i,j].set_xlim(min(ListOfOutputArrays[2+k]),max(ListOfOutputArrays[2+k]))
-                axes[i,j].set_ylim(min(ListOfOutputArrays[0]),max(ListOfOutputArrays[0]))
+                axes[i,j].set_ylim(0.12,0.40) # (min(ListOfOutputArrays[0]),max(ListOfOutputArrays[0]))
                 #plt.setp(axes[i,j].get_xticklabels(), rotation=45, horizontalalignment='left')
 
                 axes[0,j].xaxis.set_visible(True)
