@@ -171,7 +171,7 @@ the same magnitude occurs \textcolor{blue}{rapidly, as often applied
 %In plants, the situation is more complex than in other organisms due to the additional presence of the plastide, whit its content of proteins and the number of reactions which take place into it, from which the importance of studying the HSR directly in plants.
 The green microalgae \emph{Chlamydomonas reinhardtii} %AS
 is a widely studied, easy to grow photosynthetic model organism with promising  industrial applications like biopharmaceuticals, biofuels and hydrogen. 
-Thus motivated, different aspects of the HSRs in \emph{C.~reinhardtii} have been experimentally investigated, as reviewed e.g.~by Schroda et al.~\cite{Schroda2015}.
+Thus motivated, different aspects of the HSR in \emph{C.~reinhardtii} have been experimentally investigated, as reviewed e.g.~by Schroda et al.~\cite{Schroda2015}.
 %Thus, a better characterization of the mechanisms trhough which this organism responds to stressing conditions has additional interest.
 %An heat shock protein (HSP), usually bound to an heat shock factor (HSF) in basal conditions, upon heat stress is attracted by these unfolded proteins and thus unbind from the HSF and binds to the unfolded proteins. The HSF is then free to enter the nucleus of the cell and bind to the heat shock element (HSE) of the promoter of genes coding for some heat shock proteins. This activates the production of such heat shock proteins. This scheme is conserved among different species.
 
@@ -202,7 +202,7 @@ To investigate systematically the HSR dynamics and the underlying mechanisms we 
 The construction of a mathematical model itself often provides a high degree of insight,
 because based on the essential features of the system under investigation
 it identifies the key components responsible for the characteristic
-system properties~\cite{Pfau2011, Matuszynska2015}). It thus allows discriminating between important and less important entities
+system properties~\cite{Pfau2011, Matuszynska2015}. It thus allows discriminating between important and less important entities
 and provides a powerful technique to verify whether our general understanding of a system is
 basically correct and whether the interacting molecular mechanisms that have been identified experimentally
 are sufficient to reproduce and thus explain observed behaviors.
@@ -224,7 +224,7 @@ are sufficient to reproduce and thus explain observed behaviors.
 %This leads to the activation of a heat shock transcription factor (HSF), which induces the synthesis of heat shock proteins (HSP), molecular chaperons able to help the refolding of degenerated proteins. %This scheme is conserved among different species, 
 
 One of the earliest theoretical studies of the eukaryotic HSR considered mainly the influence of mis-folded proteins and did not include a detailed transcriptional regulation~\cite{Peper1998}. 
-Modeling of the transcriptional regulation was firstly used to study procaryotic
+Modeling of the transcriptional regulation was firstly used to study prokaryotic
 systems, in particular \emph{E. coli}.
 %, where the transcription factor playing the role of HSF is called $\sigma^{32}$. 
 This was done by Srivasta et al.~\cite{Srivastava2001} employing a stochastic approach, and by Kurata et al.~\cite{Kurata2001} with a deterministic model. 
@@ -237,7 +237,7 @@ proposed a mathematical model to describe the HSR in HeLa cells with a detailed 
 A %AS
 model of the thermal adaptation in \emph{Candida albicans}, a fungal pathogen of humans, focuses on the auto-regulatory mechanism involving HSF1 and HSP90 % (see next section), 
 but does not include a detailed transcriptional regulation~\cite{Leach2012model, Leach2012description}. 
-The modelling of the multi-scale heat stress response in the budding yeast \emph{Saccharomyces cerevisiae} is discussed by Fonseca et al.~\cite{Fonseca2012}, and Sivery et al.~\cite{Sivery2015} studied the role of HSF1 during the HSR in mammals. 
+The modeling of the multi-scale heat stress response in the budding yeast \emph{Saccharomyces cerevisiae} is discussed by Fonseca et al.~\cite{Fonseca2012}, and Sivery et al.~\cite{Sivery2015} studied the role of HSF1 during the HSR in mammals. 
 
 %NOT NEEDED!!!
 %As argued in \cite{Matuszynska2015}, 
@@ -269,10 +269,10 @@ with the main purpose to i) verify whether our understanding of the mechanisms o
 and to ii) provide a generic theoretical framework, by which new predictions can be made (such as responses to chemical treatments or genetic modifications) 
 and thus novel hypotheses can be generated.
 
-For this purpose, we first introduce the considered HSR signalling network used to implement the mathematical description and characterize the typical behaviour 
+For this purpose, we first introduce the considered HSR signaling network used to implement the mathematical description and characterize the typical behaviour 
 % verifying that it exhibits a realistic stationary behaviour. 
 %In Section~\ref{SecCalibration} we explain how we used \textcolor{blue}{apart} of the 
-based on parametrization by data from literature. 
+based on parameterization by data from literature. 
 We then validate the model by simulations of independent experimental data including experiments with specific inhibitors and  ``double heat shock'' experiments. 
 %, in which a second heat shock was applied after a certain relaxation period. 
 %We discuss in particular how the results are used for model calibration. 
@@ -318,7 +318,7 @@ systems dynamics.
 %{\color{red} REMOVED FIRST PARAGRAPH}
 %The generality our model aims at relies on the balance between a very detailed description that one could develop by considering for instance only one particular family of heat shock proteins etc., and the need to include in the mathematical description only the main traits of the mechanism under investigation.
 
-The design of the model is based on the underlying signalling network
+The design of the model is based on the underlying signaling network
 inferred from experimental findings~\cite{Schmollinger2013}.
 %THIS IS MORE FOR THE DISCUSSION - FIRST CONVINCE THAT IT IS DOING SOMETHING USEFUL
 %As every model, ours is a simplified representation of reality. For example, 
@@ -377,7 +377,7 @@ which represents any HSP present in \emph{C.~reinhardtii}.
   results, we derive the signalling network schematically depicted in
   Fig.~\ref{Figure1label}~A by performing the above simplifications
   and detailing the transcription of the HSF and HSP
-  genes. This signalling network represents the base to build our
+  genes. This signaling network represents the base for building our
   mathematical model of the HSR.}
 %All components are described in detail in Table~\ref{TabVars}. 
 In accordance with the experimental data, a temperature
@@ -508,7 +508,7 @@ that the model is able to realistically describe the HSR.
 %All the 20 free parameters of the model were manually tuned, as we stated e.g. in the next phrase, page 4 left column lines 16-18. For some of them it is nevertheless possible to estimate reasonable ranges from data bases as e.g. Bionumbers (Milo2010). In particular, we ensured to keep the rate constants $k_P$, $k_{FG}$ and $k_{F^*G}$ in a range lower than the diffusion controlled limit of enzymatic reaction rate estimated to be within $10^2$ and $10^3$ $(\mu M s)^{-1}$ according to (BNID 103916), where it is stated that “no promoter-association rate exceeding the 3D-diffusion limit (~10^8–10^9 M^−1×s^−1) has ever been reported”. We further select a value for $k_{F^*G}$ with the same order of magnitude of the activator association rate reported in (BNID 106521). 
 A general challenge in modelling biological systems is the identification of system parameters because often these are not directly accessible experimentally.
 \textcolor{blue}{None of the twenty rate constants listed in Supplementary Table~\ref{TabKs} are explicitly known.
-Still for some of them a reasonable range can be estimated from data bases~\cite{Milo2010}. 
+Still for some of them a reasonable range can be estimated from databases~\cite{Milo2010}. 
 In particular, we ensured to keep the rate constants $k_P$, $k_{FG}$ and $k_{F^*G}$ in a range 
 lower than the diffusion controlled limit of enzymatic reaction rates estimated 
 % to be within $10^2$ and $10^3$ $(\mu M s)^{-1}$ (
@@ -516,7 +516,7 @@ lower than the diffusion controlled limit of enzymatic reaction rates estimated
 in~\cite[Table 6-8]{Nelson2004}. We further select a value for $k_{F^*G}$ with the same order of magnitude of the activator association rate reported in~\cite{Sanchez2011}.
 %(\cite[BNID 106521]{Milo2010}). 
 %(\cite[BNID 103916, 106521, 105408]{Milo2010}). 
-Considering this information, we first manually tuned all the parameters to reproduce the qualitative behaviour of the experimental data.} 
+Considering this information, we first manually tuned all the parameters to reproduce the qualitative behavior of the experimental data.} 
 %This again
 %supports the development of a simplified model, attempting to reduce the number of unknown 
 %model parameters as much as possible to facilitate a reasonable model calibration procedure, 
@@ -619,7 +619,7 @@ is provided in Supplementary Material \ref{SecCalibrationExtended}.
 \subsection{Model validation by experimental data}
 \label{SectionExperiments}
 
-After the model parameterization, we used the model with its inferred parameters to quantitatively simulate the dynamics of several independent key experiments to validate the model and investigate underlying dynamical properties. 
+After parameterization, we used the model with its inferred parameters to quantitatively simulate the dynamics of several independent key experiments to validate the model and investigate underlying dynamical properties. 
 %The experimental data used here for model validation were not used for model calibration. 
 We first  simulated the feeding experiments performed in Schmollinger et al.~\cite{Schmollinger2013} (Section~\ref{SecFeeding}),
 where specific inhibitors have been applied in different concentrations and the
@@ -635,9 +635,9 @@ In the systematic experiments reported in Schmollinger et al.~\cite{Schmollinger
 with different concentrations of specific inhibitors, and the effect on the HSR
 has been observed by monitoring the temporal evolution of mRNA concentrations
 of mainly the HSF1 and HSP90 genes.
-We specifically consider the two inhibitors Staurosporine, a protein kinase inhibitor \cite{Karaman2008}, 
+We specifically consider the two inhibitors Staurosporine, a protein kinase inhibitor~\cite{Karaman2008}, 
 %(FIXME:FIXED need REF), 
-and Radicicol, a specific inhibitor of HSP90 \cite{Roe1999}. 
+and Radicicol, a specific inhibitor of HSP90~\cite{Roe1999}. 
 % (FIXME:FIXED need REF).
 We simulate these experiments by altering the corresponding rate constants to mimic the effect of 
 the inhibitors, and apply the same heat shock conditions as in the experiments,
@@ -672,8 +672,8 @@ which determines the reaction rate $\nu_F'$, by which the stress kinase SK activ
 The simulation results are shown in Fig.~\ref{Figure3label}~A, together with redrawn 
 experimental data from Fig.~1~B of Schmollinger et al.~\cite{Schmollinger2013}.
 
-The simulations exhibit clearly a reduced maximal HSF mRNA concentration and a delayed response in a dose dependent manner which is in accordance with the experimental data (Fig.~\ref{Figure3label}~A). 
-Because the experimental data is normalised 
+The simulations clearly exhibit a reduced maximal HSF mRNA concentration and a delayed response in a dose dependent manner which is in accordance with the experimental data (Fig.~\ref{Figure3label}~A). 
+Because the experimental data is normalized 
 to the maximal response, a direct comparison of the simulated
 concentrations is not possible and the applied Staurosporine
 concentration cannot directly be translated into a reduced rate
@@ -681,7 +681,7 @@ constant.
 However, the simulated responses for $k_F'$ at its nominal value of $1.09$ $s^{-1}$ and for values reduced to $60 \%$ and $10 \%$ of that value lead to a remarkable agreement
 between simulation and experiment, in which Staurosporine was applied 
 in concentrations of $20$ $n$M and $1$ $\mu$M, respectively.
-Not only the qualitative behaviour is well captured, but also the
+Not only the qualitative behavior is well captured, but also the
 timing of the response as well as the relative reduction of the mRNA signal
 is quantitatively reproduced.
 
@@ -713,7 +713,7 @@ displayed in Fig.~\ref{Figure3label}~B for three values of the rate constant $k_
 and for a reduction to $60\%$ and $30\%$ of that value. 
 We see that decreasing the rate constant results \textcolor{blue}{in an} increased amplitude and delayed attenuation of the HSR.
 The data from Schmollinger et al.~\cite{Schmollinger2013} shown in the same panel for a control and Radicicol concentrations of $10$ $\mu M$ and $100$ $\mu M$
-demonstrate that a similar behaviour is observed in the experiments.
+demonstrate that a similar behavior is observed in the experiments.
 Interestingly, the magnitude of the responses are only qualitatively reproduced by our model, but
 appear much more pronounced in the experiment. 
 %FIXME: any speculation why? Are we in the model already too close to maximal response here?
@@ -798,7 +798,7 @@ the cell needs to observe again a full HSR for the second heat shock.
 It turned out that the heat shock system relaxes within approximately  5~h to its initial state.
 
 To compare the experimental results to our model simulations, we extended the model
-accordingly, also including transcription and translation of the ARS enzyme (for details see Supplementary Material \ref{SecARSSM}, where we provide as well the corresponding equations and parameters values). %FIXME: THIS HAS TO BE BETTER EXPLAINED IN THE SUPP!!! GIVE THE EQUATIONS AND PARAMETERS!!! 
+accordingly, also including transcription and translation of the ARS enzyme (for details see Supplementary Material \ref{SecARSSM}, where we also provide the corresponding equations and parameters values). %FIXME: THIS HAS TO BE BETTER EXPLAINED IN THE SUPP!!! GIVE THE EQUATIONS AND PARAMETERS!!! 
 In Fig.~\ref{Figure3label}~C we display the simulation results and the corresponding experimental data redrawn from Fig.~7~b of Schroda et al.~\cite{Schroda2000}, where two heat shocks of 30 minutes duration were 
 applied with the intervals of 2, 3, 4, and 5 hours, respectively. 
 It can clearly be observed that both in simulation and experiment the second heat shock response
@@ -811,10 +811,10 @@ to the first heat shock occurs later than in the control experiments used to cal
 A possible explanation for these discrepancies is a considerable time lag introduced by the transcription and translation of ARS. 
 Further, it must be considered that the double heat shock experiment was performed with a transformed line, and potentially the
 behavior deviates slightly from the wildtype.
-However, the qualitative agreement between simulation and data thus} provides a further validation of our model. Most important, it also illustrates the flexibility of our model, which as we have shown can easily be extended to include further reactions. This is of particular relevance in view of its possible applications, e.g.~to characterize the production of any protein whose corresponding gene has been put under the control of temperature by means of fusion with a HSP promoter.
+However, the qualitative agreement between simulation and data} provides a further validation of our model. Most important, it also illustrates the flexibility of our model, which as we have shown can easily be extended to include further reactions. This is of particular relevance in view of its possible applications, e.g.~to characterize the production of any protein whose corresponding gene has been put under the control of temperature by means of fusion with a HSP promoter.
 
 %Should the following paragraph be moved section 4: results, and expanded with Fig 13 and material from the section about 2 HS in the Sup Mat?). 
-An interesting observation when analysing the model simulations is
+An interesting observation when analyzing the model simulations is
 that even after 5 hours, the concentration of HSP did not yet relax
 to its initial value before the first heat shock. 
 While the second heat shock leads to misfolded
@@ -830,9 +830,9 @@ stress situations similar to those encountered in the past. Thus, the slow turno
 implement a short-term molecular memory of experienced heat stress,
 similar to the observed short-term memory of previously experienced light
 stress recently discussed and described by a mathematical model 
-in Matuszynska et al.~\cite{Matuszynska2016}.
+in Matuszy\'{n}ska et al.~\cite{Matuszynska2016}.
 
-The model simulations allow a novel interpretation of
+The model simulations allow for a novel interpretation of
 the experimental  double heat shock results. While the
 activity of the HSP70 genes seemingly indicate a full heat shock response, our simulations suggest that the first and second response differ quite fundamentally.
 During the first exposure, HSP needs to be synthesized de novo
@@ -841,8 +841,8 @@ response to refold the denatured proteins is slow, whereas in the second heat
 shock after five hours the remaining HSP level is still sufficient to rapidly
 counteract the temperature-induced denaturing of proteins and the total
 level of misfolded proteins remains very low. However, even this low level is
-sufficient to induce expression of the HSP genes, so that on the mRNA level
-the second response appears as equally strong as the first.
+sufficient to induce expression of the HSP genes, so that the mRNA level
+during the second response is as high as during the first.
 
 % \cite{Schroda2000} roughly quantify the expression of the construct HSP70A-ARS under HS. Thus, in what follows we will compare, on the basis of the above assumption, the ARS activity measured to the concentration of the ARS enzyme in our simulation, which we include by extending the model as explained in the Supplementary Material. 
 
@@ -926,7 +926,7 @@ Thus, a natural heat shock condition it encounters is the daily variation of the
 % (with possibly some random fluctuations in addition).
 To investigate the natural HSR in \emph{C.~reinhardtii}, we  simulate an idealized temperature variation mimicking  a hot day by imposing a sinusoidal variation between 22°C and 40°C with a period of 1 day and a maximum at 3 pm (Fig.~\ref{Figure4label}~G). 
 
-As we can see from Fig.~\ref{Figure4label}~(A-F), the concentrations of the mRNAs (panel E) and of the HSF (panel C) have a steep increase, which leads to a maximum and then a much slower decrease. In particular in panel A we can appreciate the peak in the concentration of degenerated proteins at around 6~am. This \textcolor{blue}{dynamics} is due to the activation of the SK, which follows a Hill kinetics behaviour. It is this HSR which lowers the concentration $\left[P^\#\right]$ after 6 am. The response remains on until the evening and during this time the accumulation of $P^\#$  due to the increase in temperature is counterbalanced by the HSR (this balance originates the second peak in panel A). When the temperature becomes sufficiently low in the \textcolor{blue}{evening the level of unfolded proteins $P^\#$ decreases considerably, thus there is no need of a HSR until the next day. }
+As we can see from Fig.~\ref{Figure4label}~(A-F), the concentrations of the mRNAs (panel E) and of the HSF (panel C) have a steep increase, which leads to a maximum and then a much slower decrease. In particular in panel A we can appreciate the peak in the concentration of degenerated proteins at around 6~am. This \textcolor{blue}{dynamics} is due to the activation of the SK, which follows a Hill kinetics. It is this HSR which lowers the concentration $\left[P^\#\right]$ after 6 am. The response remains on until the evening and during this time the accumulation of $P^\#$  due to the increase in temperature is counterbalanced by the HSR (this balance originates the second peak in panel A). When the temperature becomes sufficiently low in the \textcolor{blue}{evening the level of unfolded proteins $P^\#$ decreases considerably, thus there is no need of a HSR until the next day. }
 %This reflects the fact that when the temperature starts to rise the HSR is rapidly activated and then the normal attenuation of the response is counterbalanced by the further increase in the temperature, and the result is a slower decrease. 
 %Interestingly, the concentration of HSP changes in an almost perfectly symmetric manner (panel F), as the temperature. 
 
