@@ -106,8 +106,7 @@ magnitude occurs abruptly, as often applied under laboratory conditions, or grad
 which would rather be expected under natural conditions.
 In contrast to rapid temperature increases, under gradual changes only negligible amounts of misfolded
 proteins accumulate, indicating that the heat-shock response of \emph{Chlamydomonas reinhardtii} 
-efficiently avoids the accumulation of misfolded proteins under most
-conditions likely to prevail in nature.}
+efficiently avoids the accumulation of misfolded proteins under conditions most likely to prevail in nature.}
 %By comparing the
 %HSRs {under abrupt high temperature increases, conditions often
 %  applied in the laboratory, to smooth temperature variations, which would rather
@@ -154,10 +153,28 @@ approaches.
 
 \labeltext{1}{TabVars}
 \labeltext{2}{TabODEs}
-\labeltext{5}{TabNUs}
-\labeltext{A}{Tables}
 \labeltext{3}{TabRefVal}
 \labeltext{4}{TabKs}
+\labeltext{5}{TabNUs}
+\labeltext{6}{TabARS}
+
+\labeltext{5}{Figure5label}
+\labeltext{6}{Figure10label}
+\labeltext{7}{Figure6label}
+\labeltext{8}{Figure7label}
+\labeltext{9}{Figure8label}
+\labeltext{10}{Figure9label}
+
+\labeltext{A}{Tables}
+\labeltext{B}{SecCalibrationExtended}
+\labeltext{B.4}{sectionRMS2HS}
+\labeltext{C.1}{Sec2HSsimulations}
+\labeltext{C.2}{SecARSSM}
+\labeltext{D}{SectionFurtherPredictions}
+\labeltext{D.1}{SecAcclimation}
+\labeltext{D.2}{SecSteadyStateConcentrations}
+\labeltext{D.3}{SecTradeOff}
+\labeltext{E}{SecRobustness}
 
 
 \section{Introduction}
@@ -595,7 +612,7 @@ nor to provide estimates of these parameters independently of the other paramete
 %Thus, after having performed a global random scan of the parameter space to gain a better understanding of how the RMS behave in it, we decided to determine the final parameter set by employing a local optimization method, namely a gradient search starting from the fiducial parameter set.
 {To investigate these correlations further, in Supplementary Material \ref{SecCalibrationExtended}, 
 we also investigate pair-wise relationships among model parameters (see Supplementary Material~\ref{SecCalibrationExtended} 
-and Supplementary~Fig.~\ref{Figure6label}). 
+and Supplementary~Fig.~\ref{Figure5label}). 
 The limited available data for model calibration stresses the importance
 of an accurate model structure, which here was constructed based on the experimental findings in~\cite{Schmollinger2013}.}
 
@@ -973,9 +990,8 @@ We screened for various values of   $\tau$ as shown  in Fig.~\ref{Figure4label}~
 {In Supplementary Material Section~\ref{SecRobustness} we show that these results are robust against changes in the parameters $m$ and $P_0$ of the Hill kinetics term $\omega_{PS}$ by which the stress kinase $SK$ gets activated (Table~\ref{TabNUs}).}
 
 One of the main advantages of a mathematical model, inferred and calibrated from experiments, is that it allows simulating situations that are difficult to test with experiments and computing quantities difficult to measure. To outline the potential of our model, we {employed} it to simulate {systematically} further situations. 
-We have been able, as described in {Supplementary Material~\ref{SecAcclimation}}, to show the ability of the system to {acclimate} to temperatures higher than usual during heat shocks longer than three hours by shifting to a new steady state. Two distinct phases are clearly visible in Fig.~\ref{Figure8label}~(A-F): an early HS lasting for about the first $3$ h, and a late HS in which the system shows {acclimation} (a new steady state is reached). 
-We have subsequently studied in Supplementary Material~\ref{SecSteadyStateConcentrations} how the steady state concentrations depend on the temperature at which the steady state is reached. As shown in Fig.~\ref{Figure8label}~(G-L), for not too high temperatures the concentration of unfolded proteins $\left[P^\#\right]$ is kept very close to zero. On the other hand, for too high temperatures the HSR cannot prevent the accumulation of degenerated proteins and the cell dies. 
-We have finally been able to systematically investigate how the accumulation of HSPs depends on the combination of temperature and duration of the heat shock in Supplementary Material~\ref{SecTradeOff}, {which we illustrate in Supplementary Material~Fig.~\ref{Figure8label}~M.} 
+We have been able, as described in {Supplementary Material~\ref{SecAcclimation}}, to show the ability of the system to {acclimate} to temperatures higher than usual during heat shocks longer than three hours by shifting to a new steady state. Two distinct phases are clearly visible in Fig.~\ref{Figure8label}~(A-F): an early HS lasting for about the first $3$ h, and a late HS in which the system shows {acclimation} (a new steady state is reached), compatible with the experimental findings of \cite{Hemme2014}. We have subsequently studied in Supplementary Material~\ref{SecSteadyStateConcentrations} how the steady state concentrations depend on the temperature at which the steady state is reached. As shown in Fig.~\ref{Figure8label}~(G-L), for not too high temperatures the concentration of unfolded proteins $\left[P^\#\right]$ is kept very close to zero. On the other hand, for too high temperatures the HSR cannot prevent the accumulation of degenerated proteins and the cell dies. 
+We have finally been able to systematically investigate how the accumulation of HSPs depends on the combination of temperature and duration of the heat shock in Supplementary Material~\ref{SecTradeOff}, {which we illustrate in Supplementary Material~Fig.~\ref{Figure8label}~M.}
 
 
 
